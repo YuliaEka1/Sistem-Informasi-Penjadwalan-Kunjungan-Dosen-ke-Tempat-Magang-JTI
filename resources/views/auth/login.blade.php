@@ -7,14 +7,14 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="{{ route('login') }}" class="h1"><b>Log </b>in</a>
+      <a href="{{ route('login') }}" class="h1"><b>SIP </b>KUDOTEMA</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Masukkan Username Dan Password Anda </p>
       <form action="{{route('login')}}" method="post">
       @csrf
         <div class="input-group mb-3">
-          <input id="username" placeholder="Username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
+        <input id="email" placeholder="Email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
           <div class="input-group-append">
             <div class="input-group-text">
             <span class="fas fa-user"></span>
@@ -43,12 +43,7 @@
           <!-- /.col -->
         </div>
       </form>
-      <div class="social-auth-links text-center mb-3">
-        <p>- OR -</p>
-        <a href="{{ route('google.login')}}" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div>
+      
       <p class="mb-1">
         <a href="">Lupa Password?</a>
       </p>
