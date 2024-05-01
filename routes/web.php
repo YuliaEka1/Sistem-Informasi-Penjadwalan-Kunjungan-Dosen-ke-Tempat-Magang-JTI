@@ -41,3 +41,7 @@ Route::get('/createtempatMagang', [App\Http\Controllers\TempatMagangController::
 //mahasiswa
 Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('mahasiswa');
 Route::get('/createMahasiswa', [App\Http\Controllers\MahasiswaController::class, 'create'])->name('createMahasiswa');
+
+//feedback
+Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');
+Route::get('/createFeedback', [App\Http\Controllers\FeedbackController::class, 'create'])->name('createFeedback');

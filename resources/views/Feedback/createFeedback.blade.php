@@ -25,12 +25,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Industri</h1>
+            <h1 class="m-0">Feedback</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Industri </li>
+              <li class="breadcrumb-item active">Feedback </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -42,41 +42,34 @@
     <section class="content">
       <div class="card card-info card-outline">
       <div class="card-header">
-      <tr><th class="w-15 text-right">Daftar Industri</th><th class="w-1">
-      <td class="w-84"><span class="badge bg-warning">Tempat Magang</span></td>
+      <tr><th class="w-15 text-right">Feedback </th><th class="w-1">
+      <td class="w-84"><span class="badge bg-warning">Industri</span></td>
       <div class="card-tools">
       
-      <a href="{{ route('createTempatMagang')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
 </div>
 </div>
 
 <div class="card-body">
-    <!-- Small boxes (Stat box) -->
-    <table class="table table-bordered">
-        <tr>
-            <th style="text-align: center;">No</th>
-            <th style="text-align: center;">Nama Industri</th>
-            <th style="text-align: center;">No Handphone</th>
-            <th style="text-align: center;">Alamat Industri</th>
-            <th style="text-align: center;">Aksi</th>
-        </tr>
-        <!-- Menggunakan variabel $i untuk nomor -->
-        @php $i = 1; @endphp
-        <tr>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-
-        </tr>
-    </table>
+    <!-- Form -->
+    <form action="" method="post">
+    @csrf
+    <div class="form-group">
+        <label for="nama_industri">Nama Industri:</label>
+        <select id="nama_industri" name="nama_industri" class="form-control">
+            <!-- Anda dapat menambahkan pilihan nama dosen dari data yang ada di database -->
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="text" id="isi_feedback" name="isi_feedback" class="form-control" placeholder="Isi Feedback">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    
 </div>
 <!-- /.row -->
 <!-- Main row -->
 <!-- /.row (main row) -->
       <!-- /.container-fluid -->
-    </section>   
+    </section>     
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
