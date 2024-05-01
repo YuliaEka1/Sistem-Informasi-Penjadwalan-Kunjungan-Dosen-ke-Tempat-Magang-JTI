@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 if (!function_exists('isActiveManajData')) {
     function isActiveManajData()
     {
-        return Request::is('data dosen*') || Request::is('data mahasiswa*') || Request::is('data industri*');
+        return Request::is('dataDosen*') || Request::is('mahasiswa*') || Request::is('tempatMagang*');
     }
 }
 

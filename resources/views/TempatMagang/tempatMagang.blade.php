@@ -46,7 +46,7 @@
       <td class="w-84"><span class="badge bg-warning">Tempat Magang</span></td>
       <div class="card-tools">
       
-      <a href="#" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+      <a href="{{ route('createTempatMagang')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
 </div>
 </div>
 

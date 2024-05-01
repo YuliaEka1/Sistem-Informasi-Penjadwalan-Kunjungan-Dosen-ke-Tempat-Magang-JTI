@@ -25,12 +25,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Dosen</h1>
+            <h1 class="m-0">Industri</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Dosen </li>
+              <li class="breadcrumb-item active">Industri </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -42,35 +42,35 @@
     <section class="content">
       <div class="card card-info card-outline">
       <div class="card-header">
-      <tr><th class="w-15 text-right">Tambah Data Dosen</th><th class="w-1">
-      <td class="w-84"><span class="badge bg-warning">Pembimbing</span></td>
+      <tr><th class="w-15 text-right">Tambah Data Industri</th><th class="w-1">
+      <td class="w-84"><span class="badge bg-warning">Tempat Magang</span></td>
       <div class="card-tools">
       
 </div>
 </div>
 
 <div class="card-body">
+    <!-- Small boxes (Stat box) -->
     <!-- Form -->
-    <form action="{{ route('simpanDosen') }}" method="post">
-    {{ csrf_field() }}
+    <form action="" method="post">
+    @csrf
     <div class="form-group">
-        <input type="text" id="nama_dosen" name="nama_dosen" class="form-control" placeholder="Nama Dosen">
-    </div>
-    <div class="form-group">
-        <input type="text" id="nip" name="nip" class="form-control" placeholder="NIP">
+        <input type="text" id="nama_industri" name="nama_industri" class="form-control" placeholder="Nama Industri">
     </div>
     <div class="form-group">
         <input type="text" id="no_hp" name="no_hp" class="form-control" placeholder="Nomor HP">
     </div>
     <div class="form-group">
-        <input type="number" id="jumlah_bimbingan" name="jumlah_bimbingan" class="form-control" placeholder="Jumlah Bimbingan">
+        <input type="text" id="alamat_industri" name="alamat_industri" class="form-control" placeholder="Alamat Industri">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
 <!-- /.row -->
 <!-- Main row -->
 <!-- /.row (main row) -->
       <!-- /.container-fluid -->
-    </section>    
+    </section>   
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

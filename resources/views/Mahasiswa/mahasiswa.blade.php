@@ -25,12 +25,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Dosen</h1>
+            <h1 class="m-0">Mahasiswa</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Dosen </li>
+              <li class="breadcrumb-item active">Mahasiswa </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -42,35 +42,52 @@
     <section class="content">
       <div class="card card-info card-outline">
       <div class="card-header">
-      <tr><th class="w-15 text-right">Tambah Data Dosen</th><th class="w-1">
-      <td class="w-84"><span class="badge bg-warning">Pembimbing</span></td>
+      <tr><th class="w-15 text-right">Daftar Mahasiswa</th><th class="w-1">
+      <td class="w-84"><span class="badge bg-warning">Magang</span></td>
       <div class="card-tools">
       
+      <a href="{{route('createMahasiswa')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
 </div>
 </div>
 
 <div class="card-body">
-    <!-- Form -->
-    <form action="{{ route('simpanDosen') }}" method="post">
-    {{ csrf_field() }}
-    <div class="form-group">
-        <input type="text" id="nama_dosen" name="nama_dosen" class="form-control" placeholder="Nama Dosen">
-    </div>
-    <div class="form-group">
-        <input type="text" id="nip" name="nip" class="form-control" placeholder="NIP">
-    </div>
-    <div class="form-group">
-        <input type="text" id="no_hp" name="no_hp" class="form-control" placeholder="Nomor HP">
-    </div>
-    <div class="form-group">
-        <input type="number" id="jumlah_bimbingan" name="jumlah_bimbingan" class="form-control" placeholder="Jumlah Bimbingan">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <!-- Small boxes (Stat box) -->
+    <table class="table table-bordered">
+        <tr>
+            <th style="text-align: center;">No</th>
+            <th style="text-align: center;">Nama Mahasiswa</th>
+            <th style="text-align: center;">NIM</th>
+            <th style="text-align: center;">Durasi Magang</th>
+            <th style="text-align: center;">Tanggal Awal</th>
+            <th style="text-align: center;">Tanggal AKhir</th>
+            <th style="text-align: center;">No Hp</th>
+            <th style="text-align: center;">Kategori Magang</th>
+            <th style="text-align: center;">Jenis Magang</th>
+            <th style="text-align: center;">Dosen Pembimbing</th>
+            <th style="text-align: center;">Alamat Industri</th>
+        </tr>
+        <!-- Menggunakan variabel $i untuk nomor -->
+        @php $i = 1; @endphp
+        <tr>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+        </tr>
+    </table>
+</div>
 <!-- /.row -->
 <!-- Main row -->
 <!-- /.row (main row) -->
       <!-- /.container-fluid -->
-    </section>    
+    </section>   
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

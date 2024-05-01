@@ -42,9 +42,8 @@
                 Dashboard
               </p>
             </a>
-            
             <li class="nav-item {{ isActiveManajData() ? 'menu-open' : '' }}">
-              <a href="{{ asset('/dataDosen') }}" class="nav-link {{ Request::is('dataDosen') ? 'active' : '' }}">
+              <a href="javascript:void(0);" class="nav-link {{ isActiveManajData() ? 'active' : '' }}">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Manajemen Data
@@ -60,13 +59,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+              <a href="{{ asset('/mahasiswa') }}" class="nav-link {{ Request::is('mahasiswa') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Mahasiswa</p>
                 </a>
               </li>
               <li class="nav-item">
-              <a href="{{ route('tempatMagang') }}" class="nav-link ">
+              <a href="{{ asset('/tempatMagang') }}" class="nav-link {{ Request::is('tempatMagang') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Industri</p>
                 </a>

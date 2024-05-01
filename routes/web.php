@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\TempatMagangController;
+use App\Http\Controllers\MahasiswaController;
 
 
 /*
@@ -35,3 +36,8 @@ Route::post('/simpanDosen', [App\Http\Controllers\DosenController::class, 'store
 
 //industri
 Route::get('/tempatMagang', [App\Http\Controllers\TempatMagangController::class, 'index'])->name('tempatMagang');
+Route::get('/createtempatMagang', [App\Http\Controllers\TempatMagangController::class, 'create'])->name('createTempatMagang');
+
+//mahasiswa
+Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('mahasiswa');
+Route::get('/createMahasiswa', [App\Http\Controllers\MahasiswaController::class, 'create'])->name('createMahasiswa');
