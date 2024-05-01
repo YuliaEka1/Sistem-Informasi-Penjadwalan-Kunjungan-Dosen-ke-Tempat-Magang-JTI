@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DosenController extends Controller
+class TempatMagangController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('Dosen.dataDosen');
+        return view('TempatMagang.tempatMagang');
     }
 
     /**
@@ -19,7 +19,7 @@ class DosenController extends Controller
      */
     public function create()
     {
-        return view('Dosen.createDosen');
+        //
     }
 
     /**
@@ -27,7 +27,7 @@ class DosenController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //
     }
 
     /**

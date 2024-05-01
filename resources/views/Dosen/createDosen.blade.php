@@ -42,37 +42,31 @@
     <section class="content">
       <div class="card card-info card-outline">
       <div class="card-header">
-      <tr><th class="w-15 text-right">Daftar Dosen</th><th class="w-1">
+      <tr><th class="w-15 text-right">Tambah Data Dosen</th><th class="w-1">
       <td class="w-84"><span class="badge bg-warning">Pembimbing</span></td>
       <div class="card-tools">
       
-      <a href="{{ route('createDosen') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+        <a herf="#" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
 </div>
 </div>
 
 <div class="card-body">
-    <!-- Small boxes (Stat box) -->
-    <table class="table table-bordered">
-        <tr>
-            <th style="text-align: center;">No</th>
-            <th style="text-align: center;">Nama Dosen</th>
-            <th style="text-align: center;">NIP</th>
-            <th style="text-align: center;">No Handphone</th>
-            <th style="text-align: center;">Jumlah Bimbingan</th>
-            <th style="text-align: center;">Aksi</th>
-        </tr>
-        <!-- Menggunakan variabel $i untuk nomor -->
-        @php $i = 1; @endphp
-        <tr>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-        </tr>
-    </table>
-</div>
+    <!-- Form -->
+    <form action="{{ route('simpanDosen') }}" method="post">
+    {{ csrf_field() }}
+    <div class="form-group">
+        <input type="text" id="nama_dosen" name="nama_dosen" class="form-control" placeholder="Nama Dosen">
+    </div>
+    <div class="form-group">
+        <input type="text" id="nip" name="nip" class="form-control" placeholder="NIP">
+    </div>
+    <div class="form-group">
+        <input type="text" id="no_hp" name="no_hp" class="form-control" placeholder="Nomor HP">
+    </div>
+    <div class="form-group">
+        <input type="number" id="jumlah_bimbingan" name="jumlah_bimbingan" class="form-control" placeholder="Jumlah Bimbingan">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 <!-- /.row -->
 <!-- Main row -->
 <!-- /.row (main row) -->

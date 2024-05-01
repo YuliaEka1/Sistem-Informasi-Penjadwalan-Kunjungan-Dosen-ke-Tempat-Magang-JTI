@@ -12,13 +12,10 @@
           <div class="image">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png" class="img-circle elevation-2" alt="User Image">
           </div>
-          @if(isset($user))
-              <div class="info">
-                  <a class="d-block" style="font-weight: bold; font-size: 18px;">
-                      {{ $user->username }}
-                  </a>
-              </div>
-          @endif
+          
+          <div class="info">
+            <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+        </div>
         </div>
 
       <!-- SidebarSearch Form -->
@@ -38,16 +35,16 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item {{ isActiveDashboard() ? 'menu-open' : '' }}">
+              <a href="{{ asset('/home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
             
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+            <li class="nav-item {{ isActiveManajData() ? 'menu-open' : '' }}">
+              <a href="{{ asset('/dataDosen') }}" class="nav-link {{ Request::is('dataDosen') ? 'active' : '' }}">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Manajemen Data
@@ -57,7 +54,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-              <a href="{{ route('dataDosen') }}" class="nav-link ">
+              <a href="{{ asset('/dataDosen') }}" class="nav-link {{ Request::is('dataDosen') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Dosen</p>
                 </a>
@@ -69,7 +66,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
+              <a href="{{ route('tempatMagang') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Industri</p>
                 </a>

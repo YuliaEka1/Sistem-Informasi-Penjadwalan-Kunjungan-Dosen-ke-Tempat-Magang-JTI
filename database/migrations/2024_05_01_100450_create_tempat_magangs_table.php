@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dosen', function (Blueprint $table) {
-            $table->bigIncrements('id'); // Kolom id sebagai primary key
-            $table->string('nama_dosen', 100)->notNull();
-            $table->string('nip')->notNull(); 
-            $table->string('no_hp', 14)->notNull();
-            $table->integer('jumlah_bimbingan')->notNull();
+        Schema::create('tempat_magang', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_industri', 200);
+            $table->string('no_hp', 200);
+            $table->string('alamat_industri', 500);
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dosen');
+        Schema::dropIfExists('tempat_magang');
     }
 };

@@ -25,12 +25,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Dosen</h1>
+            <h1 class="m-0">Industri</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Dosen </li>
+              <li class="breadcrumb-item active">Industri </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -42,11 +42,11 @@
     <section class="content">
       <div class="card card-info card-outline">
       <div class="card-header">
-      <tr><th class="w-15 text-right">Daftar Dosen</th><th class="w-1">
-      <td class="w-84"><span class="badge bg-warning">Pembimbing</span></td>
+      <tr><th class="w-15 text-right">Daftar Industri</th><th class="w-1">
+      <td class="w-84"><span class="badge bg-warning">Tempat Magang</span></td>
       <div class="card-tools">
       
-      <a href="{{ route('createDosen') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+      <a href="#" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
 </div>
 </div>
 
@@ -55,10 +55,9 @@
     <table class="table table-bordered">
         <tr>
             <th style="text-align: center;">No</th>
-            <th style="text-align: center;">Nama Dosen</th>
-            <th style="text-align: center;">NIP</th>
+            <th style="text-align: center;">Nama Industri</th>
             <th style="text-align: center;">No Handphone</th>
-            <th style="text-align: center;">Jumlah Bimbingan</th>
+            <th style="text-align: center;">Alamat Industri</th>
             <th style="text-align: center;">Aksi</th>
         </tr>
         <!-- Menggunakan variabel $i untuk nomor -->
@@ -69,7 +68,7 @@
             <td style="text-align: center;"></td>
             <td style="text-align: center;"></td>
             <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
+
         </tr>
     </table>
 </div>
@@ -77,7 +76,7 @@
 <!-- Main row -->
 <!-- /.row (main row) -->
       <!-- /.container-fluid -->
-    </section>    
+    </section>   
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

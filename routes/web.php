@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\TempatMagangController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +30,8 @@ Route::get('auth/google/callback', [App\Http\Controllers\GoogleController::class
 
 //dosen
 Route::get('/dataDosen', [App\Http\Controllers\DosenController::class, 'index'])->name('dataDosen');
+Route::get('/createDosen', [App\Http\Controllers\DosenController::class, 'create'])->name('createDosen');
+Route::post('/simpanDosen', [App\Http\Controllers\DosenController::class, 'store'])->name('simpanDosen');
+
+//industri
+Route::get('/tempatMagang', [App\Http\Controllers\TempatMagangController::class, 'index'])->name('tempatMagang');
