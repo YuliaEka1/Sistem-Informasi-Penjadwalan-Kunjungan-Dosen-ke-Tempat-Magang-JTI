@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\TempatMagangController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\RekomendasiController;
+use App\Http\Controllers\HistoriController;
+use App\Http\Controllers\PenjadwalanController;
 
 
 /*
@@ -41,6 +44,21 @@ Route::get('/createtempatMagang', [App\Http\Controllers\TempatMagangController::
 //mahasiswa
 Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('mahasiswa');
 Route::get('/createMahasiswa', [App\Http\Controllers\MahasiswaController::class, 'create'])->name('createMahasiswa');
+
+//rekomendasi
+Route::get('/rekomendasi', [App\Http\Controllers\RekomendasiController::class, 'index'])->name('rekomendasi');
+
+//histori
+Route::get('/histori', [App\Http\Controllers\HistoriController::class, 'index'])->name('histori');
+
+//penjadwalan
+Route::get('/penjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'index'])->name('penjadwalan');
+
+//konfirmasi dosen
+Route::get('/konfirmasiDosen', [App\Http\Controllers\KonfirmasiDosenController::class, 'index'])->name('konfirmasiDosen');
+
+//konfirmasi industri
+Route::get('/konfirmasiIndustri', [App\Http\Controllers\KonfirmasiIndustriController::class, 'index'])->name('konfirmasiIndustri');
 
 //feedback
 Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');

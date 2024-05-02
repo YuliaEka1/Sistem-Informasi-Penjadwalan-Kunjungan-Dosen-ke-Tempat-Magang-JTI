@@ -5,21 +5,6 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-if (!function_exists('isActiveManajData')) {
-    function isActiveManajData()
-    {
-        return Request::is('dataDosen*') || Request::is('mahasiswa*') || Request::is('tempatMagang*');
-    }
-}
-
-
-if (!function_exists('isActiveTransaksi')) {
-    function isActiveTransaksi()
-    {
-        return Request::is('kasMasuk') || Request::is('kasKeluar');
-    }
-}
-
 if (!function_exists('isActiveDashboard')) {
     function isActiveDashboard()
     {
@@ -27,17 +12,39 @@ if (!function_exists('isActiveDashboard')) {
     }
 }
 
-if (!function_exists('isActiveLaporan')) {
-    function isActiveLaporan()
+if (!function_exists('isActiveManajData')) {
+    function isActiveManajData()
     {
-        return Request::is('laporanRealisasi') || Request::is('laporanTransaksiMasuk') || Request::is('laporanTransaksiKeluar') || Request::is('arusKas') || Request::is('laporanTotalKas');
+        return Request::is('dataDosen*') || Request::is('mahasiswa*') || Request::is('tempatMagang*');
     }
 }
 
-if (!function_exists('isActiveDiagram')) {
-    function isActiveDiagram()
+if (!function_exists('isActiveManajMagang')) {
+    function isActiveManajMagang()
     {
-        return Request::is('chart');
+        return Request::is('rekomendasi*') || Request::is('histori*');
+    }
+}
+
+if (!function_exists('isActivePenjadwalan')) {
+    function isActivePenjadwalan()
+    {
+        return Request::is('penjadwalan*');
+    }
+}
+
+
+if (!function_exists('isActiveKonfirmasi')) {
+    function isActiveKonfirmasi()
+    {
+        return Request::is('konfirmasiDosen*') || Request::is('konfirmasiIndustri*');
+    }
+}
+
+if (!function_exists('isActiveFeedback')) {
+    function isActiveFeedback()
+    {
+        return Request::is('feedback*');
     }
 }
 

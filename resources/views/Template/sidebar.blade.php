@@ -73,9 +73,9 @@
               
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-folder"></i>
+          <li class="nav-item {{ isActiveManajMagang() ? 'menu-open' : '' }}">
+              <a href="javascript:void(0);" class="nav-link {{ isActiveManajMagang() ? 'active' : '' }}">
+              <i class="nav-icon fas fa-copy"></i>
               <p>
                 Manaj Tempat Magang
                 <i class="right fas fa-angle-left"></i>
@@ -83,13 +83,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+              <a href="{{ asset('/rekomendasi') }}" class="nav-link {{ Request::is('rekomendasi') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Rekomendasi Tempat Magang</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+              <a href="{{ asset('/histori') }}" class="nav-link {{ Request::is('histori') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Histori Kunjungan Industri</p>
                 </a>
@@ -98,7 +98,8 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item {{ isActivePenjadwalan() ? 'menu-open' : '' }}">
+              <a href="{{ asset('/penjadwalan') }}" class="nav-link {{ Request::is('penjadwalan') ? 'active' : '' }}">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
                 Penjadwalan Kunjungan
@@ -107,7 +108,8 @@
             
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item {{ isActiveKonfirmasi() ? 'menu-open' : '' }}">
+              <a href="javascript:void(0);" class="nav-link {{ isActiveKonfirmasi() ? 'active' : '' }}">
             <i class="nav-icon fas fa-check text"></i>
               <p>
                 Konfirmasi Kunjungan
@@ -116,13 +118,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+              <a href="{{ asset('/konfirmasiDosen') }}" class="nav-link {{ Request::is('konfirmasiDosen') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Konfirmasi Dosen</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+              <a href="{{ asset('/konfirmasiIndustri') }}" class="nav-link {{ Request::is('konfirmasiIndustri') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Konfirmasi Industri</p>
                 </a>
@@ -131,7 +133,8 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('feedback') }}" class="nav-link">
+          <li class="nav-item {{ isActiveFeedback() ? 'menu-open' : '' }}">
+              <a href="{{ asset('/feedback') }}" class="nav-link {{ Request::is('feedback') ? 'active' : '' }}">
             <i class="nav-icon fas fa-comment"></i>
               <p>
                 Feedback & Penyesuaian

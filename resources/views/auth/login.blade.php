@@ -7,10 +7,12 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="{{ route('login') }}" class="h1"><b>SIP </b>KUDOTEMA</a>
+    <a href="{{ route('login') }}" class="h1" style="color: orange;"><b>SIP </b>KUDOTEMA</a>
+
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Masukkan Username Dan Password Anda </p>
+    <p class="login-box-msg" style="color: blue;">Jurusan Teknologi Informasi </p>
+      <p class="login-box-msg">silahkan login untuk masuk sistem </p>
       <form action="{{route('login')}}" method="post">
       @csrf
         <div class="input-group mb-3">
