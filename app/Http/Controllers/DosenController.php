@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Dosen;
 
 class DosenController extends Controller
 {
@@ -11,7 +12,8 @@ class DosenController extends Controller
      */
     public function index()
     {
-        return view('Dosen.dataDosen');
+        $dtDosen = Dosen::all();
+        return view('Dosen.dataDosen', compact('dtDosen'));
     }
 
     /**
@@ -27,7 +29,13 @@ class DosenController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
+        Dosen::create([
+            'nama_dosen' => $request->nama_dosen,
+            'jumlah_bimbingan' => $request->jumlah_bimbingan,
+            'no_hp' => $request->no_hp,
+        ]);
+        return redirect('dataDosen');
     }
 
     /**
@@ -43,7 +51,11 @@ class DosenController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
+        $dosen = Dosen::findorfail($id); // Misalnya, Anda menggunakan Eloquent untuk mengambil data dosen
+        return view('Dosen.editDosen', compact('dosen'));
+
+
     }
 
     /**
@@ -51,7 +63,9 @@ class DosenController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $dosen = Dosen::findorfail($id); // Misalnya, Anda menggunakan Eloquent untuk mengambil data dosen
+        $dosen->update($request->all());
+        return redirect('dataDosen');
     }
 
     /**
@@ -59,6 +73,8 @@ class DosenController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dosen = Dosen::findorfail($id);
+        $dosen->delete();
+        return back();
     }
 }

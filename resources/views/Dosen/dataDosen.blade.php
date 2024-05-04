@@ -56,23 +56,33 @@
         <tr>
             <th style="text-align: center;">No</th>
             <th style="text-align: center;">Nama Dosen</th>
-            <th style="text-align: center;">NIP</th>
-            <th style="text-align: center;">No Handphone</th>
             <th style="text-align: center;">Jumlah Bimbingan</th>
+            <th style="text-align: center;">No Handphone</th>
             <th style="text-align: center;">Aksi</th>
         </tr>
-        <!-- Menggunakan variabel $i untuk nomor -->
-        @php $i = 1; @endphp
-        <tr>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-        </tr>
+        @foreach ($dtDosen as $item)
+          <tr>
+              <td style="text-align: center;">{{ $loop->iteration}}</td>
+              <td>{{ $item->nama_dosen }}</td>
+              <td style="text-align: center;">{{ $item->jumlah_bimbingan }}</td>
+              <td style="text-align: center;">{{ $item->no_hp }}</td>
+              <td>
+                  <div class="text-center">
+                      <a href="{{ route('editDosen', ['id' => $item->id]) }}" class="ajax_modal btn btn-xs btn-warning tooltips text-secondary" data-placement="left" data-original-title="Edit Data">
+                          <i class="fa fa-edit"></i>
+                      </a>
+                      | <!-- Tambahkan pemisah antara link edit dan link hapus -->
+                      <a href="{{ route('deleteDosen', ['id' => $item->id]) }}" class="ajax_modal btn btn-xs btn-danger tooltips text-light" data-placement="left" data-original-title="Hapus Data">
+                          <i class="fa fa-trash"></i>
+                      </a>
+                  </div>
+              </td>
+          </tr>
+          @endforeach
+
     </table>
 </div>
+
 <!-- /.row -->
 <!-- Main row -->
 <!-- /.row (main row) -->

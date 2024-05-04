@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Dashboard')
+@section('title', 'SIPKUDOTEMA')
 
 @section('content')
 <!-- Main content -->

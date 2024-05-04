@@ -42,7 +42,7 @@
     <section class="content">
       <div class="card card-info card-outline">
       <div class="card-header">
-      <tr><th class="w-15 text-right">Tambah Data Dosen</th><th class="w-1">
+      <tr><th class="w-15 text-right">Edit Data Dosen</th><th class="w-1">
       <td class="w-84"><span class="badge bg-warning">Pembimbing</span></td>
       <div class="card-tools">
       
@@ -51,19 +51,19 @@
 
 <div class="card-body">
     <!-- Form -->
-    <form action="{{ route('simpanDosen') }}" method="post">
+    <form action="{{ url('updateDosen',$dosen->id) }}" method="post">
     {{ csrf_field() }}
     <div class="form-group">
-        <input type="text" id="nama_dosen" name="nama_dosen" class="form-control" placeholder="Nama Dosen">
+        <input type="text" id="nama_dosen" name="nama_dosen" class="form-control" placeholder="Nama Dosen" value="{{ $dosen->nama_dosen }}">
     </div>
     <div class="form-group">
-        <input type="number" id="jumlah_bimbingan" name="jumlah_bimbingan" class="form-control" placeholder="Jumlah Bimbingan">
+        <input type="number" id="jumlah_bimbingan" name="jumlah_bimbingan" class="form-control" placeholder="Jumlah Bimbingan" value="{{ $dosen->jumlah_bimbingan }}">
     </div>
     <div class="form-group">
-        <input type="text" id="no_hp" name="no_hp" class="form-control" placeholder="Nomor HP">
+        <input type="text" id="no_hp" name="no_hp" class="form-control" placeholder="Nomor Hp" value="{{ $dosen->no_hp }}">
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Ubah Data</button>
     
 <!-- /.row -->
 <!-- Main row -->

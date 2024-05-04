@@ -36,6 +36,10 @@ Route::get('auth/google/callback', [App\Http\Controllers\GoogleController::class
 Route::get('/dataDosen', [App\Http\Controllers\DosenController::class, 'index'])->name('dataDosen');
 Route::get('/createDosen', [App\Http\Controllers\DosenController::class, 'create'])->name('createDosen');
 Route::post('/simpanDosen', [App\Http\Controllers\DosenController::class, 'store'])->name('simpanDosen');
+Route::get('/editDosen/{id}', [App\Http\Controllers\DosenController::class, 'edit'])->name('editDosen');
+Route::post('/updateDosen/{id}', [App\Http\Controllers\DosenController::class, 'update'])->name('updateDosen');
+Route::get('/deleteDosen/{id}', [App\Http\Controllers\DosenController::class, 'destroy'])->name('deleteDosen');
+
 
 //industri
 Route::get('/tempatMagang', [App\Http\Controllers\TempatMagangController::class, 'index'])->name('tempatMagang');

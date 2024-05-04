@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('dosen', function (Blueprint $table) {
             $table->bigIncrements('id'); // Kolom id sebagai primary key
             $table->string('nama_dosen', 100)->notNull();
-            $table->string('nip')->notNull(); 
-            $table->string('no_hp', 14)->notNull();
             $table->integer('jumlah_bimbingan')->notNull();
+            $table->string('no_hp', 14)->notNull(); 
             $table->timestamps();
         });
     }

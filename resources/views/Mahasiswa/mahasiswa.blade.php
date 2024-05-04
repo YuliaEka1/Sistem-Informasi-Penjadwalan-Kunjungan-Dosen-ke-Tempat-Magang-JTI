@@ -54,21 +54,26 @@
     <!-- Small boxes (Stat box) -->
     <table class="table table-bordered">
         <tr>
-            <th style="text-align: center;">No</th>
-            <th style="text-align: center;">Nama Mahasiswa</th>
             <th style="text-align: center;">NIM</th>
+            <th style="text-align: center;">Nama Mahasiswa</th>
+            <th style="text-align: center;">Kelas</th>
             <th style="text-align: center;">Durasi Magang</th>
             <th style="text-align: center;">Tanggal Awal</th>
-            <th style="text-align: center;">Tanggal AKhir</th>
-            <th style="text-align: center;">No Hp</th>
+            <th style="text-align: center;">Tanggal Akhir</th>
             <th style="text-align: center;">Kategori Magang</th>
             <th style="text-align: center;">Jenis Magang</th>
-            <th style="text-align: center;">Dosen Pembimbing</th>
+            <th style="text-align: center;">Nama Industri</th>
+            <th style="text-align: center;">No Pembimbing Lapangan</th>
+            <th style="text-align: center;">Nama Dosen Pembimbing</th>
+            <th style="text-align: center;">No Mahasiswa</th>
             <th style="text-align: center;">Alamat Industri</th>
+            <th style="text-align: center;">Kota</th>
         </tr>
-        <!-- Menggunakan variabel $i untuk nomor -->
-        @php $i = 1; @endphp
+        
         <tr>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
             <td style="text-align: center;"></td>
             <td style="text-align: center;"></td>
             <td style="text-align: center;"></td>
