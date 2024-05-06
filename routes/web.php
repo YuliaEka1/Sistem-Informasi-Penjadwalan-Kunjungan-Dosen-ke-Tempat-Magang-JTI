@@ -40,14 +40,13 @@ Route::get('/editDosen/{id}', [App\Http\Controllers\DosenController::class, 'edi
 Route::post('/updateDosen/{id}', [App\Http\Controllers\DosenController::class, 'update'])->name('updateDosen');
 Route::get('/deleteDosen/{id}', [App\Http\Controllers\DosenController::class, 'destroy'])->name('deleteDosen');
 
-
-//industri
-Route::get('/tempatMagang', [App\Http\Controllers\TempatMagangController::class, 'index'])->name('tempatMagang');
-Route::get('/createtempatMagang', [App\Http\Controllers\TempatMagangController::class, 'create'])->name('createTempatMagang');
-
 //mahasiswa
-Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('mahasiswa');
+Route::get('/dataMahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('dataMahasiswa');
 Route::get('/createMahasiswa', [App\Http\Controllers\MahasiswaController::class, 'create'])->name('createMahasiswa');
+Route::post('/simpanMahasiswa', [App\Http\Controllers\MahasiswaController::class, 'store'])->name('simpanMahasiswa');
+Route::get('/editMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::class, 'edit'])->name('editMahasiswa');
+Route::post('/updateMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::class, 'update'])->name('updateMahasiswa');
+Route::get('/deleteMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::class, 'destroy'])->name('deleteMahasiswa');
 
 //rekomendasi
 Route::get('/rekomendasi', [App\Http\Controllers\RekomendasiController::class, 'index'])->name('rekomendasi');

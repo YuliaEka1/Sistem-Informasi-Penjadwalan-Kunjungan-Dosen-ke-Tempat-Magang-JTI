@@ -42,7 +42,7 @@
     <section class="content">
       <div class="card card-info card-outline">
       <div class="card-header">
-      <tr><th class="w-15 text-right">Daftar Mahasiswa</th><th class="w-1">
+      <tr><th class="w-15 text-right">Edit Mahasiswa</th><th class="w-1">
       <td class="w-84"><span class="badge bg-warning">Magang</span></td>
       <div class="card-tools">
       
@@ -52,90 +52,90 @@
 
 <div class="card-body">
     <!-- Small boxes (Stat box) -->
-    <form action="{{ route('simpanMahasiswa') }}" method="post">
+    <form action="{{ route('updateMahasiswa',$mahasiswa->id) }}" method="post">
     @csrf
     <div class="form-group row">
                     <label for="nama_mhs" class="col-sm-2 col-form-label">Nama Mahasiswa:</label>
                     <div class="col-sm-10">
-                        <input type="text" id="nama_mhs" name="nama_mhs" class="form-control" placeholder="Nama Mahasiswa">
+                        <input type="text" id="nama_mhs" name="nama_mhs" class="form-control" placeholder="Nama Mahasiswa" value="{{ $mahasiswa->nama_mhs }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="nim" class="col-sm-2 col-form-label">NIM:</label>
                     <div class="col-sm-10">
-                        <input type="text" id="nim" name="nim" class="form-control" placeholder="NIM">
+                        <input type="text" id="nim" name="nim" class="form-control" placeholder="NIM" value="{{ $mahasiswa->nim }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="kelas" class="col-sm-2 col-form-label">Kelas:</label>
                     <div class="col-sm-10">
-                        <input type="text" id="kelas" name="kelas" class="form-control" placeholder="Kelas">
+                        <input type="text" id="kelas" name="kelas" class="form-control" placeholder="Kelas" value="{{ $mahasiswa->kelas }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="durasi_magang" class="col-sm-2 col-form-label">Durasi Magang:</label>
                     <div class="col-sm-10">
-                        <input type="number" id="durasi_magang" name="durasi_magang" class="form-control" placeholder="Durasi Magang">
+                        <input type="number" id="durasi_magang" name="durasi_magang" class="form-control" placeholder="Durasi Magang" value="{{ $mahasiswa->durasi_magang }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="tgl_awal" class="col-sm-2 col-form-label">Tanggal Awal:</label>
                     <div class="col-sm-10">
-                        <input type="date" id="tgl_awal" name="tgl_awal" class="form-control">
+                        <input type="date" id="tgl_awal" name="tgl_awal" class="form-control" value="{{ $mahasiswa->tgl_awal }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="tgl_akhir" class="col-sm-2 col-form-label">Tanggal Akhir:</label>
                     <div class="col-sm-10">
-                        <input type="date" id="tgl_akhir" name="tgl_akhir" class="form-control">
+                        <input type="date" id="tgl_akhir" name="tgl_akhir" class="form-control" value="{{ $mahasiswa->tgl_akhir }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="kategori_magang" class="col-sm-2 col-form-label">Kategori Magang:</label>
                     <div class="col-sm-10">
-                        <input type="text" id="kategori_magang" name="kategori_magang" class="form-control" placeholder="Kategori Magang">
+                        <input type="text" id="kategori_magang" name="kategori_magang" class="form-control" placeholder="Kategori Magang" value="{{ $mahasiswa->kategori_magang }}">
                     </div>
                 </div>
                 <div class="form-group row">
                 <label for="jenis_magang" class="col-sm-2 col-form-label">Jenis Magang:</label>
 
                     <div class="col-sm-10">
-                        <input type="text" id="jenis_magang" name="jenis_magang" class="form-control" placeholder="Jenis Magang">
+                        <input type="text" id="jenis_magang" name="jenis_magang" class="form-control" placeholder="Jenis Magang" value="{{ $mahasiswa->jenis_magang }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="nama_industri" class="col-sm-2 col-form-label">Nama Industri:</label>
                     <div class="col-sm-10">
-                        <input type="text" id="nama_industri" name="nama_industri" class="form-control" placeholder="Nama Industri">
+                        <input type="text" id="nama_industri" name="nama_industri" class="form-control" placeholder="Nama Industri" value="{{ $mahasiswa->nama_industri }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="no_pemlap" class="col-sm-2 col-form-label">No Pembimbing Lapangan:</label>
                     <div class="col-sm-10">
-                        <input type="text" id="no_pemlap" name="no_pemlap" class="form-control" placeholder="No Pembimbing Lapangan">
+                        <input type="text" id="no_pemlap" name="no_pemlap" class="form-control" placeholder="No Pembimbing Lapangan" value="{{ $mahasiswa->no_pemlap }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="no_mahasiswa" class="col-sm-2 col-form-label">No Mahasiswa:</label>
                     <div class="col-sm-10">
-                        <input type="text" id="no_mahasiswa" name="no_mahasiswa" class="form-control" placeholder="No Mahasiswa">
+                        <input type="text" id="no_mahasiswa" name="no_mahasiswa" class="form-control" placeholder="No Mahasiswa" value="{{ $mahasiswa->no_mahasiswa }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="alamat_industri" class="col-sm-2 col-form-label">Alamat Industri:</label>
                     <div class="col-sm-10">
-                        <input type="text" id="alamat_industri" name="alamat_industri" class="form-control" placeholder="Alamat Industri">
+                        <input type="text" id="alamat_industri" name="alamat_industri" class="form-control" placeholder="Alamat Industri" value="{{ $mahasiswa->alamat_industri }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="kota" class="col-sm-2 col-form-label">Kota:</label>
                     <div class="col-sm-10">
-                        <input type="text" id="kota" name="kota" class="form-control" placeholder="Kota">
+                        <input type="text" id="kota" name="kota" class="form-control" placeholder="Kota" value="{{ $mahasiswa->kota }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-10 offset-sm-2">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Ubah Data</button>
                     </div>
                 </div>
 </form>

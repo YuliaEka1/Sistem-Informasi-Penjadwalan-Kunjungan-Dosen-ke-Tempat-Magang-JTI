@@ -46,16 +46,17 @@
       <td class="w-84"><span class="badge bg-warning">Magang</span></td>
       <div class="card-tools">
       
-      <a href="{{route('createMahasiswa')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+      <a href="{{ route('createMahasiswa') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
 </div>
 </div>
 
 <div class="card-body">
     <!-- Small boxes (Stat box) -->
     <table class="table table-bordered">
-        <tr>
-            <th style="text-align: center;">NIM</th>
+    <tr>
+            <th style="text-align: center;">No</th>
             <th style="text-align: center;">Nama Mahasiswa</th>
+            <th style="text-align: center;">NIM</th>
             <th style="text-align: center;">Kelas</th>
             <th style="text-align: center;">Durasi Magang</th>
             <th style="text-align: center;">Tanggal Awal</th>
@@ -64,35 +65,56 @@
             <th style="text-align: center;">Jenis Magang</th>
             <th style="text-align: center;">Nama Industri</th>
             <th style="text-align: center;">No Pembimbing Lapangan</th>
-            <th style="text-align: center;">Nama Dosen Pembimbing</th>
             <th style="text-align: center;">No Mahasiswa</th>
             <th style="text-align: center;">Alamat Industri</th>
             <th style="text-align: center;">Kota</th>
+            <th style="text-align: center;">Aksi</th>
+            
         </tr>
+        @foreach ($dtMahasiswa as $item)
         
         <tr>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
+            <td style="text-align: center;">{{ $loop->iteration}}</td>
+            <td>{{ $item->nama_mhs }}</td>
+            <td>{{ $item->nim }}</td>
+            <td>{{ $item->kelas }}</td>
+            <td>{{ $item->durasi_magang }}</td>
+            <td>{{ $item->tgl_awal }}</td>
+            <td>{{ $item->tgl_akhir }}</td>
+            <td>{{ $item->kategori_magang }}</td>
+            <td>{{ $item->jenis_magang }}</td>
+            <td>{{ $item->nama_industri }}</td>
+            <td>{{ $item->no_pemlap }}</td>
+            <td>{{ $item->no_mahasiswa }}</td>
+            <td>{{ $item->alamat_industri }}</td>
+            <td>{{ $item->kota }}</td>
+            <td>
+                  <div class="text-center">
+                    <a href="{{ route('editMahasiswa', ['id' => $item->id]) }}" class="ajax_modal btn btn-xs btn-warning tooltips text-secondary" data-placement="left" data-original-title="Edit Data">
+                          <i class="fa fa-edit"></i>
+                      </a>
+                      | <!-- Tambahkan pemisah antara link edit dan link hapus -->
+                      <a href="{{ route('deleteMahasiswa', ['id' => $item->id]) }}" class="ajax_modal btn btn-xs btn-danger tooltips text-light" data-placement="left" data-original-title="Hapus Data">
+                          <i class="fa fa-trash"></i>
+                      </a>
+                  </div>
+              </td>
         </tr>
+      @endforeach
+       
+
     </table>
+    <div class="card-footer">
+       
 </div>
+</div>
+</div>
+
 <!-- /.row -->
 <!-- Main row -->
 <!-- /.row (main row) -->
       <!-- /.container-fluid -->
-    </section>   
+    </section>    
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

@@ -81,6 +81,10 @@
           @endforeach
 
     </table>
+    <div class="card-footer">
+       
+</div>
+</div>
 </div>
 
 <!-- /.row -->

@@ -59,7 +59,7 @@
                 </a>
               </li>
               <li class="nav-item">
-              <a href="{{ asset('/mahasiswa') }}" class="nav-link {{ Request::is('mahasiswa') ? 'active' : '' }}">
+              <a href="{{ asset('/dataMahasiswa') }}" class="nav-link {{ Request::is('dataMahasiswa') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Mahasiswa</p>
                 </a>

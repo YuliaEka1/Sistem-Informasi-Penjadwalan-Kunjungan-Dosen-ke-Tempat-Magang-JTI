@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Mahasiswa;
 
 class MahasiswaController extends Controller
 {
@@ -11,7 +12,8 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        return view('Mahasiswa.mahasiswa');
+        $dtMahasiswa = Mahasiswa::all();
+        return view('Mahasiswa.dataMahasiswa', compact('dtMahasiswa'));
     }
 
     /**
@@ -27,7 +29,22 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Mahasiswa::create([
+            'nama_mhs' => $request->nama_mhs,
+            'nim' => $request->nim,
+            'kelas' => $request->kelas,
+            'durasi_magang' => $request->durasi_magang,
+            'tgl_awal' => $request->tgl_awal,
+            'tgl_akhir' => $request->tgl_akhir,
+            'kategori_magang' => $request->kategori_magang,
+            'jenis_magang' => $request->jenis_magang,
+            'nama_industri' => $request->nama_industri,
+            'no_pemlap' => $request->no_pemlap,
+            'no_mahasiswa' => $request->no_mahasiswa,
+            'alamat_industri' => $request->alamat_industri,
+            'kota' => $request->kota,
+        ]);
+        return redirect('dataMahasiswa');
     }
 
     /**
@@ -43,7 +60,8 @@ class MahasiswaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $mahasiswa = Mahasiswa::findorfail($id);
+        return view('Mahasiswa.editMahasiswa', compact('mahasiswa'));
     }
 
     /**
@@ -51,7 +69,9 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $mahasiswa = Mahasiswa::findorfail($id); // Misalnya, Anda menggunakan Eloquent untuk mengambil data mhs
+        $mahasiswa->update($request->all());
+        return redirect('dataMahasiswa');
     }
 
     /**
@@ -59,6 +79,8 @@ class MahasiswaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $mahasiswa = Mahasiswa::findorfail($id);
+        $mahasiswa->delete();
+        return back();
     }
 }

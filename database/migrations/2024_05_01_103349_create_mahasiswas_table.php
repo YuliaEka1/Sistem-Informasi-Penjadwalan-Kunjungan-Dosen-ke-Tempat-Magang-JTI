@@ -15,14 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('nama_mhs', 100);
             $table->string('nim', 20);
+            $table->string('kelas', 100);
             $table->integer('durasi_magang'); // Misal, menggunakan integer untuk durasi magang
             $table->date('tgl_awal'); // Kolom tgl_awal sebagai tipe tanggal
             $table->date('tgl_akhir'); // Kolom tgl_akhir sebagai tipe tanggal
-            $table->string('no_hp', 20);
             $table->string('kategori_magang', 100);
             $table->string('jenis_magang', 100);
-            $table->foreignId('nama_dosen')->constrained('dosen'); // Foreign key dari tabel dosen
-            $table->foreignId('alamat_industri')->constrained('tempat_magang'); // Foreign key dari tabel tempat_magang
+            $table->string('nama_industri', 100);
+            $table->string('no_pemlap', 20);
+           // $table->foreignId('nama_dosen')->constrained('dosen'); // Foreign key dari tabel dosen
+            $table->string('no_mahasiswa', 20);
+            $table->string('alamat_industri'); 
+            $table->string('kota', 100);
             $table->timestamps();
         });
     }
