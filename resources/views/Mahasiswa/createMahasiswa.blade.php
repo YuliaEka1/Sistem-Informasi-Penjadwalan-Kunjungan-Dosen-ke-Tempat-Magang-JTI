@@ -55,90 +55,101 @@
     <form action="{{ route('simpanMahasiswa') }}" method="post">
     @csrf
     <div class="form-group row">
-                    <label for="nama_mhs" class="col-sm-2 col-form-label">Nama Mahasiswa:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="nama_mhs" name="nama_mhs" class="form-control" placeholder="Nama Mahasiswa">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="nim" class="col-sm-2 col-form-label">NIM:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="nim" name="nim" class="form-control" placeholder="NIM">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="kelas" class="col-sm-2 col-form-label">Kelas:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="kelas" name="kelas" class="form-control" placeholder="Kelas">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="durasi_magang" class="col-sm-2 col-form-label">Durasi Magang:</label>
-                    <div class="col-sm-10">
-                        <input type="number" id="durasi_magang" name="durasi_magang" class="form-control" placeholder="Durasi Magang">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="tgl_awal" class="col-sm-2 col-form-label">Tanggal Awal:</label>
-                    <div class="col-sm-10">
-                        <input type="date" id="tgl_awal" name="tgl_awal" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="tgl_akhir" class="col-sm-2 col-form-label">Tanggal Akhir:</label>
-                    <div class="col-sm-10">
-                        <input type="date" id="tgl_akhir" name="tgl_akhir" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="kategori_magang" class="col-sm-2 col-form-label">Kategori Magang:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="kategori_magang" name="kategori_magang" class="form-control" placeholder="Kategori Magang">
-                    </div>
-                </div>
-                <div class="form-group row">
-                <label for="jenis_magang" class="col-sm-2 col-form-label">Jenis Magang:</label>
-
-                    <div class="col-sm-10">
-                        <input type="text" id="jenis_magang" name="jenis_magang" class="form-control" placeholder="Jenis Magang">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="nama_industri" class="col-sm-2 col-form-label">Nama Industri:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="nama_industri" name="nama_industri" class="form-control" placeholder="Nama Industri">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="no_pemlap" class="col-sm-2 col-form-label">No Pembimbing Lapangan:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="no_pemlap" name="no_pemlap" class="form-control" placeholder="No Pembimbing Lapangan">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="no_mahasiswa" class="col-sm-2 col-form-label">No Mahasiswa:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="no_mahasiswa" name="no_mahasiswa" class="form-control" placeholder="No Mahasiswa">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="alamat_industri" class="col-sm-2 col-form-label">Alamat Industri:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="alamat_industri" name="alamat_industri" class="form-control" placeholder="Alamat Industri">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="kota" class="col-sm-2 col-form-label">Kota:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="kota" name="kota" class="form-control" placeholder="Kota">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-10 offset-sm-2">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </div>
+        <label for="nama_mhs" class="col-sm-2 col-form-label">Nama Mahasiswa:</label>
+        <div class="col-sm-10">
+            <input type="text" id="nama_mhs" name="nama_mhs" class="form-control" placeholder="Nama Mahasiswa">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="nim" class="col-sm-2 col-form-label">NIM:</label>
+        <div class="col-sm-10">
+            <input type="text" id="nim" name="nim" class="form-control" placeholder="NIM">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="kelas" class="col-sm-2 col-form-label">Kelas:</label>
+        <div class="col-sm-10">
+            <input type="text" id="kelas" name="kelas" class="form-control" placeholder="Kelas">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="durasi_magang" class="col-sm-2 col-form-label">Durasi Magang:</label>
+        <div class="col-sm-10">
+            <input type="number" id="durasi_magang" name="durasi_magang" class="form-control" placeholder="Durasi Magang">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="tgl_awal" class="col-sm-2 col-form-label">Tanggal Awal:</label>
+        <div class="col-sm-10">
+            <input type="date" id="tgl_awal" name="tgl_awal" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="tgl_akhir" class="col-sm-2 col-form-label">Tanggal Akhir:</label>
+        <div class="col-sm-10">
+            <input type="date" id="tgl_akhir" name="tgl_akhir" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="kategori_magang" class="col-sm-2 col-form-label">Kategori Magang:</label>
+        <div class="col-sm-10">
+            <input type="text" id="kategori_magang" name="kategori_magang" class="form-control" placeholder="Kategori Magang">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="jenis_magang" class="col-sm-2 col-form-label">Jenis Magang:</label>
+        <div class="col-sm-10">
+            <input type="text" id="jenis_magang" name="jenis_magang" class="form-control" placeholder="Jenis Magang">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="nama_industri" class="col-sm-2 col-form-label">Nama Industri:</label>
+        <div class="col-sm-10">
+            <input type="text" id="nama_industri" name="nama_industri" class="form-control" placeholder="Nama Industri">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="no_pemlap" class="col-sm-2 col-form-label">No Pembimbing Lapangan:</label>
+        <div class="col-sm-10">
+            <input type="text" id="no_pemlap" name="no_pemlap" class="form-control" placeholder="No Pembimbing Lapangan">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="dosen_id" class="col-sm-2 col-form-label">Nama Dosen Pembimbing:</label>
+        <div class="col-sm-10">
+            <select class="form-control select2" style="width: 100%;" name="dosen_id" id="dosen_id">
+                <option disabled value> Pilih Dosen Pembimbing </option>
+                @foreach ($dosen as $item)
+                <option value="{{ $item->id }}">{{ $item->nama_dosen }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="no_mahasiswa" class="col-sm-2 col-form-label">No Mahasiswa:</label>
+        <div class="col-sm-10">
+            <input type="text" id="no_mahasiswa" name="no_mahasiswa" class="form-control" placeholder="No Mahasiswa">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="alamat_industri" class="col-sm-2 col-form-label">Alamat Industri:</label>
+        <div class="col-sm-10">
+            <input type="text" id="alamat_industri" name="alamat_industri" class="form-control" placeholder="Alamat Industri">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="kota" class="col-sm-2 col-form-label">Kota:</label>
+        <div class="col-sm-10">
+            <input type="text" id="kota" name="kota" class="form-control" placeholder="Kota">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
 </form>
+
 </div>
 <!-- /.row -->
 <!-- Main row -->

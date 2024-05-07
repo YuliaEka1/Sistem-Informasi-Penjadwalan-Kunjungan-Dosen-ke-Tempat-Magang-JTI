@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
+use App\Models\Dosen;
 
 class MahasiswaController extends Controller
 {
@@ -12,7 +13,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $dtMahasiswa = Mahasiswa::all();
+        $dtMahasiswa = Mahasiswa::with('dosen')->get();// tambah with dan get
         return view('Mahasiswa.dataMahasiswa', compact('dtMahasiswa'));
     }
 
@@ -21,7 +22,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('Mahasiswa.createMahasiswa');
+        $dosen = Dosen::all();
+        return view('Mahasiswa.createMahasiswa', compact('dosen'));
     }
 
     /**
@@ -40,6 +42,7 @@ class MahasiswaController extends Controller
             'jenis_magang' => $request->jenis_magang,
             'nama_industri' => $request->nama_industri,
             'no_pemlap' => $request->no_pemlap,
+            'dosen_id' => $request->dosen_id,
             'no_mahasiswa' => $request->no_mahasiswa,
             'alamat_industri' => $request->alamat_industri,
             'kota' => $request->kota,
@@ -60,8 +63,9 @@ class MahasiswaController extends Controller
      */
     public function edit(string $id)
     {
+        $dosen = Dosen::all();
         $mahasiswa = Mahasiswa::findorfail($id);
-        return view('Mahasiswa.editMahasiswa', compact('mahasiswa'));
+        return view('Mahasiswa.editMahasiswa', compact('mahasiswa', 'dosen'));
     }
 
     /**

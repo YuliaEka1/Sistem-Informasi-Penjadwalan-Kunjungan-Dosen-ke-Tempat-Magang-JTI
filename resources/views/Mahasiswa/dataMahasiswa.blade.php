@@ -65,6 +65,7 @@
             <th style="text-align: center;">Jenis Magang</th>
             <th style="text-align: center;">Nama Industri</th>
             <th style="text-align: center;">No Pembimbing Lapangan</th>
+            <th style="text-align: center;">Nama Dospem</th>
             <th style="text-align: center;">No Mahasiswa</th>
             <th style="text-align: center;">Alamat Industri</th>
             <th style="text-align: center;">Kota</th>
@@ -85,6 +86,7 @@
             <td>{{ $item->jenis_magang }}</td>
             <td>{{ $item->nama_industri }}</td>
             <td>{{ $item->no_pemlap }}</td>
+            <td>{{ $item->dosen->nama_dosen }}</td>
             <td>{{ $item->no_mahasiswa }}</td>
             <td>{{ $item->alamat_industri }}</td>
             <td>{{ $item->kota }}</td>
