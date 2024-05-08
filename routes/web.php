@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\TempatMagangController;
 use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\RekomendasiController;
+use App\Http\Controllers\RekomendasiIndustriController;
 use App\Http\Controllers\HistoriController;
 use App\Http\Controllers\PenjadwalanController;
 
@@ -48,8 +48,11 @@ Route::get('/editMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::cla
 Route::post('/updateMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::class, 'update'])->name('updateMahasiswa');
 Route::get('/deleteMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::class, 'destroy'])->name('deleteMahasiswa');
 
-//rekomendasi
-Route::get('/rekomendasi', [App\Http\Controllers\RekomendasiController::class, 'index'])->name('rekomendasi');
+//rekomendasi2
+Route::get('/rekomendasiIndustri', [RekomendasiIndustriController::class, 'index'])->name('rekomendasiIndustri.index');
+Route::post('/rekomendasiIndustri/store', [RekomendasiIndustriController::class, 'store'])->name('rekomendasiIndustri.store');
+
+
 
 //histori
 Route::get('/histori', [App\Http\Controllers\HistoriController::class, 'index'])->name('histori');

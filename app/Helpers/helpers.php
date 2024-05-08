@@ -15,14 +15,14 @@ if (!function_exists('isActiveDashboard')) {
 if (!function_exists('isActiveManajData')) {
     function isActiveManajData()
     {
-        return Request::is('dataDosen*') || Request::is('mahasiswa*') || Request::is('tempatMagang*');
+        return Request::is('dataDosen*') || Request::is('dataMahasiswa*') || Request::is('tempatMagang*');
     }
 }
 
 if (!function_exists('isActiveManajMagang')) {
     function isActiveManajMagang()
     {
-        return Request::is('rekomendasi*') || Request::is('histori*');
+        return Request::is('rekomendasiIndustri*') || Request::is('histori*');
     }
 }
 

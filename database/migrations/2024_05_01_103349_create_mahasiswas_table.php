@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('jenis_magang', 100);
             $table->string('nama_industri', 100);
             $table->string('no_pemlap', 20);
-           // $table->foreignId('nama_dosen')->constrained('dosen'); // Foreign key dari tabel dosen
+            $table->bigInteger('dosen_id');
             $table->string('no_mahasiswa', 20);
             $table->string('alamat_industri'); 
             $table->string('kota', 100);

@@ -83,15 +83,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-              <a href="{{ asset('/rekomendasi') }}" class="nav-link {{ Request::is('rekomendasi') ? 'active' : '' }}">
+              <a href="{{ asset('/rekomendasiIndustri') }}" class="nav-link {{ Request::is('rekomendasiIndustri') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Rekomendasi Tempat Magang</p>
+                  <p>Rekomen Kunjungan</p>
                 </a>
               </li>
               <li class="nav-item">
               <a href="{{ asset('/histori') }}" class="nav-link {{ Request::is('histori') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Histori Kunjungan Industri</p>
+                  <p>Histori Kunjungan</p>
                 </a>
               </li>
 

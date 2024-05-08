@@ -53,7 +53,8 @@
 <div class="card-body">
     <!-- Small boxes (Stat box) -->
     <table class="table table-bordered">
-    <tr>
+    <thead>
+        <tr>
             <th style="text-align: center;">No</th>
             <th style="text-align: center;">Nama Mahasiswa</th>
             <th style="text-align: center;">NIM</th>
@@ -62,50 +63,172 @@
             <th style="text-align: center;">Tanggal Awal</th>
             <th style="text-align: center;">Tanggal Akhir</th>
             <th style="text-align: center;">Kategori Magang</th>
-            <th style="text-align: center;">Jenis Magang</th>
-            <th style="text-align: center;">Nama Industri</th>
-            <th style="text-align: center;">No Pembimbing Lapangan</th>
-            <th style="text-align: center;">Nama Dospem</th>
-            <th style="text-align: center;">No Mahasiswa</th>
-            <th style="text-align: center;">Alamat Industri</th>
-            <th style="text-align: center;">Kota</th>
             <th style="text-align: center;">Aksi</th>
-            
         </tr>
+    </thead>
+    <tbody>
         @foreach ($dtMahasiswa as $item)
-        
         <tr>
-            <td style="text-align: center;">{{ $loop->iteration}}</td>
+            <td style="text-align: center;">{{ $loop->iteration }}</td>
             <td>{{ $item->nama_mhs }}</td>
             <td>{{ $item->nim }}</td>
             <td>{{ $item->kelas }}</td>
-            <td>{{ $item->durasi_magang }}</td>
+            <td style="text-align: center;">{{ $item->durasi_magang }}</td>
             <td>{{ $item->tgl_awal }}</td>
             <td>{{ $item->tgl_akhir }}</td>
             <td>{{ $item->kategori_magang }}</td>
-            <td>{{ $item->jenis_magang }}</td>
-            <td>{{ $item->nama_industri }}</td>
-            <td>{{ $item->no_pemlap }}</td>
-            <td>{{ $item->dosen->nama_dosen }}</td>
-            <td>{{ $item->no_mahasiswa }}</td>
-            <td>{{ $item->alamat_industri }}</td>
-            <td>{{ $item->kota }}</td>
             <td>
-                  <div class="text-center">
-                    <a href="{{ route('editMahasiswa', ['id' => $item->id]) }}" class="ajax_modal btn btn-xs btn-warning tooltips text-secondary" data-placement="left" data-original-title="Edit Data">
-                          <i class="fa fa-edit"></i>
-                      </a>
-                      | <!-- Tambahkan pemisah antara link edit dan link hapus -->
-                      <a href="{{ route('deleteMahasiswa', ['id' => $item->id]) }}" class="ajax_modal btn btn-xs btn-danger tooltips text-light" data-placement="left" data-original-title="Hapus Data">
-                          <i class="fa fa-trash"></i>
-                      </a>
-                  </div>
-              </td>
-        </tr>
-      @endforeach
-       
+    
+                <div class="text-center">
+                <a href="#" class="ajax_modal btn btn-xs btn-info tooltips text-light" data-toggle="modal" data-target="#myModal{{ $item->id }}" data-placement="left" data-original-title="Detail Data">
+                <i class="fa fa-list fa-sm"></i>
+                  </a>
+                  <a href="{{ route('editMahasiswa', ['id' => $item->id]) }}" class="ajax_modal btn btn-xs btn-warning tooltips text-secondary" data-placement="left" data-original-title="Edit Data"><i class="fa fa-edit"></i></a>
+                  <a href="{{ route('deleteMahasiswa', ['id' => $item->id]) }}" class="ajax_modal btn btn-xs btn-danger tooltips text-light delete-confirm" data-placement="left" data-original-title="Hapus Data"><i class="fa fa-trash"></i></a>
+                  <script>
+                      $(document).on('click', '.delete-confirm', function (e) {
+                          e.preventDefault();
+                          var url = $(this).attr('href');
+                          swal({
+                              title: "Apakah Anda Yakin?",
+                              text: "Data ini akan dihapus!",
+                              icon: "warning",
+                              buttons: true,
+                              dangerMode: true,
+                          })
+                          .then((willDelete) => {
+                              if (willDelete) {
+                                  window.location.href = url; // Jika pengguna menekan tombol "Ya, Hapus", maka arahkan ke URL penghapusan
+                              } else {
+                                  swal("Data Anda aman!");
+                              }
+                          });
+                      });
+                  </script>
 
-    </table>
+              </div>
+            </td>
+        </tr>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document"> <!-- Tambahkan kelas modal-lg di sini -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Detail Data Mahasiswa </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                            @csrf
+                            <div class="form-group row">
+                            
+                                <label for="nama_mhs" class="col-sm-2 col-form-label">Nama Mahasiswa:</label>
+                                <div class="col-sm-10">
+                                    {{ $item->nama_mhs }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <label for="nim" class="col-sm-2 col-form-label">NIM:</label>
+                                <div class="col-sm-10">
+                                    {{ $item->nim }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                            <label for="kelas" class="col-sm-2 col-form-label">Kelas:</label>
+                            <div class="col-sm-10">
+                                {{ $item->kelas }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="durasi_magang" class="col-sm-2 col-form-label">Durasi Magang:</label>
+                            <div class="col-sm-10">
+                                {{ $item->durasi_magang }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="tgl_awal" class="col-sm-2 col-form-label">Tanggal Awal:</label>
+                            <div class="col-sm-10">
+                                {{ $item->tgl_awal }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="tgl_akhir" class="col-sm-2 col-form-label">Tanggal Akhir:</label>
+                            <div class="col-sm-10">
+                                {{ $item->tgl_akhir }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="kategori_magang" class="col-sm-2 col-form-label">Kategori Magang:</label>
+                            <div class="col-sm-10">
+                                {{ $item->kategori_magang }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="jenis_magang" class="col-sm-2 col-form-label">Jenis Magang:</label>
+                            <div class="col-sm-10">
+                                {{ $item->jenis_magang }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="nama_industri" class="col-sm-2 col-form-label">Nama Industri:</label>
+                            <div class="col-sm-10">
+                                {{ $item->nama_industri }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="no_pemlap" class="col-sm-2 col-form-label">No Pembimbing Lapangan:</label>
+                            <div class="col-sm-10">
+                                {{ $item->no_pemlap }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="dosen_id" class="col-sm-2 col-form-label">Nama Dosen Pembimbing:</label>
+                            <div class="col-sm-10">
+                                {{ $item->dosen->nama_dosen }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="no_mahasiswa" class="col-sm-2 col-form-label">No Mahasiswa:</label>
+                            <div class="col-sm-10">
+                                {{ $item->no_mahasiswa }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="alamat_industri" class="col-sm-2 col-form-label">Alamat Industri:</label>
+                            <div class="col-sm-10">
+                                {{ $item->alamat_industri }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="kota" class="col-sm-2 col-form-label">Kota:</label>
+                            <div class="col-sm-10">
+                                {{ $item->kota }}
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </tbody>
+</table>
+
     <div class="card-footer">
        
 </div>
