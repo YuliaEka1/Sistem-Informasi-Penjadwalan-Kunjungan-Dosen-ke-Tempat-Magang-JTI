@@ -57,6 +57,9 @@
         <input type="text" id="nama_dosen" name="nama_dosen" class="form-control" placeholder="Nama Dosen">
     </div>
     <div class="form-group">
+        <input type="text" id="nip" name="nip" class="form-control" placeholder="NIP">
+    </div>
+    <div class="form-group">
         <input type="number" id="jumlah_bimbingan" name="jumlah_bimbingan" class="form-control" placeholder="Jumlah Bimbingan">
     </div>
     <div class="form-group">

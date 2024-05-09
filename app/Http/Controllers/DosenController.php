@@ -33,6 +33,7 @@ class DosenController extends Controller
         //dd($request->all());
         Dosen::create([
             'nama_dosen' => $request->nama_dosen,
+            'nip' => $request->nip,
             'jumlah_bimbingan' => $request->jumlah_bimbingan,
             'no_hp' => $request->no_hp,
         ]);

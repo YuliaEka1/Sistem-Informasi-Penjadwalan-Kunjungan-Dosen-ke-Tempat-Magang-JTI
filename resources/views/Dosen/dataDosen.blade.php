@@ -56,6 +56,7 @@
         <tr>
             <th style="text-align: center;">No</th>
             <th style="text-align: center;">Nama Dosen</th>
+            <th style="text-align: center;">NIP</th>
             <th style="text-align: center;">Jumlah Bimbingan</th>
             <th style="text-align: center;">No Handphone</th>
             <th style="text-align: center;">Aksi</th>
@@ -64,6 +65,7 @@
           <tr>
               <td style="text-align: center;">{{ $loop->iteration}}</td>
               <td>{{ $item->nama_dosen }}</td>
+              <td>{{ $item->nip }}</td>
               <td style="text-align: center;">{{ $item->jumlah_bimbingan }}</td>
               <td style="text-align: center;">{{ $item->no_hp }}</td>
               <td>

@@ -57,6 +57,9 @@
         <input type="text" id="nama_dosen" name="nama_dosen" class="form-control" placeholder="Nama Dosen" value="{{ $dosen->nama_dosen }}">
     </div>
     <div class="form-group">
+        <input type="text" id="nip" name="nip" class="form-control" placeholder="NIP" value="{{ $dosen->nip }}">
+    </div>
+    <div class="form-group">
         <input type="number" id="jumlah_bimbingan" name="jumlah_bimbingan" class="form-control" placeholder="Jumlah Bimbingan" value="{{ $dosen->jumlah_bimbingan }}">
     </div>
     <div class="form-group">
