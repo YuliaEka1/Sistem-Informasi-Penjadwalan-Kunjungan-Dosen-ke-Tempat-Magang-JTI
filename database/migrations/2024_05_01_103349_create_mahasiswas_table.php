@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
             $table->string('nama_mhs', 100);
+            $table->string('nama_mhs_2')->nullable();
+            $table->string('nama_mhs_3')->nullable();
             $table->string('nim', 20);
+            $table->string('nim_2')->nullable();
+            $table->string('nim_3')->nullable();
             $table->string('kelas', 100);
             $table->integer('durasi_magang'); // Misal, menggunakan integer untuk durasi magang
             $table->date('tgl_awal'); // Kolom tgl_awal sebagai tipe tanggal

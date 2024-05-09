@@ -34,7 +34,11 @@ class MahasiswaController extends Controller
     {
         Mahasiswa::create([
             'nama_mhs' => $request->nama_mhs,
+            'nama_mhs_2' => $request->nama_mhs_2,
+            'nama_mhs_3' => $request->nama_mhs_3,
             'nim' => $request->nim,
+            'nim_2' => $request->nim_2,
+            'nim_3' => $request->nim_3,
             'kelas' => $request->kelas,
             'durasi_magang' => $request->durasi_magang,
             'tgl_awal' => $request->tgl_awal,

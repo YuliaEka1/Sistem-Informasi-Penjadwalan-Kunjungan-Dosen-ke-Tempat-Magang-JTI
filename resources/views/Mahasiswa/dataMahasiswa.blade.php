@@ -56,13 +56,14 @@
     <thead>
         <tr>
             <th style="text-align: center;">No</th>
-            <th style="text-align: center;">Nama Mahasiswa</th>
-            <th style="text-align: center;">NIM</th>
+            <th style="text-align: center;">Nama Mahasiswa 1</th>
+            <th style="text-align: center;">Nama Mahasiswa 2</th>
+            <th style="text-align: center;">Nama Mahasiswa 3</th>
+            <th style="text-align: center;">NIM 1</th>
+            <th style="text-align: center;">NIM 2</th>
+            <th style="text-align: center;">NIM 3</th>
             <th style="text-align: center;">Kelas</th>
             <th style="text-align: center;">Durasi Magang</th>
-            <th style="text-align: center;">Tanggal Awal</th>
-            <th style="text-align: center;">Tanggal Akhir</th>
-            <th style="text-align: center;">Kategori Magang</th>
             <th style="text-align: center;">Aksi</th>
         </tr>
     </thead>
@@ -71,12 +72,13 @@
         <tr>
             <td style="text-align: center;">{{ $loop->iteration }}</td>
             <td>{{ $item->nama_mhs }}</td>
+            <td>{{ $item->nama_mhs_2 }}</td>
+            <td>{{ $item->nama_mhs_3 }}</td>
             <td>{{ $item->nim }}</td>
+            <td>{{ $item->nim_2 }}</td>
+            <td>{{ $item->nim_3 }}</td>
             <td>{{ $item->kelas }}</td>
-            <td style="text-align: center;">{{ $item->durasi_magang }}</td>
-            <td>{{ $item->tgl_awal }}</td>
-            <td>{{ $item->tgl_akhir }}</td>
-            <td>{{ $item->kategori_magang }}</td>
+            <td style="text-align: center;">{{ $item->durasi_magang }} Bulan</td>
             <td>
     
                 <div class="text-center">
@@ -123,17 +125,44 @@
                 <form method="post">
                             @csrf
                             <div class="form-group row">
-                            
-                                <label for="nama_mhs" class="col-sm-2 col-form-label">Nama Mahasiswa:</label>
+                                <label for="nama_mhs" class="col-sm-2 col-form-label">Nama Mahasiswa 1:</label>
                                 <div class="col-sm-10">
                                     {{ $item->nama_mhs }}
                                 </div>
                             </div>
                             <hr>
                             <div class="form-group row">
-                                <label for="nim" class="col-sm-2 col-form-label">NIM:</label>
+                                <label for="nama_mhs_2" class="col-sm-2 col-form-label">Nama Mahasiswa 2:</label>
+                                <div class="col-sm-10">
+                                    {{ $item->nama_mhs_2 }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <label for="nama_mhs_3" class="col-sm-2 col-form-label">Nama Mahasiswa 3:</label>
+                                <div class="col-sm-10">
+                                    {{ $item->nama_mhs_3 }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <label for="nim" class="col-sm-2 col-form-label">NIM 1:</label>
                                 <div class="col-sm-10">
                                     {{ $item->nim }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <label for="nim_2" class="col-sm-2 col-form-label">NIM 2:</label>
+                                <div class="col-sm-10">
+                                    {{ $item->nim_2 }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <label for="nim_3" class="col-sm-2 col-form-label">NIM 3:</label>
+                                <div class="col-sm-10">
+                                    {{ $item->nim_3 }}
                                 </div>
                             </div>
                             <hr>
@@ -147,7 +176,7 @@
                         <div class="form-group row">
                             <label for="durasi_magang" class="col-sm-2 col-form-label">Durasi Magang:</label>
                             <div class="col-sm-10">
-                                {{ $item->durasi_magang }}
+                                {{ $item->durasi_magang }} Bulan
                             </div>
                         </div>
                         <hr>

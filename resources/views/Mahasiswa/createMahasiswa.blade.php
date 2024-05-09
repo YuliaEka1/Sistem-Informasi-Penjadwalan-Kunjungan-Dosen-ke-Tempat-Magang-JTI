@@ -60,10 +60,34 @@
             <input type="text" id="nama_mhs" name="nama_mhs" class="form-control" placeholder="Nama Mahasiswa">
         </div>
     </div>
+        <div class="form-group row">
+        <label for="nama_mhs_2" class="col-sm-2 col-form-label">Nama Mahasiswa 2:</label>
+        <div class="col-sm-10">
+            <input type="text" id="nama_mhs_2" name="nama_mhs_2" class="form-control" placeholder="Nama Mahasiswa 2 (Opsional)">
+        </div>
+    </div>
+        <div class="form-group row">
+        <label for="nama_mhs_3" class="col-sm-2 col-form-label">Nama Mahasiswa 3:</label>
+        <div class="col-sm-10">
+            <input type="text" id="nama_mhs_3" name="nama_mhs_3" class="form-control" placeholder="Nama Mahasiswa 3 (Opsional)">
+        </div>
+    </div>
     <div class="form-group row">
         <label for="nim" class="col-sm-2 col-form-label">NIM:</label>
         <div class="col-sm-10">
             <input type="text" id="nim" name="nim" class="form-control" placeholder="NIM">
+        </div>
+    </div>
+        <div class="form-group row">
+        <label for="nim_2" class="col-sm-2 col-form-label">NIM 2:</label>
+        <div class="col-sm-10">
+            <input type="text" id="nim_2" name="nim_2" class="form-control" placeholder="NIM 2 (Opsional)">
+        </div>
+    </div>
+        <div class="form-group row">
+        <label for="nim_3" class="col-sm-2 col-form-label">NIM 3:</label>
+        <div class="col-sm-10">
+            <input type="text" id="nim_3" name="nim_3" class="form-control" placeholder="NIM 3 (Opsional)">
         </div>
     </div>
     <div class="form-group row">

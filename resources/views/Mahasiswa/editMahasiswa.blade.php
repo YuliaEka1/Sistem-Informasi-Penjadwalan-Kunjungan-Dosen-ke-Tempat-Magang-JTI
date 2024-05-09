@@ -55,15 +55,39 @@
     <form action="{{ route('updateMahasiswa',$mahasiswa->id) }}" method="post">
     @csrf
     <div class="form-group row">
-        <label for="nama_mhs" class="col-sm-2 col-form-label">Nama Mahasiswa:</label>
+        <label for="nama_mhs" class="col-sm-2 col-form-label">Nama Mahasiswa 1:</label>
         <div class="col-sm-10">
-            <input type="text" id="nama_mhs" name="nama_mhs" class="form-control" placeholder="Nama Mahasiswa" value="{{ $mahasiswa->nama_mhs }}">
+            <input type="text" id="nama_mhs" name="nama_mhs" class="form-control" placeholder="Nama Mahasiswa 1" value="{{ $mahasiswa->nama_mhs }}">
         </div>
     </div>
     <div class="form-group row">
-        <label for="nim" class="col-sm-2 col-form-label">NIM:</label>
+        <label for="nama_mhs_2" class="col-sm-2 col-form-label">Nama Mahasiswa 2:</label>
         <div class="col-sm-10">
-            <input type="text" id="nim" name="nim" class="form-control" placeholder="NIM" value="{{ $mahasiswa->nim }}">
+            <input type="text" id="nama_mhs_2" name="nama_mhs_2" class="form-control" placeholder="Nama Mahasiswa 2" value="{{ $mahasiswa->nama_mhs_2 }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="nama_mhs_3" class="col-sm-2 col-form-label">Nama Mahasiswa 3:</label>
+        <div class="col-sm-10">
+            <input type="text" id="nama_mhs_3" name="nama_mhs_3" class="form-control" placeholder="Nama Mahasiswa 3" value="{{ $mahasiswa->nama_mhs_3 }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="nim" class="col-sm-2 col-form-label">NIM 1:</label>
+        <div class="col-sm-10">
+            <input type="text" id="nim" name="nim" class="form-control" placeholder="NIM Mahasiswa 1" value="{{ $mahasiswa->nim }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="nim_2" class="col-sm-2 col-form-label">NIM 2:</label>
+        <div class="col-sm-10">
+            <input type="text" id="nim_2" name="nim_2" class="form-control" placeholder="NIM Mahasiswa 2" value="{{ $mahasiswa->nim_2 }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="nim_3" class="col-sm-2 col-form-label">NIM 3:</label>
+        <div class="col-sm-10">
+            <input type="text" id="nim_3" name="nim_3" class="form-control" placeholder="NIM Mahasiswa 3" value="{{ $mahasiswa->nim_3 }}">
         </div>
     </div>
     <div class="form-group row">
