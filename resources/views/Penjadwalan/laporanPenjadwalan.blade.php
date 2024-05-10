@@ -47,7 +47,7 @@
       <tr><th class="w-15 text-right">Laporan</th><th class="w-1">
       <td class="w-84"><span class="badge bg-warning">Penjadwalan</span></td>
       <div class="card-tools">
-                
+      <a href=" {{ route('cetakPenjadwalan') }} " class="btn btn-primary">Cetak Laporan <i class="fas fa-print"></i></a>         
             </div>
 
             <div class="card-body">

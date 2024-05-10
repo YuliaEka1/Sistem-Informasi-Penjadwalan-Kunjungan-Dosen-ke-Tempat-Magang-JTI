@@ -19,7 +19,7 @@ class PenjadwalanController extends Controller
     public function index()
 {
     // Mendapatkan data mahasiswa yang direkomendasikan
-    $mahasiswaDirekomendasikan = Mahasiswa::whereHas('rekomendasi', function ($query) {
+        $mahasiswaDirekomendasikan = Mahasiswa::whereHas('rekomendasi', function ($query) {
         $query->where('status', 'Direkomendasikan');
     })->get();
 
@@ -150,6 +150,11 @@ public function laporan()
 {
     $penjadwalan = Penjadwalan::all(); // Ambil semua data penjadwalan
     return view('Penjadwalan.laporanPenjadwalan', compact('penjadwalan'));
+}
+public function cetakPenjadwalan()
+{
+    $penjadwalan = Penjadwalan::all();
+    return view('Penjadwalan.cetakPenjadwalan', compact('penjadwalan'));
 }
 
 

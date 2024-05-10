@@ -61,6 +61,7 @@ Route::get('/histori', [App\Http\Controllers\HistoriController::class, 'index'])
 Route::get('/penjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'index'])->name('penjadwalan');
 Route::post('/simpan-data', [App\Http\Controllers\PenjadwalanController::class, 'simpanData'])->name('simpan-data');
 Route::get('/laporanPenjadwalan', [PenjadwalanController::class, 'laporan'])->name('laporanPenjadwalan');
+Route::get('/cetakPenjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'cetakPenjadwalan'])->name('cetakPenjadwalan');
 
 
 //konfirmasi dosen
