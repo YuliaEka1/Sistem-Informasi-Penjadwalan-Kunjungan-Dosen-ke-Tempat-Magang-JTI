@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,12 +27,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Laporan Penjadwalan</h1>
+            <h1 class="m-0">Penjadwalan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Laporan Penjadwalan </li>
+              <li class="breadcrumb-item active">Penjadwalan </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -40,48 +42,99 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="card card-info card-outline">
-      <div class="card-header">
-      <tr><th class="w-15 text-right">Laporan</th><th class="w-1">
-      <td class="w-84"><span class="badge bg-warning">Penjadwalan</span></td>
-      <div class="card-tools">
-      
-      <a href="#" class="btn btn-primary">
-    <i class="fas fa-print"></i> <!-- Icon cetak dari font awesome -->
-</a>
-</div>
+        <div class="card card-info card-outline">
+            <div class="card-header">
+                <h3 class="card-title">Data Direkomendasikan</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-primary" onclick="doScheduling()">Lakukan Penjadwalan</button>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">No</th>
+                            <th style="text-align: center;">Nama Dosen Pembimbing</th>
+                            <th style="text-align: center;">Nama Industri</th>
+                            <th style="text-align: center;">Alamat Industri</th>
+                            <th style="text-align: center;">Tanggal Akhir</th>
+                            <th style="text-align: center;">Kota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Menggunakan variabel $i untuk nomor -->
+    @foreach ($mahasiswaDirekomendasikan as $mahasiswa)
+        <tr>
+            <td style="text-align: center;">{{ $loop->iteration }}</td>
+            <td>{{ $mahasiswa->dosen->nama_dosen }}</td>
+            <td>{{ $mahasiswa->nama_industri }}</td>
+            <td>{{ $mahasiswa->alamat_industri }}</td>
+            <td style="text-align: center;">{{ $mahasiswa->tgl_akhir }}</td>
+            <td style="text-align: center;">{{ $mahasiswa->kota }}</td>
+        </tr>
+    @endforeach
+                    </tbody>
+                </table>
+            </div>
+            </div>
+    </section>
+
+            <!-- Bagian tabel yang akan ditampilkan hasil penjadwalan -->
+<div class="card-header">
+    <h3 class="card-title">Data Penjadwalan</h3>
 </div>
 
+<section class="content">
+        <div class="card card-info card-outline">
 <div class="card-body">
-    <!-- Small boxes (Stat box) -->
-    <table class="table table-bordered">
+    <!-- Di tampilan, Anda dapat menggunakan Blade atau PHP untuk menampilkan data -->
+<table class="table table-bordered">
+    <thead>
         <tr>
             <th style="text-align: center;">No</th>
             <th style="text-align: center;">Nama Dosen Pembimbing</th>
             <th style="text-align: center;">Nama Industri</th>
             <th style="text-align: center;">Alamat Industri</th>
+            <th style="text-align: center;">Kota</th>
             <th style="text-align: center;">Tanggal Kunjungan</th>
-            <th style="text-align: center;">Aksi</th>
         </tr>
-        <!-- Menggunakan variabel $i untuk nomor -->
-        @php $i = 1; @endphp
-        <tr>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-        </tr>
-    </table>
+    </thead>
+    <form action="{{ route('simpan-data') }}" method="POST">
+    @csrf <!-- Tambahkan CSRF token untuk keamanan -->
+    <tbody>
+    @php $i = 1 @endphp
+    @foreach ($scheduledData as $kota => $tanggal)
+        @foreach ($tanggal as $tgl => $mahasiswa)
+            @foreach ($mahasiswa as $mhs)
+                <tr>
+                    <td style="text-align: center;">{{ $i++ }}</td>
+                    <td>{{ $mhs->dosen->nama_dosen }}</td>
+                    <td>{{ $mhs->nama_industri }}</td>
+                    <td>{{ $mhs->alamat_industri }}</td>
+                    <td style="text-align: center;">{{ $kota }}</td>
+                    <!-- Tambahkan input field untuk tanggal kunjungan yang dapat diedit -->
+                    <td style="text-align: center;"><input type="date" name="tanggal_kunjungan[]" value="{{ $tgl }}"></td>
+                    <!-- Tambahkan input hidden untuk data mahasiswa -->
+                    <input type="hidden" name="mahasiswa_id[]" value="{{ $mhs->id }}">
+                </tr>
+            @endforeach
+        @endforeach
+    @endforeach
+</tbody>
+
+    <!-- Tambahkan tombol submit di luar perulangan -->
+    <button type="submit" class="btn btn-primary">Simpan</button>
+</form>
+
+</table>
+
 </div>
-<!-- /.row -->
-<!-- Main row -->
-<!-- /.row (main row) -->
-      <!-- /.container-fluid -->
-    </section>    
-    <!-- /.content -->
-    </div>
+        </div>
+    </section>
+</div>
+
+
     <!-- /.content-wrapper -->
     <footer class="main-footer">
       @include('Template.footer')

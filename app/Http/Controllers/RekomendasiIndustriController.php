@@ -17,7 +17,7 @@ class RekomendasiIndustriController extends Controller
       
   
         $mahasiswa = Mahasiswa::with('dosen')->get(); // Mengambil semua data mahasiswa dengan data dosen terkait
-    $dosen = Dosen::all();
+        $dosen = Dosen::all();
         return view('RekomendasiIndustri.rekomendasiIndustri', compact('mahasiswa', 'dosen')); // Kirim data mahasiswa ke halaman rekomendasi
 }
     

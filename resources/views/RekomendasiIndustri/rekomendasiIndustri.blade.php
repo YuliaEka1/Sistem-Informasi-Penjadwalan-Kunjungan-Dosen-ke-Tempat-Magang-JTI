@@ -91,7 +91,7 @@
                             <span style="display: inline-block; width: 100%; text-align: center;">-</span>
                         @endif
                 </td>
-                <td>
+                <td style="text-align: center;">
                     <!-- Tombol untuk menampilkan modal -->
                     <button type="button" class="btn btn-primary{{ $mhs->rekomendasi ? ' disabled' : '' }}" {{ $mhs->rekomendasi ? 'disabled' : '' }} data-toggle="modal" data-target="#rekomendasiModal{{ $mhs->id }}">
                         Beri Rekomendasi

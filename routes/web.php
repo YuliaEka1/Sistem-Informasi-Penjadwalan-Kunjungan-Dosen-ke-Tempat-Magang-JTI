@@ -59,6 +59,9 @@ Route::get('/histori', [App\Http\Controllers\HistoriController::class, 'index'])
 
 //penjadwalan
 Route::get('/penjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'index'])->name('penjadwalan');
+Route::post('/simpan-data', [App\Http\Controllers\PenjadwalanController::class, 'simpanData'])->name('simpan-data');
+Route::get('/laporanPenjadwalan', [PenjadwalanController::class, 'laporan'])->name('laporanPenjadwalan');
+
 
 //konfirmasi dosen
 Route::get('/konfirmasiDosen', [App\Http\Controllers\KonfirmasiDosenController::class, 'index'])->name('konfirmasiDosen');

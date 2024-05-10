@@ -97,14 +97,30 @@
 
             </ul>
           </li>
-          <li class="nav-item">
+
           <li class="nav-item {{ isActivePenjadwalan() ? 'menu-open' : '' }}">
-              <a href="{{ asset('/penjadwalan') }}" class="nav-link {{ Request::is('penjadwalan') ? 'active' : '' }}">
+              <a href="javascript:void(0);" class="nav-link {{ isActivePenjadwalan() ? 'active' : '' }}">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
-                Penjadwalan Kunjungan
+              Penjadwalan Kunjungan
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+              <a href="{{ asset('/penjadwalan') }}" class="nav-link {{ Request::is('penjadwalan') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kelola Penjadwalan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+              <a href="{{ asset('/laporanPenjadwalan') }}" class="nav-link {{ Request::is('laporanPenjadwalan') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Laporan Penjadwalan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
             
           </li>
           <li class="nav-item">

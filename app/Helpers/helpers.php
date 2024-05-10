@@ -29,7 +29,7 @@ if (!function_exists('isActiveManajMagang')) {
 if (!function_exists('isActivePenjadwalan')) {
     function isActivePenjadwalan()
     {
-        return Request::is('penjadwalan*');
+        return Request::is('penjadwalan*') || Request::is('laporanPenjadwalan*');
     }
 }
 
