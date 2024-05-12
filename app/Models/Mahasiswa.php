@@ -24,5 +24,9 @@ class Mahasiswa extends Model
         {
             return $this->hasOne(RekomendasiIndustri::class);
         }
+        public function konfirmasiIndustri()
+    {
+        return $this->hasOne(KonfirmasiIndustri::class);
+    }
 
 }

@@ -6,9 +6,9 @@ use App\Http\Controllers\DosenController;
 use App\Http\Controllers\TempatMagangController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\RekomendasiIndustriController;
-use App\Http\Controllers\HistoriController;
+use App\Http\Controllers\HasilRekomendasiController;
 use App\Http\Controllers\PenjadwalanController;
-
+use App\Http\Controllers\KonfirmasiIndustriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,11 +51,8 @@ Route::get('/deleteMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::c
 //rekomendasi2
 Route::get('/rekomendasiIndustri', [RekomendasiIndustriController::class, 'index'])->name('rekomendasiIndustri.index');
 Route::post('/rekomendasiIndustri/store', [RekomendasiIndustriController::class, 'store'])->name('rekomendasiIndustri.store');
+Route::get('/hasilRekomendasi', [App\Http\Controllers\HasilRekomendasiController::class, 'index'])->name('hasilRekomendasi');
 
-
-
-//histori
-Route::get('/histori', [App\Http\Controllers\HistoriController::class, 'index'])->name('histori');
 
 //penjadwalan
 Route::get('/penjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'index'])->name('penjadwalan');
@@ -64,11 +61,11 @@ Route::get('/laporanPenjadwalan', [PenjadwalanController::class, 'laporan'])->na
 Route::get('/cetakPenjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'cetakPenjadwalan'])->name('cetakPenjadwalan');
 
 
-//konfirmasi dosen
-Route::get('/konfirmasiDosen', [App\Http\Controllers\KonfirmasiDosenController::class, 'index'])->name('konfirmasiDosen');
-
 //konfirmasi industri
 Route::get('/konfirmasiIndustri', [App\Http\Controllers\KonfirmasiIndustriController::class, 'index'])->name('konfirmasiIndustri');
+Route::post('/konfirmasiIndustri', [App\Http\Controllers\KonfirmasiIndustriController::class, 'store'])->name('konfirmasiIndustri.store');
+
+
 
 //feedback
 Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');

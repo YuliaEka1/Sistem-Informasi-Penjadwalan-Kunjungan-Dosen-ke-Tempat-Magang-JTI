@@ -44,10 +44,8 @@
       <div class="card-header">
       <tr><th class="w-15 text-right">Rekomendasi</th><th class="w-1">
       <td class="w-84"><span class="badge bg-warning">Kunjungan</span></td>
-      <div class="card-tools">
-      
-      
-</div>
+      <div class="card-tools">    
+    </div>
 </div>
 
 <div class="card-body">
@@ -90,18 +88,38 @@
                         @else
                             <span style="display: inline-block; width: 100%; text-align: center;">-</span>
                         @endif
-                </td>
-                <td style="text-align: center;">
-                    <!-- Tombol untuk menampilkan modal -->
-                    <button type="button" class="btn btn-primary{{ $mhs->rekomendasi ? ' disabled' : '' }}" {{ $mhs->rekomendasi ? 'disabled' : '' }} data-toggle="modal" data-target="#rekomendasiModal{{ $mhs->id }}">
-                        Beri Rekomendasi
-                    </button>
-                </td>
-            </tr>
+                     </td>
+                        <td style="text-align: center;">
+                            <!-- Tombol untuk menampilkan modal -->
+                            <button type="button" class="btn btn-primary{{ $mhs->rekomendasi ? ' disabled' : '' }}" {{ $mhs->rekomendasi ? 'disabled' : '' }} data-toggle="modal" data-target="#rekomendasiModal{{ $mhs->id }}">
+                                Beri Rekomendasi
+                            </button>
+                        </td>
+                     </tr>
         @endforeach
     </tbody>
 </table>
+        <!-- Pagination Links -->
+        <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+                <li class="page-item{{ $rekomendasi->onFirstPage() ? ' disabled' : '' }}">
+                    <a class="page-link" href="{{ $rekomendasi->previousPageUrl() }}"><i class="fas fa-chevron-left"></i></a>
+                </li>
+                @for ($i = 1; $i <= $rekomendasi->lastPage(); $i++)
+                    <li class="page-item{{ $rekomendasi->currentPage() === $i ? ' active' : '' }}">
+                        <a class="page-link" href="{{ $rekomendasi->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endfor
+                <li class="page-item{{ $rekomendasi->hasMorePages() ? '' : ' disabled' }}">
+                    <a class="page-link" href="{{ $rekomendasi->nextPageUrl() }}"><i class="fas fa-chevron-right"></i></a>
+                </li>
+            </ul>
+        </div>
+       
+    </div>
+</div>
 
+<!-- /.row -->
 
 
 <!-- Modal untuk rekomendasi -->
@@ -158,7 +176,6 @@
 </div>
 @endforeach
 
-    <div class="card-footer">
        
 </div>
 </div>

@@ -46,6 +46,7 @@ class PenjadwalanController extends Controller
      */
     public function store(Request $request)
     {
+        
     }
 
     /**
@@ -113,25 +114,23 @@ class PenjadwalanController extends Controller
     // Kembalikan data yang telah dikelompokkan
     return $groupedData;
 }
+
     public function simpanData(Request $request)
 {
-    // Ambil data yang dikirimkan dari form
-    $mahasiswaIds = $request->input('mahasiswa_id');
     $tanggalKunjungans = $request->input('tanggal_kunjungan');
+    $mahasiswaIds = $request->input('mahasiswa_id');
 
-    // Pastikan kedua variabel tidak null sebelum melakukan iterasi
-    if ($mahasiswaIds && $tanggalKunjungans) {
-        // Lakukan iterasi melalui data yang diterima dari form
+    if ($tanggalKunjungans && $mahasiswaIds) {
         foreach ($mahasiswaIds as $index => $mahasiswaId) {
-            // Cek apakah data sudah ada di dalam database atau belum
+            // Periksa apakah entri penjadwalan sudah ada untuk mahasiswa yang bersangkutan
             $penjadwalan = Penjadwalan::where('mahasiswa_id', $mahasiswaId)->first();
 
             if ($penjadwalan) {
-                // Jika data sudah ada, perbarui tanggal kunjungan
+                // Jika entri sudah ada, perbarui tanggal kunjungan
                 $penjadwalan->tanggal_kunjungan = $tanggalKunjungans[$index];
                 $penjadwalan->save();
             } else {
-                // Jika data belum ada, buat data baru
+                // Jika entri belum ada, buat entri baru
                 $penjadwalanBaru = new Penjadwalan();
                 $penjadwalanBaru->mahasiswa_id = $mahasiswaId;
                 $penjadwalanBaru->tanggal_kunjungan = $tanggalKunjungans[$index];
@@ -139,19 +138,18 @@ class PenjadwalanController extends Controller
             }
         }
         
-        // Setelah menyimpan data, redirect ke halaman atau tindakan lainnya
-        return redirect()->route('penjadwalan');
+        return redirect()->route('penjadwalan')->with('success', 'Data berhasil disimpan.')->with('tanggal_kunjungan', $tanggalKunjungans);
     } else {
-        // Handle jika data tidak tersedia
         return redirect()->back()->with('error', 'Data tidak tersedia atau tidak lengkap.');
     }
 }
-public function laporan()
+
+    public function laporan()
 {
     $penjadwalan = Penjadwalan::all(); // Ambil semua data penjadwalan
     return view('Penjadwalan.laporanPenjadwalan', compact('penjadwalan'));
 }
-public function cetakPenjadwalan()
+    public function cetakPenjadwalan()
 {
     $penjadwalan = Penjadwalan::all();
     return view('Penjadwalan.cetakPenjadwalan', compact('penjadwalan'));

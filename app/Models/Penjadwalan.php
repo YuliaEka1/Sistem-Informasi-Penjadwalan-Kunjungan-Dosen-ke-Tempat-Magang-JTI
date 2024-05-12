@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Penjadwalan extends Model
 {
     protected $table = 'penjadwalan';
@@ -18,5 +19,10 @@ class Penjadwalan extends Model
     public function mahasiswa()
     {
         return $this->belongsTo(Mahasiswa::class);
+    }
+    // Relasi dengan model KonfirmasiIndustri
+    public function konfirmasi()
+    {
+        return $this->hasOne(KonfirmasiIndustri::class, 'penjadwalan_id');
     }
 }

@@ -83,9 +83,19 @@
           @endforeach
 
     </table>
-    <div class="card-footer">
+    <!-- Pagination Links -->
+    <div class="card-footer clearfix">
+          <ul class="pagination pagination-sm m-0 float-right">
+            <li class="page-item"><a class="page-link" href="{{ $dtDosen->previousPageUrl() }}"><i class="fas fa-chevron-left"></i></a></li>
+            @for ($i = 1; $i <= $dtDosen->lastPage(); $i++)
+            <li class="page-item{{ $dtDosen->currentPage() === $i ? ' active' : '' }}">
+              <a class="page-link" href="{{ $dtDosen->url($i) }}">{{ $i }}</a>
+            </li>
+            @endfor
+            <li class="page-item"><a class="page-link" href="{{ $dtDosen->nextPageUrl() }}"><i class="fas fa-chevron-right"></i></a></li>
+          </ul>
+        </div>
        
-</div>
 </div>
 </div>
 

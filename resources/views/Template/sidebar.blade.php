@@ -89,9 +89,9 @@
                 </a>
               </li>
               <li class="nav-item">
-              <a href="{{ asset('/histori') }}" class="nav-link {{ Request::is('histori') ? 'active' : '' }}">
+              <a href="{{ asset('/hasilRekomendasi') }}" class="nav-link {{ Request::is('hasilRekomendasi') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Histori Kunjungan</p>
+                  <p>Hasil Rekomendasi</p>
                 </a>
               </li>
 

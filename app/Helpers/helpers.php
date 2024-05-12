@@ -22,7 +22,7 @@ if (!function_exists('isActiveManajData')) {
 if (!function_exists('isActiveManajMagang')) {
     function isActiveManajMagang()
     {
-        return Request::is('rekomendasiIndustri*') || Request::is('histori*');
+        return Request::is('rekomendasiIndustri*') || Request::is('hasilRekomendasi*');
     }
 }
 

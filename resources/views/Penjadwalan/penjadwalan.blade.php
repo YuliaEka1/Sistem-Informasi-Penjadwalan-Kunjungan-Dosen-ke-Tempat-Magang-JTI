@@ -40,100 +40,67 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
+      <!-- Main content -->
     <section class="content">
         <div class="card card-info card-outline">
             <div class="card-header">
-                <h3 class="card-title">Data Direkomendasikan</h3>
+                <h3 class="card-title">Kelola Penjadwalan</h3>
                 <div class="card-tools">
-                    <button type="button" class="btn btn-primary" onclick="doScheduling()">Lakukan Penjadwalan</button>
                 </div>
             </div>
-
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center;">No</th>
-                            <th style="text-align: center;">Nama Dosen Pembimbing</th>
-                            <th style="text-align: center;">Nama Industri</th>
-                            <th style="text-align: center;">Alamat Industri</th>
-                            <th style="text-align: center;">Tanggal Akhir</th>
-                            <th style="text-align: center;">Kota</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Menggunakan variabel $i untuk nomor -->
-    @foreach ($mahasiswaDirekomendasikan as $mahasiswa)
-        <tr>
-            <td style="text-align: center;">{{ $loop->iteration }}</td>
-            <td>{{ $mahasiswa->dosen->nama_dosen }}</td>
-            <td>{{ $mahasiswa->nama_industri }}</td>
-            <td>{{ $mahasiswa->alamat_industri }}</td>
-            <td style="text-align: center;">{{ $mahasiswa->tgl_akhir }}</td>
-            <td style="text-align: center;">{{ $mahasiswa->kota }}</td>
-        </tr>
-    @endforeach
-                    </tbody>
-                </table>
-            </div>
-            </div>
-    </section>
-
-            <!-- Bagian tabel yang akan ditampilkan hasil penjadwalan -->
-<div class="card-header">
-    <h3 class="card-title">Data Penjadwalan</h3>
-</div>
-
-<section class="content">
-        <div class="card card-info card-outline">
-<div class="card-body">
-    <!-- Di tampilan, Anda dapat menggunakan Blade atau PHP untuk menampilkan data -->
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th style="text-align: center;">No</th>
-            <th style="text-align: center;">Nama Dosen Pembimbing</th>
-            <th style="text-align: center;">Nama Industri</th>
-            <th style="text-align: center;">Alamat Industri</th>
-            <th style="text-align: center;">Kota</th>
-            <th style="text-align: center;">Tanggal Kunjungan</th>
-        </tr>
-    </thead>
-    <form action="{{ route('simpan-data') }}" method="POST">
+            
+      <div class="card-body">
+          <!-- Di tampilan, Anda dapat menggunakan Blade atau PHP untuk menampilkan data -->
+      <table class="table table-bordered">
+          <thead>
+              <tr>
+                  <th style="text-align: center;">No</th>
+                  <th style="text-align: center;">Nama Dosen Pembimbing</th>
+                  <th style="text-align: center;">Nama Industri</th>
+                  <th style="text-align: center;">Alamat Industri</th>
+                  <th style="text-align: center;">Kota</th>
+                  <th style="text-align: center;">Tanggal Akhir</th>
+                  <th style="text-align: center;">Tanggal Kunjungan</th>
+              </tr>
+          </thead>
+          <form action="{{ route('simpan-data') }}" method="POST">
     @csrf <!-- Tambahkan CSRF token untuk keamanan -->
     <tbody>
-    @php $i = 1 @endphp
-    @foreach ($scheduledData as $kota => $tanggal)
-        @foreach ($tanggal as $tgl => $mahasiswa)
-            @foreach ($mahasiswa as $mhs)
-                <tr>
-                    <td style="text-align: center;">{{ $i++ }}</td>
-                    <td>{{ $mhs->dosen->nama_dosen }}</td>
-                    <td>{{ $mhs->nama_industri }}</td>
-                    <td>{{ $mhs->alamat_industri }}</td>
-                    <td style="text-align: center;">{{ $kota }}</td>
-                    <!-- Tambahkan input field untuk tanggal kunjungan yang dapat diedit -->
-                    <td style="text-align: center;"><input type="date" name="tanggal_kunjungan[]" value="{{ $tgl }}"></td>
-                    <!-- Tambahkan input hidden untuk data mahasiswa -->
-                    <input type="hidden" name="mahasiswa_id[]" value="{{ $mhs->id }}">
-                </tr>
+        @php $i = 1 @endphp
+        @foreach ($scheduledData as $kota => $tanggal)
+            @foreach ($tanggal as $tgl => $mahasiswa)
+                @foreach ($mahasiswa as $mhs)
+                    <tr>
+                        <td style="text-align: center;">{{ $i++ }}</td>
+                        <td>{{ $mhs->dosen->nama_dosen }}</td>
+                        <td>{{ $mhs->nama_industri }}</td>
+                        <td>{{ $mhs->alamat_industri }}</td>
+                        <td style="text-align: center;">{{ $kota }}</td>
+                        <td style="text-align: center;">{{ \Carbon\Carbon::parse($mhs->tgl_akhir)->format('d-m-Y') }}</td>
+                        <!-- Tambahkan input field untuk tanggal kunjungan yang dapat diedit -->
+                        <td style="text-align: center;">
+                        <input type="date" name="tanggal_kunjungan[]" value="{{ session('tanggal_kunjungan')[$loop->index] ?? 'dd/mm/yyyy' }}" placeholder="dd/mm/yyyy">
+                        </td>
+
+                        <!-- Tambahkan input hidden untuk data mahasiswa -->
+                        <input type="hidden" name="mahasiswa_id[]" value="{{ $mhs->id }}">
+                    </tr>
+                @endforeach
             @endforeach
         @endforeach
-    @endforeach
-</tbody>
-
-    <!-- Tambahkan tombol submit di luar perulangan -->
-    <button type="submit" class="btn btn-primary">Simpan</button>
+    </tbody>
+    <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary float-right">Simpan</button>
+        </div>
+    </div>
 </form>
 
-</table>
-
-</div>
-        </div>
-    </section>
-</div>
-
+       </table>
+              </div>
+              </div>
+          </section>
+      </div>
 
     <!-- /.content-wrapper -->
     <footer class="main-footer">

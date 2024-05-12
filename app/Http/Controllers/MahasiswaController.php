@@ -15,6 +15,7 @@ class MahasiswaController extends Controller
     {
         $dtMahasiswa = Mahasiswa::with('dosen')->get();// tambah with dan get
         $dosen = Dosen::all();
+        $dtMahasiswa = Mahasiswa::paginate(5);
         return view('Mahasiswa.dataMahasiswa', compact('dtMahasiswa', 'dosen'));
     }
 

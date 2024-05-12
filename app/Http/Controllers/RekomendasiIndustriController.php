@@ -14,11 +14,10 @@ class RekomendasiIndustriController extends Controller
      */
     public function index()
     {
-      
-  
         $mahasiswa = Mahasiswa::with('dosen')->get(); // Mengambil semua data mahasiswa dengan data dosen terkait
         $dosen = Dosen::all();
-        return view('RekomendasiIndustri.rekomendasiIndustri', compact('mahasiswa', 'dosen')); // Kirim data mahasiswa ke halaman rekomendasi
+        $rekomendasi = RekomendasiIndustri::paginate(5);
+        return view('RekomendasiIndustri.rekomendasiIndustri', compact('mahasiswa', 'dosen', 'rekomendasi')); // Kirim data mahasiswa ke halaman rekomendasi
 }
     
 

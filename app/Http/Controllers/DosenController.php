@@ -13,6 +13,7 @@ class DosenController extends Controller
     public function index()
     {
         $dtDosen = Dosen::all();
+        $dtDosen = Dosen::paginate(5);
         // $dtDosen = Dosen::paginate(2);
         return view('Dosen.dataDosen', compact('dtDosen'));
     }

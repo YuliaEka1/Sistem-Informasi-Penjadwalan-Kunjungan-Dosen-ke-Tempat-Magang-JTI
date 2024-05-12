@@ -45,8 +45,7 @@
       <tr><th class="w-15 text-right">Konfirmasi</th><th class="w-1">
       <td class="w-84"><span class="badge bg-warning">Industri</span></td>
       <div class="card-tools">
-      
-      
+           
 </a>
 </div>
 </div>
@@ -54,24 +53,42 @@
 <div class="card-body">
     <!-- Small boxes (Stat box) -->
     <table class="table table-bordered">
-        <tr>
-            <th style="text-align: center;">No</th>
-            <th style="text-align: center;">Nama Dosen Pembimbing</th>
-            <th style="text-align: center;">Nama Industri</th>
-            <th style="text-align: center;">Alamat Industri</th>
-            <th style="text-align: center;">Tanggal Kunjungan</th>
-            <th style="text-align: center;">Status</th>
-        </tr>
-        <!-- Menggunakan variabel $i untuk nomor -->
-        @php $i = 1; @endphp
-        <tr>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-        </tr>
+        <thead>
+            <tr>
+                <th style="text-align: center;">No</th>
+                <th style="text-align: center;">Nama Dosen</th>
+                <th style="text-align: center;">Nama Industri</th>
+                <th style="text-align: center;">Alamat Industri</th>
+                <th style="text-align: center;">Kota</th>
+                <th style="text-align: center;">Tanggal Kunjungan</th>
+                <th style="text-align: center;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($penjadwalan as $penjadwalan)
+            <tr>
+                <td style="text-align: center;">{{ $loop->iteration }}</td>
+                <td>{{ $penjadwalan->mahasiswa->dosen->nama_dosen }}</td>
+                <td>{{ $penjadwalan->mahasiswa->nama_industri }}</td>
+                <td>{{ $penjadwalan->mahasiswa->alamat_industri }}</td>
+                <td style="text-align: center;">{{ $penjadwalan->mahasiswa->kota }}</td>
+                <td style="text-align: center;">{{ \Carbon\Carbon::parse($penjadwalan->tanggal_kunjungan)->format('d-m-Y') }}</td>
+                <td style="text-align: center;">
+                  @if (!$penjadwalan->konfirmasi)
+                      <form action="{{ route('konfirmasiIndustri.store') }}" method="POST">
+                          @csrf
+                          <input type="hidden" name="penjadwalan_id" value="{{ $penjadwalan->id }}">
+                          <button type="submit" class="btn btn-success" onclick="return confirm('Anda yakin ingin menerima?')">Terima</button>
+                      </form>
+                  @else
+                      <!-- Tombol dinonaktifkan jika sudah ada konfirmasi -->
+                      <button type="button" class="btn btn-success" disabled>Terima</button>
+                  @endif
+              </td>
+
+            </tr>
+            @endforeach
+        </tbody>
     </table>
 </div>
 <!-- /.row -->

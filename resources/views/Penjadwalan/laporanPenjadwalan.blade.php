@@ -47,7 +47,7 @@
       <tr><th class="w-15 text-right">Laporan</th><th class="w-1">
       <td class="w-84"><span class="badge bg-warning">Penjadwalan</span></td>
       <div class="card-tools">
-      <a href=" {{ route('cetakPenjadwalan') }} " class="btn btn-primary">Cetak Laporan <i class="fas fa-print"></i></a>         
+      <a href=" {{ route('cetakPenjadwalan') }} " class="btn btn-primary"><i class="fas fa-print"></i></a>         
             </div>
 
             <div class="card-body">
@@ -71,7 +71,7 @@
                                     <td>{{ $penjadwalan->mahasiswa->nama_industri }}</td>
                                     <td>{{ $penjadwalan->mahasiswa->alamat_industri }}</td>
                                     <td>{{ $penjadwalan->mahasiswa->kota }}</td>
-                                    <td style="text-align: center;">{{ $penjadwalan->tanggal_kunjungan }}</td>
+                                    <td style="text-align: center;">{{ \Carbon\Carbon::parse($penjadwalan->tanggal_kunjungan)->format('d-m-Y') }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -183,14 +183,14 @@
                         <div class="form-group row">
                             <label for="tgl_awal" class="col-sm-2 col-form-label">Tanggal Awal:</label>
                             <div class="col-sm-10">
-                                {{ $item->tgl_awal }}
+                                {{ \Carbon\Carbon::parse($item->tgl_awal)->format('d-m-Y') }}
                             </div>
                         </div>
                         <hr>
                         <div class="form-group row">
                             <label for="tgl_akhir" class="col-sm-2 col-form-label">Tanggal Akhir:</label>
                             <div class="col-sm-10">
-                                {{ $item->tgl_akhir }}
+                            {{ \Carbon\Carbon::parse($item->tgl_akhir)->format('d-m-Y') }}
                             </div>
                         </div>
                         <hr>
@@ -257,10 +257,19 @@
         @endforeach
     </tbody>
 </table>
-
-    <div class="card-footer">
+<!-- Pagination Links -->
+<div class="card-footer clearfix">
+          <ul class="pagination pagination-sm m-0 float-right">
+            <li class="page-item"><a class="page-link" href="{{ $dtMahasiswa->previousPageUrl() }}"><i class="fas fa-chevron-left"></i></a></li>
+            @for ($i = 1; $i <= $dtMahasiswa->lastPage(); $i++)
+            <li class="page-item{{ $dtMahasiswa->currentPage() === $i ? ' active' : '' }}">
+              <a class="page-link" href="{{ $dtMahasiswa->url($i) }}">{{ $i }}</a>
+            </li>
+            @endfor
+            <li class="page-item"><a class="page-link" href="{{ $dtMahasiswa->nextPageUrl() }}"><i class="fas fa-chevron-right"></i></a></li>
+          </ul>
+        </div>
        
-</div>
 </div>
 </div>
 
