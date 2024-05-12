@@ -49,34 +49,33 @@
       <div class="card-tools">
       <a href=" {{ route('cetakPenjadwalan') }} " class="btn btn-primary"><i class="fas fa-print"></i></a>         
             </div>
-
             <div class="card-body">
-              <!-- Small boxes (Stat box) -->
-              <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                <th style="text-align: center;">No</th>
-                                <th style="text-align: center;">Nama Dosen Pembimbing</th>
-                                <th style="text-align: center;">Nama Industri</th>
-                                <th style="text-align: center;">Alamat Industri</th>
-                                <th style="text-align: center;">Kota</th>
-                                <th style="text-align: center;">Tanggal Kunjungan</th>    
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($penjadwalan as $index => $penjadwalan)
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ optional($penjadwalan->mahasiswa->dosen)->nama_dosen }}</td>
-                                    <td>{{ $penjadwalan->mahasiswa->nama_industri }}</td>
-                                    <td>{{ $penjadwalan->mahasiswa->alamat_industri }}</td>
-                                    <td>{{ $penjadwalan->mahasiswa->kota }}</td>
-                                    <td style="text-align: center;">{{ \Carbon\Carbon::parse($penjadwalan->tanggal_kunjungan)->format('d-m-Y') }}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                   </div>
+    <!-- Small boxes (Stat box) -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="text-align: center;">No</th>
+                <th style="text-align: center;">Nama Dosen Pembimbing</th>
+                <th style="text-align: center;">Nama Industri</th>
+                <th style="text-align: center;">Alamat Industri</th>
+                <th style="text-align: center;">Kota</th>
+                <th style="text-align: center;">Tanggal Kunjungan</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($penjadwalan as $index => $penjadwalan)
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ optional($penjadwalan->mahasiswa->dosen)->nama_dosen }}</td>
+                    <td>{{ $penjadwalan->mahasiswa->nama_industri }}</td>
+                    <td>{{ $penjadwalan->mahasiswa->alamat_industri }}</td>
+                    <td>{{ $penjadwalan->mahasiswa->kota }}</td>
+                    <td style="text-align: center;">{{ \Carbon\Carbon::parse($penjadwalan->tanggal_kunjungan)->format('d-m-Y') }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
             </div>
     </section>
 

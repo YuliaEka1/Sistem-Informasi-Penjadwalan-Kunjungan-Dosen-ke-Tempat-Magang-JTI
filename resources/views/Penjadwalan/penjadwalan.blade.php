@@ -41,14 +41,12 @@
     <!-- /.content-header -->
 
       <!-- Main content -->
-    <section class="content">
-        <div class="card card-info card-outline">
-            <div class="card-header">
-                <h3 class="card-title">Kelola Penjadwalan</h3>
-                <div class="card-tools">
-                </div>
-            </div>
-            
+      <section class="content">
+      <div class="card card-info card-outline">
+      <div class="card-header">
+      <tr><th class="w-15 text-right">Kelola</th><th class="w-1">
+      <td class="w-84"><span class="badge bg-warning">Penjadwalan</span></td>
+
       <div class="card-body">
           <!-- Di tampilan, Anda dapat menggunakan Blade atau PHP untuk menampilkan data -->
       <table class="table table-bordered">

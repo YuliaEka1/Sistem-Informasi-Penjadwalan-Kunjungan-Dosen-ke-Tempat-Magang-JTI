@@ -8,6 +8,7 @@ use App\Models\Dosen;
 use Illuminate\Database\Eloquent\Builder;
 use Carbon\Carbon; // Import Carbon untuk manajemen tanggal
 use App\Models\Penjadwalan;
+use App\Models\KonfirmasiIndustri;
 
 
 
@@ -144,14 +145,22 @@ class PenjadwalanController extends Controller
     }
 }
 
-    public function laporan()
+public function laporan()
 {
-    $penjadwalan = Penjadwalan::all(); // Ambil semua data penjadwalan
+    // Ambil semua data penjadwalan yang terkait dengan konfirmasi industri yang memiliki status "diterima"
+    $penjadwalan = Penjadwalan::whereHas('konfirmasi', function ($query) {
+        $query->where('status', 'diterima');
+    })->get();
+
     return view('Penjadwalan.laporanPenjadwalan', compact('penjadwalan'));
 }
-    public function cetakPenjadwalan()
+
+public function cetakPenjadwalan()
 {
-    $penjadwalan = Penjadwalan::all();
+    $penjadwalan = Penjadwalan::whereHas('konfirmasi', function ($query) {
+        $query->where('status', 'diterima');
+    })->get();
+
     return view('Penjadwalan.cetakPenjadwalan', compact('penjadwalan'));
 }
 
