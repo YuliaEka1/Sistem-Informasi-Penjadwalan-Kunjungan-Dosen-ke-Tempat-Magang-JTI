@@ -64,9 +64,13 @@ Route::get('/cetakPenjadwalan', [App\Http\Controllers\PenjadwalanController::cla
 //konfirmasi industri
 Route::get('/konfirmasiIndustri', [App\Http\Controllers\KonfirmasiIndustriController::class, 'index'])->name('konfirmasiIndustri');
 Route::post('/konfirmasiIndustri', [App\Http\Controllers\KonfirmasiIndustriController::class, 'store'])->name('konfirmasiIndustri.store');
+Route::post('/konfirmasiIndustri/simpan-data', [App\Http\Controllers\KonfirmasiIndustriController::class, 'simpanData'])->name('konfirmasiIndustri.simpanData');
 
+//konfirmasi dosen
+Route::get('/konfirmasiDosen', [App\Http\Controllers\KonfirmasiDosenController::class, 'index'])->name('konfirmasiDosen');
+Route::post('/konfirmasiDosen', [App\Http\Controllers\KonfirmasiDosenController::class, 'store'])->name('konfirmasiDosen.store');
 
-
-//feedback
-Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');
-Route::get('/createFeedback', [App\Http\Controllers\FeedbackController::class, 'create'])->name('createFeedback');
+Route::get('/admin', [HomeController::class, 'admin'])->middleware('role:admin');
+Route::get('/dosen', [HomeController::class, 'dosen'])->middleware('role:dosen');
+Route::get('/mahasiswa', [HomeController::class, 'mahasiswa'])->middleware('role:mahasiswa');
+Route::get('/industri', [HomeController::class, 'industri'])->middleware('role:industri');

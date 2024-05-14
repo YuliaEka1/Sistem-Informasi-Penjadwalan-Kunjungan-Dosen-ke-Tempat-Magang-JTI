@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('konfirmasi_industri', function (Blueprint $table) {
+        Schema::create('konfirmasi_dosen', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('penjadwalan_id');
-            $table->foreign('penjadwalan_id')->references('id')->on('penjadwalan')->onDelete('cascade');
+            $table->unsignedBigInteger('konfirmasi_industri_id');
+            $table->foreign('konfirmasi_industri_id')->references('id')->on('konfirmasi_industri')->onDelete('cascade');
             $table->string('status')->nullable();
-            $table->text('konfirmasi_perubahan')->nullable();
             $table->timestamps();
+            
+            // Menambahkan index pada kolom foreign key
+            $table->index('konfirmasi_industri_id');
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('konfirmasi_industri');
+        Schema::dropIfExists('konfirmasi_dosen');
     }
 };

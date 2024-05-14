@@ -62,32 +62,69 @@
                 <th style="text-align: center;">Kota</th>
                 <th style="text-align: center;">Tanggal Kunjungan</th>
                 <th style="text-align: center;">Status</th>
+                <th style="text-align: center;">Konfirmasi Perubahan</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($penjadwalan as $penjadwalan)
-            <tr>
-                <td style="text-align: center;">{{ $loop->iteration }}</td>
-                <td>{{ $penjadwalan->mahasiswa->dosen->nama_dosen }}</td>
-                <td>{{ $penjadwalan->mahasiswa->nama_industri }}</td>
-                <td>{{ $penjadwalan->mahasiswa->alamat_industri }}</td>
-                <td style="text-align: center;">{{ $penjadwalan->mahasiswa->kota }}</td>
-                <td style="text-align: center;">{{ \Carbon\Carbon::parse($penjadwalan->tanggal_kunjungan)->format('d-m-Y') }}</td>
-                <td style="text-align: center;">
-                  @if (!$penjadwalan->konfirmasi)
-                      <form action="{{ route('konfirmasiIndustri.store') }}" method="POST">
-                          @csrf
-                          <input type="hidden" name="penjadwalan_id" value="{{ $penjadwalan->id }}">
-                          <button type="submit" class="btn btn-success" onclick="return confirm('Anda yakin ingin menerima?')">Terima</button>
-                      </form>
-                  @else
-                      <!-- Tombol dinonaktifkan jika sudah ada konfirmasi -->
-                      <button type="button" class="btn btn-success" disabled>Terima</button>
-                  @endif
-              </td>
+        @foreach ($penjadwalan as $jadwal)
+<tr>
+    <td style="text-align: center;">{{ $loop->iteration }}</td>
+    <td>{{ $jadwal->mahasiswa->dosen->nama_dosen }}</td>
+    <td>{{ $jadwal->mahasiswa->nama_industri }}</td>
+    <td>{{ $jadwal->mahasiswa->alamat_industri }}</td>
+    <td style="text-align: center;">{{ $jadwal->mahasiswa->kota }}</td>
+    <td style="text-align: center;">{{ \Carbon\Carbon::parse($jadwal->tanggal_kunjungan)->format('d-m-Y') }}</td>
+    <td style="text-align: center;">
+        @if (!$jadwal->konfirmasi)
+            <form action="{{ route('konfirmasiIndustri.store') }}" method="POST">
+                @csrf
+                <input type="hidden" name="penjadwalan_id" value="{{ $jadwal->id }}">
+                <button type="submit" class="btn btn-success" onclick="return confirm('Anda yakin ingin menerima?')">Terima</button>
+            </form>
+        @else
+            <!-- Tombol dinonaktifkan jika sudah ada konfirmasi -->
+            <button type="button" class="btn btn-success" disabled>Terima</button>
+        @endif
+    </td>
+    <td style="text-align: center;">
+      <!-- Button untuk membuka modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#konfirmasiModal">
+          Perubahan
+      </button>
 
-            </tr>
-            @endforeach
+  <!-- Modal -->
+  <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi Perubahan</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+              <form action="{{ route('konfirmasiIndustri.simpanData') }}" method="post">
+                  @csrf
+                  <input type="hidden" name="penjadwalan_id" value="{{ $jadwal->id }}">
+                  <div class="form-group">
+                      <label for="konfirmasiPerubahan">Konfirmasi:</label>
+                      <textarea class="form-control" id="konfirmasiPerubahan" name="konfirmasi_perubahan" ></textarea>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  </div>
+              </form>
+              </div>
+            
+        </div>
+    </div>
+</div>
+
+    </td>
+</tr>
+@endforeach
+
         </tbody>
     </table>
 </div>

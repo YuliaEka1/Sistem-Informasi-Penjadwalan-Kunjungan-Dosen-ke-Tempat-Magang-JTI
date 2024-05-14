@@ -5,15 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class KonfirmasiIndustri extends Model
+class KonfirmasiDosen extends Model
 {
-    protected $table = 'konfirmasi_industri';
-
+    protected $table = 'konfirmasi_dosen';
     protected $fillable = [
-        'penjadwalan_id',
+        'konfirmasi_industri_id',
         'status',
-        'konfirmasi_perubahan'
     ];
+
+    public function konfirmasiIndustri()
+    {
+        return $this->belongsTo(KonfirmasiIndustri::class);
+    }
 
     // Relasi dengan model Penjadwalan
     public function penjadwalan()
@@ -21,9 +24,10 @@ class KonfirmasiIndustri extends Model
         return $this->belongsTo(Penjadwalan::class);
     }
 
-    // Relasi dengan model Mahasiswa (jika diperlukan)
+    // Relasi dengan model Mahasiswa
     public function mahasiswa()
     {
         return $this->belongsTo(Mahasiswa::class);
     }
+    
 }

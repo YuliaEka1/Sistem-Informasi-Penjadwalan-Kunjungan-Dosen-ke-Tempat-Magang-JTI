@@ -41,12 +41,6 @@ if (!function_exists('isActiveKonfirmasi')) {
     }
 }
 
-if (!function_exists('isActiveFeedback')) {
-    function isActiveFeedback()
-    {
-        return Request::is('feedback*');
-    }
-}
 
 if (!function_exists('isActiveCalendar')) {
     function isActiveCalendar()

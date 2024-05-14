@@ -13,7 +13,7 @@ class KonfirmasiIndustriController extends Controller
      */
     public function index()
     {
-        $penjadwalan = Penjadwalan::all();
+        $penjadwalan = Penjadwalan::with('mahasiswa')->get();
         return view('Konfirmasi.konfirmasiIndustri', compact('penjadwalan'));
     }
     
@@ -39,10 +39,29 @@ class KonfirmasiIndustriController extends Controller
         KonfirmasiIndustri::create([
             'penjadwalan_id' => $request->penjadwalan_id,
             'status' => 'diterima', // Tetapkan status ke "diterima"
+            'konfirmasi_perubahan' => $request->konfirmasi_perubahan,
         ]);
     
         return redirect()->route('konfirmasiIndustri')->with('success', 'Status konfirmasi berhasil diperbarui.');
     }
+
+    // File: KonfirmasiIndustriController.php
+
+    public function simpanData(Request $request)
+{
+    $request->validate([
+        'penjadwalan_id' => 'required',
+        'konfirmasi_perubahan' => 'required',
+    ]);
+
+    KonfirmasiIndustri::create([
+        'penjadwalan_id' => $request->penjadwalan_id,
+        'status' => 'diterima',
+        'konfirmasi_perubahan' => $request->konfirmasi_perubahan,
+    ]);
+
+    return redirect()->route('konfirmasiIndustri');
+}
 
     /**
      * Display the specified resource.

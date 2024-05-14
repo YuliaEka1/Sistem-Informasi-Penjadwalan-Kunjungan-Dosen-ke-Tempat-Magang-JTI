@@ -142,7 +142,7 @@
         <label for="dosen_id" class="col-sm-2 col-form-label">Nama Dosen Pembimbing:</label>
         <div class="col-sm-10">
             <select class="form-control select2" style="width: 100%;" name="dosen_id" id="dosen_id">
-                <option disabled value> Pilih Dosen Pembimbing </option>
+                <option value=""> Pilih Dosen Pembimbing </option>
                 @foreach ($dosen as $item)
                 <option value="{{ $item->id }}">{{ $item->nama_dosen }}</option>
                 @endforeach

@@ -25,4 +25,9 @@ class Penjadwalan extends Model
     {
         return $this->hasOne(KonfirmasiIndustri::class, 'penjadwalan_id');
     }
+    // Relasi dengan model KonfirmasiDosen
+    public function konfirmasiDosen()
+    {
+        return $this->hasOne(KonfirmasiDosen::class, 'penjadwalan_id');
+    }
 }

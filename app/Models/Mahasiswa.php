@@ -29,4 +29,5 @@ class Mahasiswa extends Model
         return $this->hasOne(KonfirmasiIndustri::class);
     }
 
+
 }

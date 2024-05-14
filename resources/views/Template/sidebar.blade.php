@@ -31,134 +31,146 @@
       </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item {{ isActiveDashboard() ? 'menu-open' : '' }}">
-              <a href="{{ asset('/home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
+<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Dashboard Menu (Admin only) -->
+        @if(Auth::user()->role == 'admin')
+            <li class="nav-item {{ isActiveDashboard() ? 'menu-open' : '' }}">
+                <a href="{{ url('/home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+        @endif
+
+        <!-- Manajemen Data Menu (Admin and Dosen) -->
+        @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen')
             <li class="nav-item {{ isActiveManajData() ? 'menu-open' : '' }}">
-              <a href="javascript:void(0);" class="nav-link {{ isActiveManajData() ? 'active' : '' }}">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Manajemen Data
-                <i class="fas fa-angle-left right"></i>
-                <!-- <span class="badge badge-info right">3</span> -->
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-              <a href="{{ asset('/dataDosen') }}" class="nav-link {{ Request::is('dataDosen') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Dosen</p>
+                <a href="javascript:void(0);" class="nav-link {{ isActiveManajData() ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        Manajemen Data
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
                 </a>
-              </li>
-              <li class="nav-item">
-              <a href="{{ asset('/dataMahasiswa') }}" class="nav-link {{ Request::is('dataMahasiswa') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Mahasiswa</p>
-                </a>
-              </li>
-              <li class="nav-item">
-              <a href="{{ asset('/tempatMagang') }}" class="nav-link {{ Request::is('tempatMagang') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Industri</p>
-                </a>
-              </li>
-              
-            </ul>
-          </li>
-          <li class="nav-item {{ isActiveManajMagang() ? 'menu-open' : '' }}">
-              <a href="javascript:void(0);" class="nav-link {{ isActiveManajMagang() ? 'active' : '' }}">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Manaj Tempat Magang
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-              <a href="{{ asset('/rekomendasiIndustri') }}" class="nav-link {{ Request::is('rekomendasiIndustri') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Rekomen Kunjungan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-              <a href="{{ asset('/hasilRekomendasi') }}" class="nav-link {{ Request::is('hasilRekomendasi') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Hasil Rekomendasi</p>
-                </a>
-              </li>
+                <ul class="nav nav-treeview">
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen')
+                        <li class="nav-item">
+                            <a href="{{ url('/dataDosen') }}" class="nav-link {{ Request::is('dataDosen') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Dosen</p>
+                            </a>
+                        </li>
+                    @endif
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'mahasiswa')
+                        <li class="nav-item">
+                            <a href="{{ url('/dataMahasiswa') }}" class="nav-link {{ Request::is('dataMahasiswa') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Mahasiswa</p>
+                            </a>
+                        </li>
+                    @endif
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'industri')
+                        <li class="nav-item">
+                            <a href="{{ url('/tempatMagang') }}" class="nav-link {{ Request::is('tempatMagang') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Industri</p>
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+        @endif
 
-            </ul>
-          </li>
+        <!-- Manaj Tempat Magang Menu (Admin only) -->
+        @if(Auth::user()->role == 'admin')
+            <li class="nav-item {{ isActiveManajMagang() ? 'menu-open' : '' }}">
+                <a href="javascript:void(0);" class="nav-link {{ isActiveManajMagang() ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        Manaj Tempat Magang
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ url('/rekomendasiIndustri') }}" class="nav-link {{ Request::is('rekomendasiIndustri') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Rekomen Kunjungan</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/hasilRekomendasi') }}" class="nav-link {{ Request::is('hasilRekomendasi') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Hasil Rekomendasi</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        @endif
 
-          <li class="nav-item {{ isActivePenjadwalan() ? 'menu-open' : '' }}">
-              <a href="javascript:void(0);" class="nav-link {{ isActivePenjadwalan() ? 'active' : '' }}">
-              <i class="nav-icon fas fa-calendar"></i>
-              <p>
-              Penjadwalan Kunjungan
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-              <a href="{{ asset('/penjadwalan') }}" class="nav-link {{ Request::is('penjadwalan') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kelola Penjadwalan</p>
+        <!-- Penjadwalan Kunjungan Menu (Admin only) -->
+        @if(Auth::user()->role == 'admin')
+            <li class="nav-item {{ isActivePenjadwalan() ? 'menu-open' : '' }}">
+                <a href="javascript:void(0);" class="nav-link {{ isActivePenjadwalan() ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-calendar"></i>
+                    <p>
+                        Penjadwalan Kunjungan
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
                 </a>
-              </li>
-              <li class="nav-item">
-              <a href="{{ asset('/laporanPenjadwalan') }}" class="nav-link {{ Request::is('laporanPenjadwalan') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Laporan Penjadwalan</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-            
-          </li>
-          <li class="nav-item">
-          <li class="nav-item {{ isActiveKonfirmasi() ? 'menu-open' : '' }}">
-              <a href="javascript:void(0);" class="nav-link {{ isActiveKonfirmasi() ? 'active' : '' }}">
-            <i class="nav-icon fas fa-check text"></i>
-              <p>
-                Konfirmasi Kunjungan
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-              <a href="{{ asset('/konfirmasiDosen') }}" class="nav-link {{ Request::is('konfirmasiDosen') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Konfirmasi Dosen</p>
-                </a>
-              </li>
-              <li class="nav-item">
-              <a href="{{ asset('/konfirmasiIndustri') }}" class="nav-link {{ Request::is('konfirmasiIndustri') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Konfirmasi Industri</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ url('/penjadwalan') }}" class="nav-link {{ Request::is('penjadwalan') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Kelola Penjadwalan</p>
+                        </a>
+                    </li>
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen' || Auth::user()->role == 'mahasiswa')
+                        <li class="nav-item">
+                            <a href="{{ url('/laporanPenjadwalan') }}" class="nav-link {{ Request::is('laporanPenjadwalan') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Laporan Penjadwalan</p>
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+        @endif
 
-          <li class="nav-item">
-          <li class="nav-item {{ isActiveFeedback() ? 'menu-open' : '' }}">
-              <a href="{{ asset('/feedback') }}" class="nav-link {{ Request::is('feedback') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-comment"></i>
-              <p>
-                Feedback & Penyesuaian
-              </p>
-            </a>
-          </li>     
-        </ul>
-      </nav>
+        <!-- Konfirmasi Kunjungan Menu (Admin only) -->
+        @if(Auth::user()->role == 'admin')
+            <li class="nav-item {{ isActiveKonfirmasi() ? 'menu-open' : '' }}">
+                <a href="javascript:void(0);" class="nav-link {{ isActiveKonfirmasi() ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-check"></i>
+                    <p>
+                        Konfirmasi Kunjungan
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'industri')
+                        <li class="nav-item">
+                            <a href="{{ url('/konfirmasiIndustri') }}" class="nav-link {{ Request::is('konfirmasiIndustri') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Konfirmasi Industri</p>
+                            </a>
+                        </li>
+                    @endif
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen')
+                        <li class="nav-item">
+                            <a href="{{ url('/konfirmasiDosen') }}" class="nav-link {{ Request::is('konfirmasiDosen') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Konfirmasi Dosen</p>
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+        @endif
+    </ul>
+</nav>
+
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->

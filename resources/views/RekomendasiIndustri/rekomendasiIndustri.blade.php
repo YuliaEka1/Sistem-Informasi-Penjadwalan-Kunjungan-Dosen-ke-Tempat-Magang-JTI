@@ -141,6 +141,7 @@
                     <div class="form-group">
                         <label for="kota">Kota:</label>
                         <select class="form-control" name="kota">
+                        <option value=""> - </option>
                             <option value="3">Dekat</option>
                             <option value="2">Sedang</option>
                             <option value="0">Jauh</option>
@@ -149,6 +150,7 @@
                     <div class="form-group">
                         <label for="dosen">Dosen:</label>
                         <select class="form-control" name="dosen">
+                        <option value=""> - </option>
                             <option value="3">Ada</option>
                             <option value="0">Tidak Ada</option>
                         </select>
@@ -156,6 +158,7 @@
                     <div class="form-group">
                         <label for="dana">Dana Kunjungan:</label>
                         <select class="form-control" name="dana">
+                        <option value=""> - </option>
                             <option value="3">Termasuk ke dalam Dana Kunjungan</option>
                             <option value="2">Tidak Termasuk ke dalam Dana Kunjungan</option>
                         </select>
@@ -163,11 +166,13 @@
                     <div class="form-group">
                         <label for="kunjungan">Kunjungan:</label>
                         <select class="form-control" name="kunjungan">
+                            <option value=""> - </option>
                             <option value="3">Belum Pernah dikunjungi</option>
                             <option value="0">Sudah Pernah dikunjungi</option>
                         </select>
                     </div>
                     <!-- Tombol Submit -->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
