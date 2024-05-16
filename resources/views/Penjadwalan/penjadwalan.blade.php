@@ -58,10 +58,11 @@
                   <th style="text-align: center;">Alamat Industri</th>
                   <th style="text-align: center;">Kota</th>
                   <th style="text-align: center;">Tanggal Akhir</th>
+                  <th style="text-align: center;">Tanggal Rekomendasi</th>
                   <th style="text-align: center;">Tanggal Kunjungan</th>
               </tr>
           </thead>
-          <form action="{{ route('simpan-data') }}" method="POST">
+          <form action="{{ route('penjadwalan.store') }}" method="POST">
     @csrf <!-- Tambahkan CSRF token untuk keamanan -->
     <tbody>
         @php $i = 1 @endphp
@@ -75,6 +76,7 @@
                         <td>{{ $mhs->alamat_industri }}</td>
                         <td style="text-align: center;">{{ $kota }}</td>
                         <td style="text-align: center;">{{ \Carbon\Carbon::parse($mhs->tgl_akhir)->format('d-m-Y') }}</td>
+                        <td style="text-align: center;">{{ \Carbon\Carbon::parse($mhs->tgl_akhir)->subDays(7)->format('d-m-Y') }}</td>
                         <!-- Tambahkan input field untuk tanggal kunjungan yang dapat diedit -->
                         <td style="text-align: center;">
                         <input type="date" name="tanggal_kunjungan[]" value="{{ session('tanggal_kunjungan')[$loop->index] ?? 'dd/mm/yyyy' }}" placeholder="dd/mm/yyyy">

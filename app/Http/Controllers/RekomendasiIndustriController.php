@@ -16,7 +16,7 @@ class RekomendasiIndustriController extends Controller
     {
         $mahasiswa = Mahasiswa::with('dosen')->get(); // Mengambil semua data mahasiswa dengan data dosen terkait
         $dosen = Dosen::all();
-        $rekomendasi = RekomendasiIndustri::paginate(5);
+        $rekomendasi = RekomendasiIndustri::paginate(10);
         return view('RekomendasiIndustri.rekomendasiIndustri', compact('mahasiswa', 'dosen', 'rekomendasi')); // Kirim data mahasiswa ke halaman rekomendasi
 }
     
@@ -41,7 +41,7 @@ class RekomendasiIndustriController extends Controller
                           $request->kunjungan;
 
     // Tentukan status berdasarkan nilai rekomendasi
-    $status = ($nilai_rekomendasi >= 8) ? 'Direkomendasikan' : 'Tidak Direkomendasikan';
+    $status = ($nilai_rekomendasi >= 9) ? 'Direkomendasikan' : 'Tidak Direkomendasikan';
 
     // Simpan rekomendasi ke dalam database
     $rekomendasi = new RekomendasiIndustri;

@@ -81,7 +81,7 @@
                     @if ($mhs->rekomendasi)
                         @php
                             $nilai_rekomendasi = $mhs->rekomendasi->total_score;
-                            $status = ($nilai_rekomendasi >= 8) ? 'Direkomendasikan' : 'Tdk Direkomendasikan';
+                            $status = ($nilai_rekomendasi >= 9) ? 'Direkomendasikan' : 'Tdk Direkomendasikan';
                         @endphp
                         <!-- Tampilkan status dengan warna sesuai kondisi -->
                         <span style="display: inline-block; width: 100%; text-align: center;" class="badge {{ $status === 'Direkomendasikan' ? 'bg-warning' : 'bg-secondary' }}">{{ $status }}</span>
@@ -139,7 +139,7 @@
                     @csrf
                     <input type="hidden" name="mahasiswa_id" value="{{ $mhs->id }}">
                     <div class="form-group">
-                        <label for="kota">Kota:</label>
+                        <label for="kota">Jarak dari Polinema :</label>
                         <select class="form-control" name="kota">
                         <option value=""> - </option>
                             <option value="3">Dekat</option>

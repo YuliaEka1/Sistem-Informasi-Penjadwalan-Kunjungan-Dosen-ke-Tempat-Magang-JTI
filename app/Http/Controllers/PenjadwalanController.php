@@ -47,7 +47,35 @@ class PenjadwalanController extends Controller
      */
     public function store(Request $request)
     {
+        $tanggalKunjungans = $request->input('tanggal_kunjungan');
+    $rekomendasiTanggals = $request->input('rekomendasi_tanggal');
+    dd($rekomendasiTanggals);
+    $mahasiswaIds = $request->input('mahasiswa_id');
+
+    if ($tanggalKunjungans && $mahasiswaIds) {
+        foreach ($mahasiswaIds as $index => $mahasiswaId) {
+            // Periksa apakah entri penjadwalan sudah ada untuk mahasiswa yang bersangkutan
+            $penjadwalan = Penjadwalan::where('mahasiswa_id', $mahasiswaId)->first();
+
+            if ($penjadwalan) {
+                // Jika entri sudah ada, perbarui tanggal kunjungan
+                $penjadwalan->tanggal_kunjungan = $tanggalKunjungans[$index];
+                $penjadwalan->save();
+            } else {
+                // Jika entri belum ada, buat entri baru
+                $penjadwalanBaru = new Penjadwalan();
+                $penjadwalanBaru->mahasiswa_id = $mahasiswaId;
+                $penjadwalanBaru->rekomendasi_tanggal = \Carbon\Carbon::parse($mhs->tgl_akhir)->subDays(7);
+                $penjadwalanBaru->tanggal_kunjungan = $tanggalKunjungans[$index];
+                $penjadwalanBaru->save();
+            }
+        }
+        (['tanggal_kunjungan' => $tanggalKunjungans]);
         
+        return redirect()->route('penjadwalan')->with('tanggal_kunjungan', $tanggalKunjungans);
+    } else {
+        return redirect()->back();
+    }
     }
 
     /**
@@ -118,7 +146,10 @@ class PenjadwalanController extends Controller
 
     public function simpanData(Request $request)
 {
+    
     $tanggalKunjungans = $request->input('tanggal_kunjungan');
+    $rekomendasiTanggals = $request->input('rekomendasi_tanggal');
+    dd($rekomendasiTanggals);
     $mahasiswaIds = $request->input('mahasiswa_id');
 
     if ($tanggalKunjungans && $mahasiswaIds) {
@@ -134,14 +165,16 @@ class PenjadwalanController extends Controller
                 // Jika entri belum ada, buat entri baru
                 $penjadwalanBaru = new Penjadwalan();
                 $penjadwalanBaru->mahasiswa_id = $mahasiswaId;
+                $penjadwalanBaru->rekomendasi_tanggal = \Carbon\Carbon::parse($mhs->tgl_akhir)->subDays(7);
                 $penjadwalanBaru->tanggal_kunjungan = $tanggalKunjungans[$index];
                 $penjadwalanBaru->save();
             }
         }
+        (['tanggal_kunjungan' => $tanggalKunjungans]);
         
-        return redirect()->route('penjadwalan')->with('success', 'Data berhasil disimpan.')->with('tanggal_kunjungan', $tanggalKunjungans);
+        return redirect()->route('penjadwalan')->with('tanggal_kunjungan', $tanggalKunjungans);
     } else {
-        return redirect()->back()->with('error', 'Data tidak tersedia atau tidak lengkap.');
+        return redirect()->back();
     }
 }
 

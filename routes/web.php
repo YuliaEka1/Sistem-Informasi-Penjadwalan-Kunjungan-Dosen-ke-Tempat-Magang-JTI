@@ -57,6 +57,7 @@ Route::get('/hasilRekomendasi', [App\Http\Controllers\HasilRekomendasiController
 //penjadwalan
 Route::get('/penjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'index'])->name('penjadwalan');
 Route::post('/simpan-data', [App\Http\Controllers\PenjadwalanController::class, 'simpanData'])->name('simpan-data');
+Route::post('/penjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'store'])->name('penjadwalan.store');
 Route::get('/laporanPenjadwalan', [PenjadwalanController::class, 'laporan'])->name('laporanPenjadwalan');
 Route::get('/cetakPenjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'cetakPenjadwalan'])->name('cetakPenjadwalan');
 
@@ -70,6 +71,8 @@ Route::post('/konfirmasiIndustri/simpan-data', [App\Http\Controllers\KonfirmasiI
 Route::get('/konfirmasiDosen', [App\Http\Controllers\KonfirmasiDosenController::class, 'index'])->name('konfirmasiDosen');
 Route::post('/konfirmasiDosen', [App\Http\Controllers\KonfirmasiDosenController::class, 'store'])->name('konfirmasiDosen.store');
 
+
+//role user
 Route::get('/admin', [HomeController::class, 'admin'])->middleware('role:admin');
 Route::get('/dosen', [HomeController::class, 'dosen'])->middleware('role:dosen');
 Route::get('/mahasiswa', [HomeController::class, 'mahasiswa'])->middleware('role:mahasiswa');

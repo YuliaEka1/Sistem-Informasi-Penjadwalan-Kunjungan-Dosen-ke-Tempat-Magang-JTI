@@ -13,6 +13,7 @@ class Penjadwalan extends Model
     protected $fillable = [
         'id',
         'mahasiswa_id',
+        'tanggal_rekomendasi',
         'tanggal_kunjungan'
     ];
 
