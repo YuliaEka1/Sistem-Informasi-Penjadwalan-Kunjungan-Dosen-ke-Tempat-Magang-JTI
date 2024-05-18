@@ -59,12 +59,12 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th style="text-align: center;">No</th>
-                            <th style="text-align: center;">Nama Dosen Pembimbing</th>
-                            <th style="text-align: center;">Nama Industri</th>
-                            <th style="text-align: center;">Alamat Industri</th>
-                            <th style="text-align: center;">Tanggal Akhir</th>
-                            <th style="text-align: center;">Kota</th>
+                            <th style="text-align: center; vertical-align: middle;">No</th>
+                            <th style="text-align: center; vertical-align: middle;">Nama Dosen Pembimbing</th>
+                            <th style="text-align: center; vertical-align: middle;">Nama Industri</th>
+                            <th style="text-align: center; vertical-align: middle;">Alamat Industri</th>
+                            <th style="text-align: center; vertical-align: middle;">Tanggal Akhir</th>
+                            <th style="text-align: center; vertical-align: middle;">Kota</th>
                         </tr>
                     </thead>
                     <tbody>

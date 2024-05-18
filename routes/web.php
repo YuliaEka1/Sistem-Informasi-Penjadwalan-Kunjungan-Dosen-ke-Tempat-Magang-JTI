@@ -60,7 +60,8 @@ Route::post('/simpan-data', [App\Http\Controllers\PenjadwalanController::class, 
 Route::post('/penjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'store'])->name('penjadwalan.store');
 Route::get('/laporanPenjadwalan', [PenjadwalanController::class, 'laporan'])->name('laporanPenjadwalan');
 Route::get('/cetakPenjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'cetakPenjadwalan'])->name('cetakPenjadwalan');
-
+Route::get('/kelompokDosen', [PenjadwalanController::class, 'kelompok'])->name('kelompokDosen');
+Route::get('/cetakKelompok', [App\Http\Controllers\PenjadwalanController::class, 'cetakKelompok'])->name('cetakKelompok');
 
 //konfirmasi industri
 Route::get('/konfirmasiIndustri', [App\Http\Controllers\KonfirmasiIndustriController::class, 'index'])->name('konfirmasiIndustri');

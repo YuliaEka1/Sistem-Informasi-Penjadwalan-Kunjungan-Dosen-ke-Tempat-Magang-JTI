@@ -15,8 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id'); // Kolom id sebagai primary key
             $table->string('nama_dosen', 100)->notNull();
             $table->string('nip', 20)->nullable(); // Tambah kolom NIP
-            $table->integer('jumlah_bimbingan')->notNull();
-            $table->string('no_hp', 14)->notNull(); 
+            $table->integer('jumlah_bimbingan')->nullable();
+            $table->string('no_hp', 20)->nullable(); 
             $table->timestamps();
         });
     }

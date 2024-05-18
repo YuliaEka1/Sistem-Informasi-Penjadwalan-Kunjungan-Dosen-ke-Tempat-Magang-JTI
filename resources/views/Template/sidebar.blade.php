@@ -44,7 +44,7 @@
         @endif
 
         <!-- Manajemen Data Menu (Admin and Dosen) -->
-        @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen')
+        @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen' || Auth::user()->role == 'mahasiswa' || Auth::user()->role == 'industri' )
             <li class="nav-item {{ isActiveManajData() ? 'menu-open' : '' }}">
                 <a href="javascript:void(0);" class="nav-link {{ isActiveManajData() ? 'active' : '' }}">
                     <i class="nav-icon fas fa-copy"></i>
@@ -110,7 +110,7 @@
         @endif
 
         <!-- Penjadwalan Kunjungan Menu (Admin only) -->
-        @if(Auth::user()->role == 'admin')
+        @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen' || Auth::user()->role == 'mahasiswa' || Auth::user()->role == 'industri')
             <li class="nav-item {{ isActivePenjadwalan() ? 'menu-open' : '' }}">
                 <a href="javascript:void(0);" class="nav-link {{ isActivePenjadwalan() ? 'active' : '' }}">
                     <i class="nav-icon fas fa-calendar"></i>
@@ -120,13 +120,15 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
+                @if(Auth::user()->role == 'admin')
                     <li class="nav-item">
                         <a href="{{ url('/penjadwalan') }}" class="nav-link {{ Request::is('penjadwalan') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Kelola Penjadwalan</p>
                         </a>
                     </li>
-                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen' || Auth::user()->role == 'mahasiswa')
+                    @endif
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen' || Auth::user()->role == 'mahasiswa' || Auth::user()->role == 'industri')
                         <li class="nav-item">
                             <a href="{{ url('/laporanPenjadwalan') }}" class="nav-link {{ Request::is('laporanPenjadwalan') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
@@ -134,12 +136,20 @@
                             </a>
                         </li>
                     @endif
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen')
+                    <li class="nav-item">
+                        <a href="{{ url('/kelompokDosen') }}" class="nav-link {{ Request::is('kelompokDosen') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Kelompok Dosen</p>
+                        </a>
+                    </li>
+                    @endif
                 </ul>
             </li>
         @endif
 
         <!-- Konfirmasi Kunjungan Menu (Admin only) -->
-        @if(Auth::user()->role == 'admin')
+        @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen' || Auth::user()->role == 'mahasiswa' || Auth::user()->role == 'industri')
             <li class="nav-item {{ isActiveKonfirmasi() ? 'menu-open' : '' }}">
                 <a href="javascript:void(0);" class="nav-link {{ isActiveKonfirmasi() ? 'active' : '' }}">
                     <i class="nav-icon fas fa-check"></i>
@@ -149,7 +159,7 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
-                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'industri')
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'mahasiswa' || Auth::user()->role == 'industri')
                         <li class="nav-item">
                             <a href="{{ url('/konfirmasiIndustri') }}" class="nav-link {{ Request::is('konfirmasiIndustri') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>

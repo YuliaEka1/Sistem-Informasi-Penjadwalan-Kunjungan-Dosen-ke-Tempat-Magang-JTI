@@ -52,6 +52,7 @@
 
 <div class="card-body">
     <!-- Small boxes (Stat box) -->
+    <div class="alert" style="background-color: #FFF9D0; color: #524C42;"><i class="fas fa-danger-circle"></i><strong>Perhatian!</strong> Jika Anda Sudah Melakukan Konfirmasi Pada Status <strong>"Terima"</strong>. Anda Tidak Bisa Melakukan Perubahan Pada Aksi Konfirmasi Perubahan Lagi! </a></div>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -107,8 +108,8 @@
                   @csrf
                   <input type="hidden" name="penjadwalan_id" value="{{ $jadwal->id }}">
                   <div class="form-group">
-                      <label for="konfirmasiPerubahan">Konfirmasi:</label>
-                      <textarea class="form-control" id="konfirmasiPerubahan" name="konfirmasi_perubahan" ></textarea>
+                      <label for="konfirmasiPerubahan">Konfirmasi Jika Ingin Merubahan Tanggal Kunjungan:</label>
+                      <textarea class="form-control" id="konfirmasiPerubahan" name="konfirmasi_perubahan" value="{{ $jadwal->konfirmasi_perubahan }}"></textarea>
                   </div>
                   <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

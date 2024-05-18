@@ -55,16 +55,16 @@
     <table class="table table-bordered">
     <thead>
         <tr>
-            <th style="text-align: center;">No</th>
-            <th style="text-align: center;">Nama Mahasiswa 1</th>
-            <th style="text-align: center;">Nama Mahasiswa 2</th>
-            <th style="text-align: center;">Nama Mahasiswa 3</th>
-            <th style="text-align: center;">NIM 1</th>
-            <th style="text-align: center;">NIM 2</th>
-            <th style="text-align: center;">NIM 3</th>
-            <th style="text-align: center;">Kelas</th>
-            <th style="text-align: center;">Durasi Magang</th>
-            <th style="text-align: center;">Aksi</th>
+            <th style="text-align: center; vertical-align: middle;">No</th>
+            <th style="text-align: center; vertical-align: middle;">Nama Mahasiswa 1</th>
+            <th style="text-align: center; vertical-align: middle;">Nama Mahasiswa 2</th>
+            <th style="text-align: center; vertical-align: middle;">Nama Mahasiswa 3</th>
+            <th style="text-align: center; vertical-align: middle;">NIM 1</th>
+            <th style="text-align: center; vertical-align: middle;">NIM 2</th>
+            <th style="text-align: center; vertical-align: middle;">NIM 3</th>
+            <th style="text-align: center; vertical-align: middle;">Kelas</th>
+            <th style="text-align: center; vertical-align: middle;">Durasi Magang</th>
+            <th style="text-align: center; vertical-align: middle;">Aksi</th>
         </tr>
     </thead>
     <tbody>

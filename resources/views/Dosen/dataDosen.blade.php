@@ -54,12 +54,12 @@
     <!-- Small boxes (Stat box) -->
     <table class="table table-bordered">
         <tr>
-            <th style="text-align: center;">No</th>
-            <th style="text-align: center;">Nama Dosen</th>
-            <th style="text-align: center;">NIP</th>
-            <th style="text-align: center;">Jumlah Bimbingan</th>
-            <th style="text-align: center;">No Handphone</th>
-            <th style="text-align: center;">Aksi</th>
+            <th style="text-align: center; vertical-align: middle;">No</th>
+            <th style="text-align: center; vertical-align: middle;">Nama Dosen</th>
+            <th style="text-align: center; vertical-align: middle;">NIP</th>
+            <th style="text-align: center; vertical-align: middle;">Jumlah Bimbingan</th>
+            <th style="text-align: center; vertical-align: middle;">No Handphone</th>
+            <th style="text-align: center; vertical-align: middle;">Aksi</th>
         </tr>
         @foreach ($dtDosen as $item)
           <tr>

@@ -54,14 +54,30 @@ class KonfirmasiIndustriController extends Controller
         'konfirmasi_perubahan' => 'required',
     ]);
 
-    KonfirmasiIndustri::create([
-        'penjadwalan_id' => $request->penjadwalan_id,
-        'status' => 'diterima',
-        'konfirmasi_perubahan' => $request->konfirmasi_perubahan,
-    ]);
+    // Cari entri dengan penjadwalan_id yang sama dalam database
+    $konfirmasiIndustri = KonfirmasiIndustri::where('penjadwalan_id', $request->penjadwalan_id)->first();
+
+    // Jika ada entri dengan penjadwalan_id yang sama
+    if ($konfirmasiIndustri) {
+        // Bandingkan nilai konfirmasi_perubahan yang ada di database dengan yang baru
+        if ($konfirmasiIndustri->konfirmasi_perubahan != $request->konfirmasi_perubahan) {
+            // Jika berbeda, lakukan pembaruan
+            $konfirmasiIndustri->update([
+                'konfirmasi_perubahan' => $request->konfirmasi_perubahan,
+            ]);
+        }
+    } else {
+        // Jika tidak ada entri dengan penjadwalan_id yang sama, buat entri baru
+        KonfirmasiIndustri::create([
+            'penjadwalan_id' => $request->penjadwalan_id,
+            'status' => 'diterima',
+            'konfirmasi_perubahan' => $request->konfirmasi_perubahan,
+        ]);
+    }
 
     return redirect()->route('konfirmasiIndustri');
 }
+
 
     /**
      * Display the specified resource.

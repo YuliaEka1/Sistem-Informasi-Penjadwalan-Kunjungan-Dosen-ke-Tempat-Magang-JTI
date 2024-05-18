@@ -46,14 +46,20 @@ class PenjadwalanController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $tanggalKunjungans = $request->input('tanggal_kunjungan');
-    $rekomendasiTanggals = $request->input('rekomendasi_tanggal');
-    dd($rekomendasiTanggals);
+{
+    $tanggalKunjungans = $request->input('tanggal_kunjungan');
     $mahasiswaIds = $request->input('mahasiswa_id');
 
     if ($tanggalKunjungans && $mahasiswaIds) {
         foreach ($mahasiswaIds as $index => $mahasiswaId) {
+            // Ambil data mahasiswa berdasarkan ID
+            $mhs = Mahasiswa::find($mahasiswaId);
+
+            // Pastikan data mahasiswa ditemukan
+            if (!$mhs) {
+                return redirect()->back()->with('error', "Mahasiswa dengan ID {$mahasiswaId} tidak ditemukan.");
+            }
+
             // Periksa apakah entri penjadwalan sudah ada untuk mahasiswa yang bersangkutan
             $penjadwalan = Penjadwalan::where('mahasiswa_id', $mahasiswaId)->first();
 
@@ -65,18 +71,18 @@ class PenjadwalanController extends Controller
                 // Jika entri belum ada, buat entri baru
                 $penjadwalanBaru = new Penjadwalan();
                 $penjadwalanBaru->mahasiswa_id = $mahasiswaId;
-                $penjadwalanBaru->rekomendasi_tanggal = \Carbon\Carbon::parse($mhs->tgl_akhir)->subDays(7);
+                $penjadwalanBaru->tanggal_rekomendasi = \Carbon\Carbon::parse($mhs->tgl_akhir)->subDays(7);
                 $penjadwalanBaru->tanggal_kunjungan = $tanggalKunjungans[$index];
                 $penjadwalanBaru->save();
             }
         }
-        (['tanggal_kunjungan' => $tanggalKunjungans]);
-        
+
         return redirect()->route('penjadwalan')->with('tanggal_kunjungan', $tanggalKunjungans);
     } else {
         return redirect()->back();
     }
-    }
+}
+
 
     /**
      * Display the specified resource.
@@ -149,7 +155,6 @@ class PenjadwalanController extends Controller
     
     $tanggalKunjungans = $request->input('tanggal_kunjungan');
     $rekomendasiTanggals = $request->input('rekomendasi_tanggal');
-    dd($rekomendasiTanggals);
     $mahasiswaIds = $request->input('mahasiswa_id');
 
     if ($tanggalKunjungans && $mahasiswaIds) {
@@ -196,6 +201,53 @@ public function cetakPenjadwalan()
 
     return view('Penjadwalan.cetakPenjadwalan', compact('penjadwalan'));
 }
+
+public function kelompok()
+{
+    // Ambil semua data penjadwalan yang terkait dengan konfirmasi industri yang memiliki status "diterima"
+    $penjadwalan = Penjadwalan::whereHas('konfirmasi', function ($query) {
+        $query->where('status', 'diterima');
+    })->get();
+
+    // Mengelompokkan data berdasarkan kota
+    $penjadwalanByCity = $penjadwalan->groupBy('mahasiswa.kota');
+
+    // Membagi setiap kelompok kota menjadi sub-kelompok dengan maksimal 4 item per kelompok
+    $groupedPenjadwalan = [];
+    foreach ($penjadwalanByCity as $city => $penjadwalan) {
+        $chunks = $penjadwalan->chunk(4);
+        foreach ($chunks as $chunk) {
+            $groupedPenjadwalan[] = $chunk;
+        }
+    }
+
+    return view('Penjadwalan.kelompokDosen', compact('groupedPenjadwalan'));
+}
+
+public function cetakKelompok()
+{
+    $penjadwalan = Penjadwalan::whereHas('konfirmasi', function ($query) {
+        $query->where('status', 'diterima');
+    })->get();
+
+    // Kelompokkan data berdasarkan kota
+    $penjadwalanByCity = $penjadwalan->groupBy('mahasiswa.kota');
+    $groupedPenjadwalan = [];
+    foreach ($penjadwalanByCity as $city => $penjadwalan) {
+        $chunks = $penjadwalan->chunk(4);
+        foreach ($chunks as $chunk) {
+            $groupedPenjadwalan[] = $chunk;
+        }
+    }
+
+    // Data untuk view
+    $data = [
+        'groupedPenjadwalan' => $groupedPenjadwalan,
+    ];
+
+    return view('Penjadwalan.cetakKelompok', $data);
+}
+
 
 
 }

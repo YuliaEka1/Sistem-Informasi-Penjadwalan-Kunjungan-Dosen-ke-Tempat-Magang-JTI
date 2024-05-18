@@ -21,12 +21,12 @@
       <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
                             <thead>
                                 <tr>
-                                <th style="text-align: center;">No</th>
-                                <th style="text-align: center;">Nama Dosen Pembimbing</th>
-                                <th style="text-align: center;">Nama Industri</th>
-                                <th style="text-align: center;">Alamat Industri</th>
-                                <th style="text-align: center;">Kota</th>
-                                <th style="text-align: center;">Tanggal Kunjungan</th>    
+                                <th style="text-align: center; vertical-align: middle;">No</th>
+                                <th style="text-align: center; vertical-align: middle;">Nama Dosen Pembimbing</th>
+                                <th style="text-align: center; vertical-align: middle;">Nama Industri</th>
+                                <th style="text-align: center; vertical-align: middle;">Alamat Industri</th>
+                                <th style="text-align: center; vertical-align: middle;">Kota</th>
+                                <th style="text-align: center; vertical-align: middle;">Tanggal Kunjungan</th>    
                                 </tr>
                             </thead>
                             <tbody>

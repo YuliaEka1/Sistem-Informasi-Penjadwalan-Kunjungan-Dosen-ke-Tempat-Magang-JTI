@@ -53,13 +53,13 @@
     <table class="table table-bordered">
     <thead>
         <tr>
-            <th style="text-align: center;">No</th>
-            <th style="text-align: center;">Nama Industri</th>
-            <th style="text-align: center;">Nama Dosen</th>
-            <th style="text-align: center;">Kota</th>
-            <th style="text-align: center;">Skor</th>
-            <th style="text-align: center;">Status</th>
-            <th style="text-align: center;">Aksi</th>
+            <th style="text-align: center; vertical-align: middle;">No</th>
+            <th style="text-align: center; vertical-align: middle;">Nama Industri</th>
+            <th style="text-align: center; vertical-align: middle;">Nama Dosen</th>
+            <th style="text-align: center; vertical-align: middle;">Kota</th>
+            <th style="text-align: center; vertical-align: middle;">Skor</th>
+            <th style="text-align: center; vertical-align: middle;">Status</th>
+            <th style="text-align: center; vertical-align: middle;">Aksi</th>
         </tr>
     </thead>
     <tbody>
