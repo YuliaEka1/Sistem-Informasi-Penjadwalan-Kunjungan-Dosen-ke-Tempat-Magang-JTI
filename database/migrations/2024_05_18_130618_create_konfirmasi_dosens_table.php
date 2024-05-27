@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tempat_magang', function (Blueprint $table) {
+        Schema::create('konfirmasi_dosen', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_industri', 200);
-            $table->string('no_hp', 200);
-            $table->string('alamat_industri', 500);
+            $table->unsignedBigInteger('penjadwalan_id');
+            $table->foreign('penjadwalan_id')->references('id')->on('penjadwalan')->onDelete('cascade');
+            $table->string('status_kunjungan')->nullable();
+
             $table->timestamps();
         });
+
     }
 
     /**
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tempat_magang');
+        Schema::dropIfExists('konfirmasi_dosens');
     }
 };

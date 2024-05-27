@@ -12,4 +12,9 @@ class Dosen extends Model
     protected $fillable = [
         'id', 'nama_dosen', 'nip', 'jumlah_bimbingan', 'no_hp'
     ];
+
+    public function mahasiswa()
+    {
+        return $this->hasMany(Mahasiswa::class);
+    }
 }

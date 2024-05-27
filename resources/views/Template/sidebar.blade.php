@@ -70,23 +70,23 @@
                             </a>
                         </li>
                     @endif
-                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'industri')
+                    <!-- @if(Auth::user()->role == 'admin' || Auth::user()->role == 'industri')
                         <li class="nav-item">
                             <a href="{{ url('/tempatMagang') }}" class="nav-link {{ Request::is('tempatMagang') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Industri</p>
                             </a>
                         </li>
-                    @endif
+                    @endif -->
                 </ul>
             </li>
         @endif
 
-        <!-- Manaj Tempat Magang Menu (Admin only) -->
+        <!-- Manaj Tempat Magang Menu  -->
         @if(Auth::user()->role == 'admin')
             <li class="nav-item {{ isActiveManajMagang() ? 'menu-open' : '' }}">
                 <a href="javascript:void(0);" class="nav-link {{ isActiveManajMagang() ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-copy"></i>
+                    <i class="nav-icon fas fa-building"></i>
                     <p>
                         Manaj Tempat Magang
                         <i class="right fas fa-angle-left"></i>
@@ -109,11 +109,11 @@
             </li>
         @endif
 
-        <!-- Penjadwalan Kunjungan Menu (Admin only) -->
+        <!-- Penjadwalan Kunjungan Menu -->
         @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen' || Auth::user()->role == 'mahasiswa' || Auth::user()->role == 'industri')
             <li class="nav-item {{ isActivePenjadwalan() ? 'menu-open' : '' }}">
                 <a href="javascript:void(0);" class="nav-link {{ isActivePenjadwalan() ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-calendar"></i>
+                    <i class="nav-icon fas fa-calendar-check"></i>
                     <p>
                         Penjadwalan Kunjungan
                         <i class="right fas fa-angle-left"></i>
@@ -148,11 +148,11 @@
             </li>
         @endif
 
-        <!-- Konfirmasi Kunjungan Menu (Admin only) -->
+        <!-- Konfirmasi Kunjungan Menu -->
         @if(Auth::user()->role == 'admin' || Auth::user()->role == 'dosen' || Auth::user()->role == 'mahasiswa' || Auth::user()->role == 'industri')
             <li class="nav-item {{ isActiveKonfirmasi() ? 'menu-open' : '' }}">
                 <a href="javascript:void(0);" class="nav-link {{ isActiveKonfirmasi() ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-check"></i>
+                    <i class="nav-icon fas fa-clipboard-check"></i>
                     <p>
                         Konfirmasi Kunjungan
                         <i class="fas fa-angle-left right"></i>
@@ -176,6 +176,14 @@
                         </li>
                     @endif
                 </ul>
+                @if(Auth::user()->role == 'admin')
+            <li class="nav-item {{ isActiveperubahanIndustri() ? 'menu-open' : '' }}">
+                <a href="{{ url('/perubahanIndustri') }}" class="nav-link {{ Request::is('perubahanIndustri') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-envelope"></i>
+                    <p>Message</p>
+                </a>
+            </li>
+        @endif
             </li>
         @endif
     </ul>

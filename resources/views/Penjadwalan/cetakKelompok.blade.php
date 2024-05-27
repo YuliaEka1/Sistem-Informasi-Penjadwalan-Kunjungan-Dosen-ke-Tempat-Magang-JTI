@@ -29,10 +29,11 @@
     <div class="form-group">
         <p align="center"><b>Penjadwalan Kunjungan Dosen ke Tempat Magang</b></p>
         @php
-            $colors = ['#57A6A1', '#7ABA78', '#BACD92', '#75A47F', '#8DECB4', 
-                        '#57A6A1', '#6DC5D1', '#A0DEFF', '#C0D6E8', '#C4E4FF',
-                        '#FED8B1', '#F6EEC9', '#C7B7A3', '#EADBC8', '#D8AE7E',
-                        '#FFFF80', '#FFDB5C', '#FDDE55'];
+        $colors = ['#76ABAE', '#6DC5D1', '#A0DEFF', '#C0D6E8', '#C4E4FF',
+                          '#57A6A1', '#7ABA78', '#BACD92', '#75A47F', '#8DECB4', 
+                                    '#57A6A1', '#6DC5D1', '#A0DEFF', '#C0D6E8', '#C4E4FF',
+                                    '#FED8B1', '#F6EEC9', '#C7B7A3', '#EADBC8', '#D8AE7E',
+                                    '#FFFF80', '#FFDB5C', '#FDDE55'];
             $alphabet = range('A', 'Z');
         @endphp
         @foreach ($groupedPenjadwalan as $index => $group)

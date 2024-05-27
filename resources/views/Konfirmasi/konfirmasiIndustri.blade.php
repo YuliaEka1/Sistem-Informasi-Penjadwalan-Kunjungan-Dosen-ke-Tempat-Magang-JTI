@@ -45,25 +45,37 @@
       <tr><th class="w-15 text-right">Konfirmasi</th><th class="w-1">
       <td class="w-84"><span class="badge bg-warning">Industri</span></td>
       <div class="card-tools">
+      <form action="{{ route('konfirmasiIndustri.search') }}" method="GET" class="form-inline float-right">
+        <div class="input-group input-group-sm">
+        <input type="text" name="search" class="form-control" placeholder="Cari Industri atau Dosen" value="{{ request()->get('search') }}">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-default">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+</form>
            
 </a>
 </div>
 </div>
 
-<div class="card-body">
     <!-- Small boxes (Stat box) -->
-    <div class="alert" style="background-color: #FFF9D0; color: #524C42;"><i class="fas fa-danger-circle"></i><strong>Perhatian!</strong> Jika Anda Sudah Melakukan Konfirmasi Pada Status <strong>"Terima"</strong>. Anda Tidak Bisa Melakukan Perubahan Pada Aksi Konfirmasi Perubahan Lagi! </a></div>
+    <div class="card-body">
+          <div class="alert" style="background-color: #FFF9D0; color: #524C42;">
+            <i class="fas fa-exclamation-circle"></i><strong>Perhatian!</strong> Jika Anda Sudah Melakukan Konfirmasi Pada Status <strong>"Terima"</strong>. Anda Tidak Bisa Melakukan Aksi Pada Konfirmasi Perubahan Lagi!
+          </div>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th style="text-align: center;">No</th>
-                <th style="text-align: center;">Nama Dosen</th>
-                <th style="text-align: center;">Nama Industri</th>
-                <th style="text-align: center;">Alamat Industri</th>
-                <th style="text-align: center;">Kota</th>
-                <th style="text-align: center;">Tanggal Kunjungan</th>
-                <th style="text-align: center;">Status</th>
-                <th style="text-align: center;">Konfirmasi Perubahan</th>
+                <th style="text-align: center; vertical-align: middle;">No</th>
+                <th style="text-align: center; vertical-align: middle;">Nama Dosen</th>
+                <th style="text-align: center; vertical-align: middle;">Nama Industri</th>
+                <th style="text-align: center; vertical-align: middle;">Alamat Industri</th>
+                <th style="text-align: center; vertical-align: middle;">Kota</th>
+                <th style="text-align: center; vertical-align: middle;">Tanggal Kunjungan</th>
+                <th style="text-align: center; vertical-align: middle;">Status</th>
+                <th style="text-align: center; vertical-align: middle;">Konfirmasi Perubahan</th>
             </tr>
         </thead>
         <tbody>
@@ -90,7 +102,7 @@
     <td style="text-align: center;">
       <!-- Button untuk membuka modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#konfirmasiModal">
-          Perubahan
+      <i class="fas fa-envelope"></i>
       </button>
 
   <!-- Modal -->

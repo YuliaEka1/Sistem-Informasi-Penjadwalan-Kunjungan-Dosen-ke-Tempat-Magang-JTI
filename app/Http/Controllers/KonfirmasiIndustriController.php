@@ -16,6 +16,32 @@ class KonfirmasiIndustriController extends Controller
         $penjadwalan = Penjadwalan::with('mahasiswa')->get();
         return view('Konfirmasi.konfirmasiIndustri', compact('penjadwalan'));
     }
+    public function search(Request $request)
+    {
+        // Mulai query
+        $query = Penjadwalan::with(['mahasiswa.dosen']);
+        
+        // Cek apakah ada parameter pencarian
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            
+            // Tambahkan kondisi pencarian ke query
+            $query->whereHas('mahasiswa.dosen', function ($q) use ($search) {
+                $q->where('nama_dosen', 'like', '%' . $search . '%');
+            })
+            ->orWhereHas('mahasiswa', function ($q) use ($search) {
+                $q->where('nama_industri', 'like', '%' . $search . '%')
+                  ->orWhere('alamat_industri', 'like', '%' . $search . '%')
+                  ->orWhere('kota', 'like', '%' . $search . '%');
+            });
+        }
+
+        // Dapatkan hasil pencarian atau semua data
+        $penjadwalan = $query->get();
+
+        // Return view dengan data
+        return view('Konfirmasi.konfirmasiIndustri', compact('penjadwalan'));
+    }
     
 
     /**
@@ -42,7 +68,7 @@ class KonfirmasiIndustriController extends Controller
             'konfirmasi_perubahan' => $request->konfirmasi_perubahan,
         ]);
     
-        return redirect()->route('konfirmasiIndustri')->with('success', 'Status konfirmasi berhasil diperbarui.');
+        return redirect()->route('konfirmasiIndustri');
     }
 
     // File: KonfirmasiIndustriController.php
@@ -88,6 +114,17 @@ class KonfirmasiIndustriController extends Controller
         return view('konfirmasiIndustri.show', compact('penjadwalan'));
     
     }
+    public function showPerubahan()
+    {
+        $penjadwalan = Penjadwalan::with(['mahasiswa', 'konfirmasi'])
+                        ->whereHas('konfirmasi', function($query) {
+                            $query->whereNotNull('konfirmasi_perubahan');
+                        })
+                        ->get();
+
+        return view('Konfirmasi.perubahanIndustri', compact('penjadwalan'));
+    }
+    
 
     /**
      * Show the form for editing the specified resource.

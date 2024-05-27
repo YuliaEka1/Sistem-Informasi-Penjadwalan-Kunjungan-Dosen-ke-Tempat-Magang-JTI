@@ -50,7 +50,7 @@
       <a href=" {{ route('cetakPenjadwalan') }} " class="btn btn-primary"><i class="fas fa-print"></i></a>         
             </div>
             <div class="card-body">
-    <!-- Small boxes (Stat box) -->
+    <!-- Small boxes (Stat box) --> 
     <table class="table table-bordered">
         <thead>
             <tr>

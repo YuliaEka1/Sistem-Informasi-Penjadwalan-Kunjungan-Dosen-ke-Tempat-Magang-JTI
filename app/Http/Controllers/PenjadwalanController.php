@@ -31,6 +31,30 @@ class PenjadwalanController extends Controller
     return view('penjadwalan.penjadwalan', compact('mahasiswaDirekomendasikan', 'scheduledData'));
 }
 
+public function search(Request $request)
+{
+    $query = Penjadwalan::with(['mahasiswa.dosen']);
+
+    if ($request->has('search')) {
+        $search = $request->input('search');
+        $query->whereHas('mahasiswa.dosen', function ($q) use ($search) {
+            $q->where('nama_dosen', 'like', '%' . $search . '%');
+        })
+        ->orWhereHas('mahasiswa', function ($q) use ($search) {
+            $q->where('nama_mhs', 'like', '%' . $search . '%') 
+              ->orWhere('nama_industri', 'like', '%' . $search . '%')
+              ->orWhere('alamat_industri', 'like', '%' . $search . '%')
+              ->orWhere('kota', 'like', '%' . $search . '%');
+        });
+    }
+
+    $penjadwalan = $query->get();
+    $mahasiswaDirekomendasikan = []; // or some logic to get recommended students if needed
+    $scheduledData = []; // or some logic to get scheduled data if needed
+
+    return view('penjadwalan.penjadwalan', compact('penjadwalan', 'mahasiswaDirekomendasikan', 'scheduledData'));
+}
+
 
 
     /**

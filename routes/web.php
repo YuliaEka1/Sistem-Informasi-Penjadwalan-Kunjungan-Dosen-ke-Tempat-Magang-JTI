@@ -9,6 +9,7 @@ use App\Http\Controllers\RekomendasiIndustriController;
 use App\Http\Controllers\HasilRekomendasiController;
 use App\Http\Controllers\PenjadwalanController;
 use App\Http\Controllers\KonfirmasiIndustriController;
+use App\Http\Controllers\KonfirmasiDosenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,7 @@ Route::get('/editMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::cla
 Route::post('/updateMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::class, 'update'])->name('updateMahasiswa');
 Route::get('/deleteMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::class, 'destroy'])->name('deleteMahasiswa');
 
-//rekomendasi2
+//rekomendasi
 Route::get('/rekomendasiIndustri', [RekomendasiIndustriController::class, 'index'])->name('rekomendasiIndustri.index');
 Route::post('/rekomendasiIndustri/store', [RekomendasiIndustriController::class, 'store'])->name('rekomendasiIndustri.store');
 Route::get('/hasilRekomendasi', [App\Http\Controllers\HasilRekomendasiController::class, 'index'])->name('hasilRekomendasi');
@@ -56,6 +57,7 @@ Route::get('/hasilRekomendasi', [App\Http\Controllers\HasilRekomendasiController
 
 //penjadwalan
 Route::get('/penjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'index'])->name('penjadwalan');
+Route::get('/penjadwalan/search', [PenjadwalanController::class, 'search'])->name('penjadwalan.search');
 Route::post('/simpan-data', [App\Http\Controllers\PenjadwalanController::class, 'simpanData'])->name('simpan-data');
 Route::post('/penjadwalan', [App\Http\Controllers\PenjadwalanController::class, 'store'])->name('penjadwalan.store');
 Route::get('/laporanPenjadwalan', [PenjadwalanController::class, 'laporan'])->name('laporanPenjadwalan');
@@ -65,12 +67,14 @@ Route::get('/cetakKelompok', [App\Http\Controllers\PenjadwalanController::class,
 
 //konfirmasi industri
 Route::get('/konfirmasiIndustri', [App\Http\Controllers\KonfirmasiIndustriController::class, 'index'])->name('konfirmasiIndustri');
+Route::get('/konfirmasiIndustri/search', [App\Http\Controllers\KonfirmasiIndustriController::class, 'search'])->name('konfirmasiIndustri.search');
 Route::post('/konfirmasiIndustri', [App\Http\Controllers\KonfirmasiIndustriController::class, 'store'])->name('konfirmasiIndustri.store');
 Route::post('/konfirmasiIndustri/simpan-data', [App\Http\Controllers\KonfirmasiIndustriController::class, 'simpanData'])->name('konfirmasiIndustri.simpanData');
+Route::get('/perubahanIndustri', [KonfirmasiIndustriController::class, 'showPerubahan'])->name('konfirmasiIndustri.perubahan');
 
 //konfirmasi dosen
-Route::get('/konfirmasiDosen', [App\Http\Controllers\KonfirmasiDosenController::class, 'index'])->name('konfirmasiDosen');
-Route::post('/konfirmasiDosen', [App\Http\Controllers\KonfirmasiDosenController::class, 'store'])->name('konfirmasiDosen.store');
+Route::get('/konfirmasiDosen', [KonfirmasiDosenController::class, 'index'])->name('konfirmasiDosen');
+Route::post('/konfirmasiDosen', [KonfirmasiDosenController::class, 'store'])->name('konfirmasiDosen.store');
 
 
 //role user

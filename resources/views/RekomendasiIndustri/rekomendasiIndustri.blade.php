@@ -102,16 +102,16 @@
         <!-- Pagination Links -->
         <div class="card-footer clearfix">
             <ul class="pagination pagination-sm m-0 float-right">
-                <li class="page-item{{ $rekomendasi->onFirstPage() ? ' disabled' : '' }}">
-                    <a class="page-link" href="{{ $rekomendasi->previousPageUrl() }}"><i class="fas fa-chevron-left"></i></a>
+                <li class="page-item{{ $mahasiswa->onFirstPage() ? ' disabled' : '' }}">
+                    <a class="page-link" href="{{ $mahasiswa->previousPageUrl() }}"><i class="fas fa-chevron-left"></i></a>
                 </li>
-                @for ($i = 1; $i <= $rekomendasi->lastPage(); $i++)
-                    <li class="page-item{{ $rekomendasi->currentPage() === $i ? ' active' : '' }}">
-                        <a class="page-link" href="{{ $rekomendasi->url($i) }}">{{ $i }}</a>
+                @for ($i = 1; $i <= $mahasiswa->lastPage(); $i++)
+                    <li class="page-item{{ $mahasiswa->currentPage() === $i ? ' active' : '' }}">
+                        <a class="page-link" href="{{ $mahasiswa->url($i) }}">{{ $i }}</a>
                     </li>
                 @endfor
-                <li class="page-item{{ $rekomendasi->hasMorePages() ? '' : ' disabled' }}">
-                    <a class="page-link" href="{{ $rekomendasi->nextPageUrl() }}"><i class="fas fa-chevron-right"></i></a>
+                <li class="page-item{{ $mahasiswa->hasMorePages() ? '' : ' disabled' }}">
+                    <a class="page-link" href="{{ $mahasiswa->nextPageUrl() }}"><i class="fas fa-chevron-right"></i></a>
                 </li>
             </ul>
         </div>

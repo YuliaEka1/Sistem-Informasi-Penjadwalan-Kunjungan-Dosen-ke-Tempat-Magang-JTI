@@ -46,19 +46,29 @@
       <div class="card-header">
       <tr><th class="w-15 text-right">Kelola</th><th class="w-1">
       <td class="w-84"><span class="badge bg-warning">Penjadwalan</span></td>
+      <form action="{{ route('penjadwalan.search') }}" method="GET" class="form-inline float-right">
+        <div class="input-group input-group-sm">
+        <input type="text" name="search" class="form-control" placeholder="Search" value="{{ request()->get('search') }}">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-default">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+</form>
 
       <div class="card-body">
           <!-- Di tampilan, Anda dapat menggunakan Blade atau PHP untuk menampilkan data -->
       <table class="table table-bordered">
           <thead>
-              <tr>
+              <tr> 
                   <th style="text-align: center; vertical-align: middle;">No</th>
                   <th style="text-align: center; vertical-align: middle;">Nama Dosen Pembimbing</th>
                   <th style="text-align: center; vertical-align: middle;">Nama Industri</th>
                   <th style="text-align: center; vertical-align: middle;">Alamat Industri</th>
                   <th style="text-align: center; vertical-align: middle;">Kota</th>
                   <th style="text-align: center; vertical-align: middle;">Tanggal Akhir</th>
-                  <th style="text-align: center; vertical-align: middle;">Tanggal Rekomendasi</th>
+                  <th style="text-align: center; vertical-align: middle;">Rekomendasi Tanggal Kunjungan</th>
                   <th style="text-align: center; vertical-align: middle;">Tanggal Kunjungan</th>
               </tr>
           </thead>

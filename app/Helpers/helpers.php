@@ -41,6 +41,13 @@ if (!function_exists('isActiveKonfirmasi')) {
     }
 }
 
+if (!function_exists('isActiveperubahanIndustri')) {
+    function isActiveperubahanIndustri()
+    {
+        return Request::is('perubahanIndustri');
+    }
+}
+
 
 if (!function_exists('isActiveCalendar')) {
     function isActiveCalendar()

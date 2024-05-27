@@ -7,6 +7,7 @@ use App\Models\KonfirmasiIndustri;
 use App\Models\KonfirmasiDosen;
 use App\Models\Mahasiswa;
 use App\Models\Dosen;
+use App\Models\Penjadwalan;
 
 class KonfirmasiDosenController extends Controller
 {
@@ -16,16 +17,13 @@ class KonfirmasiDosenController extends Controller
     public function index()
     {
         
-        $konfirmasiDosen = KonfirmasiDosen::with('konfirmasiIndustri.mahasiswa.dosen')
-        ->whereHas('konfirmasiIndustri', function ($query) {
-            $query->where('status', 'diterima');
-        })->get();
-
-    // Debug: Log the retrieved data
-    \Log::info($konfirmasiDosen);
+        $konfirmasiDosen = KonfirmasiIndustri::where('status', 'diterima')
+        ->with('penjadwalan.mahasiswa.dosen')
+        ->get();
 
     return view('Konfirmasi.konfirmasiDosen', compact('konfirmasiDosen'));
 }
+
 
 
     /**
@@ -40,19 +38,20 @@ class KonfirmasiDosenController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'konfirmasi_industri_id' => 'required', 
-        ]);
-    
-        // Buat entri baru di tabel KonfirmasiDosen
-        KonfirmasiDosen::create([
-            'konfirmasi_industri_id' => $request->konfirmasi_industri_id,
-            'status' => 'dikonfirmasi', 
-        ]);
-    
-        return redirect()->route('konfirmasiDosen')->with('success', 'Status konfirmasi berhasil diperbarui.');
-    }
+{
+   
+    $request->validate([
+        'penjadwalan_id' => 'required|exists:penjadwalans,id', 
+    ]);
+
+    KonfirmasiDosen::create([
+        'penjadwalan_id' => $request->penjadwalan_id,
+        'status_kunjungan' => 'selesai',
+    ]);
+
+    return redirect()->route('konfirmasiDosen');
+}
+
 
     /**
      * Display the specified resource.

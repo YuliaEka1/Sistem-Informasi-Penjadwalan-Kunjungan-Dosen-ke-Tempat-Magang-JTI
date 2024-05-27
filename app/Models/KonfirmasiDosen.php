@@ -8,26 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class KonfirmasiDosen extends Model
 {
     protected $table = 'konfirmasi_dosen';
+
     protected $fillable = [
-        'konfirmasi_industri_id',
-        'status',
+        'penjadwalan_id',
+        'status_kunjungan',
     ];
 
-    public function konfirmasiIndustri()
-    {
-        return $this->belongsTo(KonfirmasiIndustri::class);
-    }
-
-    // Relasi dengan model Penjadwalan
     public function penjadwalan()
     {
-        return $this->belongsTo(Penjadwalan::class);
+        return $this->belongsTo(Penjadwalan::class, 'penjadwalan_id');
     }
 
-    // Relasi dengan model Mahasiswa
-    public function mahasiswa()
+    public function dosen()
     {
-        return $this->belongsTo(Mahasiswa::class);
+        return $this->belongsTo(Dosen::class, 'dosen_id');
     }
-    
 }

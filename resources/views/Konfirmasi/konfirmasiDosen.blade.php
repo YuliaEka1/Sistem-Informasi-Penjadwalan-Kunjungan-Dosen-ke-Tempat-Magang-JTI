@@ -41,62 +41,87 @@
     <!-- Main content -->
     <section class="content">
       <div class="card card-info card-outline">
-      <div class="card-header">
-        <h3 class="card-title">Daftar Konfirmasi Dosen</h3>
-      </div>
-      <div class="card-body">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th style="text-align: center;">No</th>
-              <th style="text-align: center;">Nama Dosen</th>
-              <th style="text-align: center;">Nama Industri</th>
-              <th style="text-align: center;">Alamat Industri</th>
-              <th style="text-align: center;">Kota</th>
-              <th style="text-align: center;">Tanggal Kunjungan</th>
-              <th style="text-align: center;">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-          @foreach ($konfirmasiDosen as $konfirmasi)
+        <div class="card-header">
+          <h3 class="card-title">Daftar Konfirmasi Dosen</h3>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th style="text-align: center; vertical-align: middle;">No</th>
+                <th style="text-align: center; vertical-align: middle;">Nama Dosen</th>
+                <th style="text-align: center; vertical-align: middle;">Nama Industri</th>
+                <th style="text-align: center; vertical-align: middle;">Alamat Industri</th>
+                <th style="text-align: center; vertical-align: middle;">Kota</th>
+                <th style="text-align: center; vertical-align: middle;">Tanggal Kunjungan</th>
+                <th style="text-align: center; vertical-align: middle;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach($konfirmasiDosen as $konfirmasi)
     <tr>
         <td style="text-align: center;">{{ $loop->iteration }}</td>
-        
-        <td>{{ optional(optional($konfirmasi->konfirmasiIndustri->mahasiswa)->dosen)->nama_dosen ?? '' }}</td>
-        <td>{{ optional($konfirmasi->konfirmasiIndustri->mahasiswa)->nama_industri ?? '' }}</td>
-        <td>{{ optional($konfirmasi->konfirmasiIndustri->mahasiswa)->alamat_industri ?? '' }}</td>
-        <td style="text-align: center;">{{ optional($konfirmasi->konfirmasiIndustri->mahasiswa)->kota ?? '' }}</td>
-        <td style="text-align: center;">
-            {{ optional($konfirmasi->konfirmasiIndustri->tanggal_kunjungan)->format('d-m-Y') ?? '' }}
-        </td>
-
-        <td style="text-align: center;">
-            @if ($konfirmasi->status !== 'dikonfirmasi')
-                <form action="{{ route('konfirmasiDosen.store') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="konfirmasi_industri_id" value="{{ $konfirmasi->konfirmasiIndustri->id }}">
-                    <button type="submit" class="btn btn-success" onclick="return confirm('Anda yakin ingin mengkonfirmasi?')">Konfirmasi</button>
-                </form>
+        <td>
+            @if($konfirmasi->penjadwalan && $konfirmasi->penjadwalan->mahasiswa && $konfirmasi->penjadwalan->mahasiswa->dosen)
+                {{ $konfirmasi->penjadwalan->mahasiswa->dosen->nama_dosen }}
             @else
-                <!-- Tombol dinonaktifkan jika sudah ada konfirmasi -->
-                <button type="button" class="btn btn-success" >Konfirmasi</button>
+                Data tidak tersedia
             @endif
         </td>
+        <td>
+            @if($konfirmasi->penjadwalan && $konfirmasi->penjadwalan->mahasiswa)
+                {{ $konfirmasi->penjadwalan->mahasiswa->nama_industri }}
+            @else
+                Data tidak tersedia
+            @endif
+        </td>
+        <td>
+            @if($konfirmasi->penjadwalan && $konfirmasi->penjadwalan->mahasiswa)
+                {{ $konfirmasi->penjadwalan->mahasiswa->alamat_industri }}
+            @else
+                Data tidak tersedia
+            @endif
+        </td>
+        <td style="text-align: center;">
+            @if($konfirmasi->penjadwalan && $konfirmasi->penjadwalan->mahasiswa)
+                {{ $konfirmasi->penjadwalan->mahasiswa->kota }}
+            @else
+                Data tidak tersedia
+            @endif
+        </td>
+        <td style="text-align: center;">
+            @if($konfirmasi->penjadwalan)
+                {{ \Carbon\Carbon::parse($konfirmasi->penjadwalan->tanggal_kunjungan)->format('d-m-Y') }}
+            @else
+                Data tidak tersedia
+            @endif
+        </td>
+        <td style="text-align: center;">
+          @if ($konfirmasi->penjadwalan && !$konfirmasi->penjadwalan->konfirmasiDosen)
+              <form action="{{ route('konfirmasiDosen.store') }}" method="POST" onsubmit="return confirm('Anda yakin sudah menyelesaikan kunjungan?')">
+                  @csrf
+                  <input type="hidden" name="penjadwalan_id" value="{{ $konfirmasi->penjadwalan->id }}">
+                  <button type="submit" class="btn btn-success">Selesai</button>
+              </form>
+          @else
+              <button type="button" class="btn btn-success">Selesai</button>
+          @endif
+      </td>
     </tr>
 @endforeach
 
 
-
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section> 
     <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      @include('Template.footer')
-    </footer>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    @include('Template.footer')
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
