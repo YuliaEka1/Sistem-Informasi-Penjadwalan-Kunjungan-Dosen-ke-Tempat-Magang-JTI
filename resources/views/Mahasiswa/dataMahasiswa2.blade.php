@@ -51,9 +51,6 @@
                             <th class="w-1">
                             <td class="w-84"><span class="badge bg-warning">Magang</span></td>
                             <div class="card-tools">
-
-                                <a href="{{ route('createMahasiswa') }}" class="btn btn-success">Tambah Data <i
-                                        class="fas fa-plus-square"></i></a>
                             </div>
                     </div>
 
@@ -94,35 +91,10 @@
                                                     data-placement="left" data-original-title="Detail Data">
                                                     <i class="fa fa-list fa-sm"></i>
                                                 </a>
-                                                <a href="{{ route('editMahasiswa', ['id' => $item->id]) }}"
+                                                <a href="{{ route('editMahasiswa2', ['id' => $item->id]) }}"
                                                     class="ajax_modal btn btn-xs btn-warning tooltips text-secondary"
                                                     data-placement="left" data-original-title="Edit Data"><i
                                                         class="fa fa-edit"></i></a>
-                                                <a href="{{ route('deleteMahasiswa', ['id' => $item->id]) }}"
-                                                    class="ajax_modal btn btn-xs btn-danger tooltips text-light delete-confirm"
-                                                    data-placement="left" data-original-title="Hapus Data"><i
-                                                        class="fa fa-trash"></i></a>
-                                                <script>
-                                                    $(document).on('click', '.delete-confirm', function(e) {
-                                                        e.preventDefault();
-                                                        var url = $(this).attr('href');
-                                                        swal({
-                                                                title: "Apakah Anda Yakin?",
-                                                                text: "Data ini akan dihapus!",
-                                                                icon: "warning",
-                                                                buttons: true,
-                                                                dangerMode: true,
-                                                            })
-                                                            .then((willDelete) => {
-                                                                if (willDelete) {
-                                                                    window.location.href =
-                                                                        url; // Jika pengguna menekan tombol "Ya, Hapus", maka arahkan ke URL penghapusan
-                                                                } else {
-                                                                    swal("Data Anda aman!");
-                                                                }
-                                                            });
-                                                    });
-                                                </script>
 
                                             </div>
                                         </td>
@@ -254,6 +226,7 @@
                                                                 Dosen Pembimbing:</label>
                                                             <div class="col-sm-10">
                                                             {{ $item->dosen->nama_dosen ?? '-' }}
+
                                                             </div>
                                                         </div>
                                                         <hr>
@@ -289,23 +262,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <!-- Pagination Links -->
-                        <div class="card-footer clearfix">
-                            <ul class="pagination pagination-sm m-0 float-right">
-                                <li class="page-item"><a class="page-link"
-                                        href="{{ $dtMahasiswa->previousPageUrl() }}"><i
-                                            class="fas fa-chevron-left"></i></a></li>
-                                @for ($i = 1; $i <= $dtMahasiswa->lastPage(); $i++)
-                                    <li class="page-item{{ $dtMahasiswa->currentPage() === $i ? ' active' : '' }}">
-                                        <a class="page-link"
-                                            href="{{ $dtMahasiswa->url($i) }}">{{ $i }}</a>
-                                    </li>
-                                @endfor
-                                <li class="page-item"><a class="page-link"
-                                        href="{{ $dtMahasiswa->nextPageUrl() }}"><i
-                                            class="fas fa-chevron-right"></i></a></li>
-                            </ul>
-                        </div>
+                       
 
                     </div>
                 </div>

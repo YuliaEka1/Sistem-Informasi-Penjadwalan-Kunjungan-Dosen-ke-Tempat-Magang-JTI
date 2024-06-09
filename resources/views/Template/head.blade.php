@@ -22,3 +22,7 @@
   <link rel="stylesheet" href="{{ asset('admin/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.min.css') }}">
+  <!-- Toastr CSS -->
+<link rel="stylesheet" href="{{ asset('admin/plugins/toastr/toastr.min.css') }}">
+<!-- Toastr JS -->
+<script src="{{ asset('admin/plugins/toastr/toastr.min.js') }}"></script>

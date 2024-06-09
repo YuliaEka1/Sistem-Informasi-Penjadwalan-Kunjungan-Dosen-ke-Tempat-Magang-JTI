@@ -50,11 +50,6 @@
                             <th class="w-15 text-right">Daftar Dosen</th>
                             <th class="w-1">
                             <td class="w-84"><span class="badge bg-warning">Pembimbing</span></td>
-                            <div class="card-tools">
-
-                                <a href="{{ route('createDosen') }}" class="btn btn-success">Tambah Data <i
-                                        class="fas fa-plus-square"></i></a>
-                            </div>
                     </div>
 
                     <div class="card-body">
@@ -79,16 +74,10 @@
                                     <td style="text-align: center;">{{ $item->no_hp }}</td>
                                     <td>
                                         <div class="text-center">
-                                            <a href="{{ route('editDosen', ['id' => $item->id]) }}"
+                                            <a href="{{ route('editDosen2', ['id' => $item->id]) }}"
                                                 class="ajax_modal btn btn-xs btn-warning tooltips text-secondary"
                                                 data-placement="left" data-original-title="Edit Data">
                                                 <i class="fa fa-edit"></i>
-                                            </a>
-                   
-                                            <a href="{{ route('deleteDosen', ['id' => $item->id]) }}"
-                                                class="ajax_modal btn btn-xs btn-danger tooltips text-light"
-                                                data-placement="left" data-original-title="Hapus Data">
-                                                <i class="fa fa-trash"></i>
                                             </a>
                                         </div>
                                     </td>
@@ -96,20 +85,6 @@
                             @endforeach
 
                         </table>
-                        <!-- Pagination Links -->
-                        <div class="card-footer clearfix">
-                            <ul class="pagination pagination-sm m-0 float-right">
-                                <li class="page-item"><a class="page-link" href="{{ $dtDosen->previousPageUrl() }}"><i
-                                            class="fas fa-chevron-left"></i></a></li>
-                                @for ($i = 1; $i <= $dtDosen->lastPage(); $i++)
-                                    <li class="page-item{{ $dtDosen->currentPage() === $i ? ' active' : '' }}">
-                                        <a class="page-link" href="{{ $dtDosen->url($i) }}">{{ $i }}</a>
-                                    </li>
-                                @endfor
-                                <li class="page-item"><a class="page-link" href="{{ $dtDosen->nextPageUrl() }}"><i
-                                            class="fas fa-chevron-right"></i></a></li>
-                            </ul>
-                        </div>
 
                     </div>
                 </div>

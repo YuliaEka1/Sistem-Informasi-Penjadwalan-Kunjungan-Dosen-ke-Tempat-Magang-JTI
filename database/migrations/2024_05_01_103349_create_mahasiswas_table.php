@@ -13,21 +13,20 @@ return new class extends Migration
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_mhs', 100);
+            $table->string('nama_mhs');
             $table->string('nama_mhs_2')->nullable();
             $table->string('nama_mhs_3')->nullable();
             $table->string('nim', 20);
             $table->string('nim_2')->nullable();
             $table->string('nim_3')->nullable();
-            $table->string('kelas', 100);
-            $table->integer('durasi_magang'); // Misal, menggunakan integer untuk durasi magang
-            $table->date('tgl_awal'); // Kolom tgl_awal sebagai tipe tanggal
-            $table->date('tgl_akhir'); // Kolom tgl_akhir sebagai tipe tanggal
-            $table->string('kategori_magang', 100);
-            $table->string('jenis_magang', 100);
-            $table->string('nama_industri', 100);
+            $table->integer('durasi_magang'); 
+            $table->date('tgl_awal'); 
+            $table->date('tgl_akhir'); 
+            $table->string('kategori_magang');
+            $table->string('jenis_magang');
+            $table->string('nama_industri');
             $table->string('no_pemlap', 20);
-            $table->bigInteger('dosen_id');
+            $table->bigInteger('dosen_id')->nullable();
             $table->string('no_mahasiswa', 20);
             $table->string('alamat_industri'); 
             $table->string('kota', 100);

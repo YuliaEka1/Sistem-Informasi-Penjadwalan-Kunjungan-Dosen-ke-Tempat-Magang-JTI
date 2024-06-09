@@ -21,11 +21,13 @@ class Penjadwalan extends Model
     {
         return $this->belongsTo(Mahasiswa::class);
     }
+
     // Relasi dengan model KonfirmasiIndustri
     public function konfirmasi()
     {
         return $this->hasOne(KonfirmasiIndustri::class, 'penjadwalan_id');
     }
+
     // Relasi dengan model KonfirmasiDosen
     public function konfirmasiDosen()
     {

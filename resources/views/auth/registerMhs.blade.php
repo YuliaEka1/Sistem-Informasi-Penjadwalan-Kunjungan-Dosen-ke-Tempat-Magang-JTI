@@ -5,67 +5,22 @@
     @include('Template.head')
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
-
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('admin/dist/img/Logo.png') }}" alt="Logo" height="60"
-                width="60">
+<body class="hold-transition register-page">
+<div class="register-box" style="width: 700px;">
+        <div class="register-logo">
+            <a href="#"><b>Register</b> Mahasiswa Magang</a>
         </div>
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg"></p>
 
-        <!-- Navbar -->
-        @include('Template.navbar')
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        @include('Template.sidebar')
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-@include('Template.alert')
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Data Mahasiswa</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Data Mahasiswa </li>
-                            </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
-
-            <!-- Main content -->
-            <section class="content">
-                <div class="card card-info card-outline">
-                    <div class="card-header">
-                        <tr>
-                            <th class="w-15 text-right">Daftar Mahasiswa</th>
-                            <th class="w-1">
-                            <td class="w-84"><span class="badge bg-warning">Magang</span></td>
-                            <div class="card-tools">
-
-
-                            </div>
-                    </div>
-
-                    <div class="card-body">
-                        <!-- Small boxes (Stat box) -->
-                        <!-- Form -->
-                        <form id="mahasiswaForm" action="{{ route('simpanMahasiswa') }}" method="post">
+                <form id="mahasiswaForm" action="{{ route('simpanMahasiswa2') }}" method="post">
                             @csrf
                             <div class="form-group row">
                                 <label for="email" class="col-sm-2 col-form-label">Email:</label>
                                 <div class="col-sm-10">
                                     <input type="email" id="email" name="email" value="{{ old('email') }}"
-                                        class="form-control" placeholder="Email">
+                                        class="form-control" placeholder="Email Polinema @student.polinema.ac.id">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -210,33 +165,13 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-10 offset-sm-2">
-                                <button type="submit" class="btn btn-success toastsDefaultSuccess">Submit</button>
+                                <button type="submit" class="btn btn-primary toastsDefaultSuccess">Daftar</button>
                                 </div>
                             </div>
                         </form>
-
-                    </div>
-                    <!-- /.row -->
-                    <!-- Main row -->
-                    <!-- /.row (main row) -->
-                    <!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
+            </div>
         </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            @include('Template.footer')
-        </footer>
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
     </div>
-    <!-- ./wrapper -->
-
-    <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Toastr JS -->
@@ -244,37 +179,39 @@
     <!-- Custom Script -->
     <script>
         $(document).ready(function() {
-            $('#mahasiswaForm').on('submit', function(event) {
-                event.preventDefault(); 
+    $('#mahasiswaForm').on('submit', function(event) {
+        event.preventDefault(); // Mencegah pengiriman formulir secara default
 
-                // permintaan AJAX
-                $.ajax({
-                    url: $(this).attr('action'), // URL aksi form
-                    method: $(this).attr('method'), // Metode form (POST)
-                    data: $(this).serialize(), // Data form
-                    success: function(response) {
-                        // Tampilkan pesan sukses Toastr
-                        toastr.success('Data telah berhasil disimpan!', 'Sukses', {
-                            closeButton: true,
-                            timeOut: 1000, // Waktu tampil (1 detik)
-                            extendedTimeOut: 1000, // Waktu tambahan jika diarahkan kursor (1 detik)
-                            onHidden: function() {
-                                window.location.href = "{{ route('dataMahasiswa') }}"; // Redirect ke halaman dataDosen
-                            }
-                        });
-                    },
-                    error: function(xhr) {
-                        // Tampilkan pesan error Toastr
-                        toastr.error('Terjadi kesalahan saat menyimpan form.', 'Error', {
-                            closeButton: true,
-                            timeOut: 2000, // Waktu tampil (2 detik)
-                            extendedTimeOut: 1000 // Waktu tambahan jika diarahkan kursor (1 detik)
-                        });
+        // Contoh permintaan AJAX
+        $.ajax({
+            url: $(this).attr('action'), // URL aksi form
+            method: $(this).attr('method'), // Metode form (POST)
+            data: $(this).serialize(), // Data form
+            success: function(response) {
+                // Tampilkan pesan sukses Toastr
+                toastr.success('Data telah berhasil disimpan!', 'Sukses', {
+                    closeButton: true,
+                    timeOut: 1000, // Waktu tampil (1 detik)
+                    extendedTimeOut: 1000, // Waktu tambahan jika diarahkan kursor (1 detik)
+                    onHidden: function() {
+                        window.location.href = "{{ route('login') }}"; // Redirect ke halaman dataMahasiswa2
                     }
                 });
-            });
+            },
+            error: function(xhr) {
+                // Tampilkan pesan error Toastr
+                toastr.error('Terjadi kesalahan saat menyimpan form.', 'Error', {
+                    closeButton: true,
+                    timeOut: 2000, // Waktu tampil (2 detik)
+                    extendedTimeOut: 1000 // Waktu tambahan jika diarahkan kursor (1 detik)
+                });
+            }
         });
+    });
+});
+
     </script>
+
     @include('Template.scripts')
 </body>
 

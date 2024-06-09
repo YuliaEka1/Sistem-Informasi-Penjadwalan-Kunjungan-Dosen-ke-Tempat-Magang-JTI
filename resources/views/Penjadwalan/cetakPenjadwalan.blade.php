@@ -33,7 +33,7 @@
                             @foreach ($penjadwalan as $item)
                               <tr>
                                   <td style="text-align: center;">{{ $loop->iteration }}</td>
-                                  <td>{{ optional($item->mahasiswa->dosen)->nama_dosen }}</td>
+                                  <td>{{ optional($item->mahasiswa->dosen)->nama_dosen ?? '-' }}</td>
                                   <td>{{ $item->mahasiswa->nama_industri }}</td>
                                   <td>{{ $item->mahasiswa->alamat_industri }}</td>
                                   <td style="text-align: center;">{{ $item->mahasiswa->kota }}</td>

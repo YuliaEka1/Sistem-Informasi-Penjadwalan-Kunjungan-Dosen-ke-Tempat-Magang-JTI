@@ -15,7 +15,7 @@ if (!function_exists('isActiveDashboard')) {
 if (!function_exists('isActiveManajData')) {
     function isActiveManajData()
     {
-        return Request::is('dataDosen*') || Request::is('dataMahasiswa*') || Request::is('tempatMagang*');
+        return Request::is('dataDosen*') || Request::is('dataDosen2*') ||Request::is('dataMahasiswa*') || Request::is('dtMahasiswa*');
     }
 }
 
@@ -23,6 +23,13 @@ if (!function_exists('isActiveManajMagang')) {
     function isActiveManajMagang()
     {
         return Request::is('rekomendasiIndustri*') || Request::is('hasilRekomendasi*');
+    }
+}
+
+if (!function_exists('isActiveKonfirmasiIndustri')) {
+    function isActiveKonfirmasiIndustri()
+    {
+        return Request::is('konfirmasiIndustri');
     }
 }
 
@@ -37,7 +44,7 @@ if (!function_exists('isActivePenjadwalan')) {
 if (!function_exists('isActiveKonfirmasi')) {
     function isActiveKonfirmasi()
     {
-        return Request::is('konfirmasiDosen*') || Request::is('konfirmasiIndustri*');
+        return Request::is('konfirmasiDosen') ;
     }
 }
 

@@ -16,6 +16,7 @@ class RekomendasiIndustri extends Model
         'dosen_score',
         'dana_kunjungan_score',
         'kunjungan_score',
+        'mou_score',
         'total_score',
         'status'
     ];

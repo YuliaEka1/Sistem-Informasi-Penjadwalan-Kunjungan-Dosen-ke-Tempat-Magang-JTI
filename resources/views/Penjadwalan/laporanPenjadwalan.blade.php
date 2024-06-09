@@ -24,6 +24,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
+@include('Template.alert')
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -66,7 +67,7 @@
             @foreach ($penjadwalan as $index => $penjadwalan)
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ optional($penjadwalan->mahasiswa->dosen)->nama_dosen }}</td>
+                    <td>{{ optional($penjadwalan->mahasiswa->dosen)->nama_dosen ?? '-' }}</td>
                     <td>{{ $penjadwalan->mahasiswa->nama_industri }}</td>
                     <td>{{ $penjadwalan->mahasiswa->alamat_industri }}</td>
                     <td>{{ $penjadwalan->mahasiswa->kota }}</td>

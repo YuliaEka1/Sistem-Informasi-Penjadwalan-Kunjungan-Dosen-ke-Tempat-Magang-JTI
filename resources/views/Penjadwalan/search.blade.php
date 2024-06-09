@@ -90,7 +90,7 @@
                                                     @foreach ($mahasiswa as $mhs)
                                                         <tr>
                                                             <td style="text-align: center;">{{ $i++ }}</td>
-                                                            <td>{{ $mhs->dosen->nama_dosen ?? '-' }}</td>
+                                                            <td>{{ $mhs->dosen->nama_dosen }}</td>
                                                             <td>{{ $mhs->nama_industri }}</td>
                                                             <td>{{ $mhs->alamat_industri }}</td>
                                                             <td style="text-align: center;">{{ $kota }}</td>
@@ -102,14 +102,10 @@
                                                             </td>
                                                             <!-- Tambahkan input field untuk tanggal kunjungan yang dapat diedit -->
                                                             <td style="text-align: center;">
-                                                                <input type="date" name="tanggal_kunjungan[{{ $mhs->id }}]"
-                                                                    value="{{ ($mhs->penjadwalan ? $mhs->penjadwalan->tanggal_kunjungan : (old('tanggal_kunjungan') ? old('tanggal_kunjungan')[$mhs->id] : '')) }}"
+                                                                <input type="date" name="tanggal_kunjungan[]"
+                                                                    value="{{ session('tanggal_kunjungan')[$loop->index] ?? 'dd/mm/yyyy' }}"
                                                                     placeholder="dd/mm/yyyy">
                                                             </td>
-
-                                                            <!-- Tambahkan input hidden untuk data mahasiswa -->
-                                                            <input type="hidden" name="mahasiswa_id[]"
-                                                                value="{{ $mhs->id }}">
                                                         </tr>
                                                     @endforeach
                                                 @endforeach

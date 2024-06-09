@@ -64,11 +64,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            
-        ]);
+        $email = $data['email'];
+    if (str_ends_with($email, '@student.polinema.ac.id')) {
+        $role = 'mahasiswa';
+    } elseif (str_ends_with($email, '@polinema.ac.id')) {
+        $role = 'dosen';
+    } elseif (str_ends_with($email, '@gmail.com')) {
+        $role = 'industri';
+    } else {
+        // Jika domain email tidak valid
+        throw new \Exception('Email tidak valid untuk peran yang tersedia');
+    }
+
+    // Buat pengguna baru dengan peran yang ditentukan
+    return User::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+        'role' => $role,
+    ]);
     }
 }

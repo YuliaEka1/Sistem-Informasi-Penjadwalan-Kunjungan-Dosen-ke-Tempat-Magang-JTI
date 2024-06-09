@@ -55,7 +55,7 @@
                     @foreach ($group as $penjadwalan)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ optional($penjadwalan->mahasiswa->dosen)->nama_dosen }}</td>
+                            <td>{{ optional($penjadwalan->mahasiswa->dosen)->nama_dosen ?? '-' }}</td>
                             <td>{{ $penjadwalan->mahasiswa->nama_industri }}</td>
                             <td>{{ $penjadwalan->mahasiswa->alamat_industri }}</td>
                             <td>{{ $penjadwalan->mahasiswa->kota }}</td>

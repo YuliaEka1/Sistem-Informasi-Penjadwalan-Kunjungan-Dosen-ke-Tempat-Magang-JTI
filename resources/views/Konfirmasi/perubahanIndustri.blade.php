@@ -23,6 +23,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
+@include('Template.alert')
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -43,30 +44,32 @@
     <section class="content">
       <div class="card card-info card-outline">
         <div class="card-header">
-          <h3 class="card-title">Message Daftar Perubahan</h3>
+          <h3 class="card-title"> Daftar Perubahan Tanggal Oleh Industri</h3>
         </div>
 
         <div class="card-body">
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th style="text-align: center;">No</th>
-                <th style="text-align: center;">Nama Industri</th>
-                <th style="text-align: center;">Alamat Industri</th>
-                <th style="text-align: center;">Kota</th>
-                <th style="text-align: center;">Tanggal Kunjungan</th>
-                <th style="text-align: center;">Konfirmasi Perubahan</th>
+                <th style="text-align: center; vertical-align: middle;">No</th>
+                <th style="text-align: center; vertical-align: middle;">Nama Dosen</th>
+                <th style="text-align: center; vertical-align: middle;">Nama Industri</th>
+                <th style="text-align: center; vertical-align: middle;">Alamat Industri</th>
+                <th style="text-align: center; vertical-align: middle;">Kota</th>
+                <th style="text-align: center; vertical-align: middle;">Tanggal Kunjungan</th>
+                <th style="text-align: center; vertical-align: middle;">Perubahan Tanggal</th>
               </tr>
             </thead>
             <tbody>
             @foreach ($penjadwalan as $jadwal)
               <tr>
                 <td style="text-align: center;">{{ $loop->iteration }}</td>
+                <td>{{ optional($jadwal->mahasiswa->dosen)->nama_dosen ?? '-' }}</td>
                 <td>{{ $jadwal->mahasiswa->nama_industri }}</td>
                 <td>{{ $jadwal->mahasiswa->alamat_industri }}</td>
                 <td style="text-align: center;">{{ $jadwal->mahasiswa->kota }}</td>
                 <td style="text-align: center;">{{ \Carbon\Carbon::parse($jadwal->tanggal_kunjungan)->format('d-m-Y') }}</td>
-                <td>{{ $jadwal->konfirmasi->konfirmasi_perubahan }}</td>
+                <td style="text-align: center;">{{ \Carbon\Carbon::parse($jadwal->konfirmasi->konfirmasi_perubahan)->format('d-m-Y') }}</td>
               </tr>
             @endforeach
             </tbody>

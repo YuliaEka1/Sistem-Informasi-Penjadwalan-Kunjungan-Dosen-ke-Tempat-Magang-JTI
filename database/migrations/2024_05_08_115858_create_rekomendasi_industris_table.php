@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('dosen_score')->nullable();
             $table->integer('dana_kunjungan_score')->nullable();
             $table->integer('kunjungan_score')->nullable();
+            $table->integer('mou_score')->nullable();
             $table->integer('total_score')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

@@ -16,13 +16,24 @@ class KonfirmasiDosenController extends Controller
      */
     public function index()
     {
-        
-        $konfirmasiDosen = KonfirmasiIndustri::where('status', 'diterima')
-        ->with('penjadwalan.mahasiswa.dosen')
-        ->get();
+        $user = auth()->user();
 
-    return view('Konfirmasi.konfirmasiDosen', compact('konfirmasiDosen'));
-}
+        if ($user->role != 'admin') {
+            $query = KonfirmasiIndustri::where('status', 'diterima')
+                ->join('penjadwalan', 'penjadwalan.id', 'konfirmasi_industri.penjadwalan_id')
+                ->join('mahasiswa', 'penjadwalan.mahasiswa_id', 'mahasiswa.id')
+                ->join('dosen', 'dosen.id', 'mahasiswa.dosen_id')
+                ->where('dosen.user_id', $user->id)->select('konfirmasi_industri.id');
+
+            $konfirmasiDosen = KonfirmasiIndustri::with('penjadwalan.mahasiswa.dosen')
+                ->where('id', $query)->get();
+        } else {
+            $konfirmasiDosen = KonfirmasiIndustri::with('penjadwalan.mahasiswa.dosen')->where('status', 'diterima')
+                ->get();
+        }
+
+        return view('Konfirmasi.konfirmasiDosen', compact('konfirmasiDosen'));
+    }
 
 
 
@@ -38,19 +49,19 @@ class KonfirmasiDosenController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-   
-    $request->validate([
-        'penjadwalan_id' => 'required|exists:penjadwalans,id', 
-    ]);
+    {
 
-    KonfirmasiDosen::create([
-        'penjadwalan_id' => $request->penjadwalan_id,
-        'status_kunjungan' => 'selesai',
-    ]);
+        $request->validate([
+            'penjadwalan_id' => 'required|exists:penjadwalan,id',
+        ]);
 
-    return redirect()->route('konfirmasiDosen');
-}
+        KonfirmasiDosen::create([
+            'penjadwalan_id' => $request->penjadwalan_id,
+            'status_kunjungan' => 'selesai',
+        ]);
+
+        return redirect()->route('konfirmasiDosen');
+    }
 
 
     /**

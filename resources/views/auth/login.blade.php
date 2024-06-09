@@ -46,11 +46,8 @@
         </div>
       </form>
       
-      <p class="mb-1">
-        <a href="">Lupa Password?</a>
-      </p>
       <p class="mb-0">
-        <a href="{{route('register')}}" class="text-center">Belum punya akun? Daftar</a>
+        <a href="{{route('registerMahasiswa')}}" class="text-center">Mahasiswa Belum punya akun? Daftar</a>
       </p>
     </div>
     <!-- /.card-body -->

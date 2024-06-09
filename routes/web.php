@@ -29,25 +29,39 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+
+
 //Login with google
 Route::get('auth/google', [App\Http\Controllers\GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('auth/google/callback', [App\Http\Controllers\GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
+
 //dosen
 Route::get('/dataDosen', [App\Http\Controllers\DosenController::class, 'index'])->name('dataDosen');
+Route::get('/dataDosen2', [App\Http\Controllers\DosenController::class, 'index2'])->name('dataDosen2');
 Route::get('/createDosen', [App\Http\Controllers\DosenController::class, 'create'])->name('createDosen');
 Route::post('/simpanDosen', [App\Http\Controllers\DosenController::class, 'store'])->name('simpanDosen');
 Route::get('/editDosen/{id}', [App\Http\Controllers\DosenController::class, 'edit'])->name('editDosen');
+Route::get('/editDosen2/{id}', [App\Http\Controllers\DosenController::class, 'edit2'])->name('editDosen2');
 Route::post('/updateDosen/{id}', [App\Http\Controllers\DosenController::class, 'update'])->name('updateDosen');
+Route::post('/updateDosen2/{id}', [App\Http\Controllers\DosenController::class, 'update2'])->name('updateDosen2');
 Route::get('/deleteDosen/{id}', [App\Http\Controllers\DosenController::class, 'destroy'])->name('deleteDosen');
 
 //mahasiswa
 Route::get('/dataMahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('dataMahasiswa');
+Route::get('/dataMahasiswa2', [App\Http\Controllers\MahasiswaController::class, 'index2'])->name('dataMahasiswa2');
+Route::get('/dtMahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index3'])->name('dtMahasiswa');
 Route::get('/createMahasiswa', [App\Http\Controllers\MahasiswaController::class, 'create'])->name('createMahasiswa');
 Route::post('/simpanMahasiswa', [App\Http\Controllers\MahasiswaController::class, 'store'])->name('simpanMahasiswa');
+Route::get('/registerMahasiswa', [MahasiswaController::class, 'showRegistrationForm'])->name('registerMahasiswa');
+Route::post('/simpanMahasiswa2', [App\Http\Controllers\MahasiswaController::class, 'store2'])->name('simpanMahasiswa2');
 Route::get('/editMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::class, 'edit'])->name('editMahasiswa');
 Route::post('/updateMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::class, 'update'])->name('updateMahasiswa');
+Route::get('/editMahasiswa2/{id}', [App\Http\Controllers\MahasiswaController::class, 'edit2'])->name('editMahasiswa2');
+Route::post('/updateMahasiswa2/{id}', [App\Http\Controllers\MahasiswaController::class, 'update2'])->name('updateMahasiswa2');
 Route::get('/deleteMahasiswa/{id}', [App\Http\Controllers\MahasiswaController::class, 'destroy'])->name('deleteMahasiswa');
+Route::get('/tambahIndustri/{mhs}', [App\Http\Controllers\MahasiswaController::class, 'tambahIndustri'])->name('tambahIndustri');
+Route::post('/storeIndustri/{mhs}', [App\Http\Controllers\MahasiswaController::class, 'storeIndustri'])->name('storeIndustri');
 
 //rekomendasi
 Route::get('/rekomendasiIndustri', [RekomendasiIndustriController::class, 'index'])->name('rekomendasiIndustri.index');

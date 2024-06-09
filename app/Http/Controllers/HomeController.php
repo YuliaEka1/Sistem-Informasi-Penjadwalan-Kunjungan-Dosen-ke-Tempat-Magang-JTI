@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
+use App\Models\Mahasiswa;
+use App\Models\Penjadwalan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,32 +37,60 @@ class HomeController extends Controller
             return $this->user();
         }
 
-        return view('home', ['user' => $user]);
-    }
-    
-    function admin(){
-        $user = Auth::user();
-        $idUser = auth()->user()->id;
-        
-        return view('home', ['user' => $user]);
+        $totalMhs =  User::where('role', 'mahasiswa')->count();
+        $totalDosen = User::where('role', 'dosen')->count();
+        $totalIndustri = Penjadwalan::whereHas('konfirmasi', function ($query) {
+            $query->where('status', 'diterima');
+        })->count();
+        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri'));
     }
 
-    function dosen(){
+    function admin()
+    {
         $user = Auth::user();
         $idUser = auth()->user()->id;
-
-        return view('home', ['user' => $user]);
+        $totalMhs =  User::where('role', 'mahasiswa')->count();
+        $totalDosen = User::where('role', 'dosen')->count();
+        $totalIndustri = Penjadwalan::whereHas('konfirmasi', function ($query) {
+            $query->where('status', 'diterima');
+        })->count();
+        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri'));
     }
-    function mahasiswa(){
+
+    function dosen()
+    {
         $user = Auth::user();
         $idUser = auth()->user()->id;
 
-        return view('home', ['user' => $user]);
+        $totalMhs =  User::where('role', 'mahasiswa')->count();
+        $totalDosen = User::where('role', 'dosen')->count();
+        $totalIndustri = Penjadwalan::whereHas('konfirmasi', function ($query) {
+            $query->where('status', 'diterima');
+        })->count();
+        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri'));
     }
-    function industri(){
+    function mahasiswa()
+    {
         $user = Auth::user();
         $idUser = auth()->user()->id;
 
-        return view('home', ['user' => $user]);
+        $totalMhs =  User::where('role', 'mahasiswa')->count();
+        $totalDosen = User::where('role', 'dosen')->count();
+        $totalIndustri = Penjadwalan::whereHas('konfirmasi', function ($query) {
+            $query->where('status', 'diterima');
+        })->count();
+        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri'));
+    }
+    function industri()
+    {
+        $user = Auth::user();
+        $idUser = auth()->user()->id;
+
+        $totalMhs =  User::where('role', 'mahasiswa')->count();
+        $totalDosen = User::where('role', 'dosen')->count();
+        $totalIndustri = Penjadwalan::whereHas('konfirmasi', function ($query) {
+            $query->where('status', 'diterima');
+        })->count();
+        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri'));
     }
 }

@@ -22,6 +22,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
+@include('Template.alert')
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -72,7 +73,7 @@
                         @foreach ($mahasiswaDirekomendasikan as $mahasiswa)
                             <tr>
                                 <td style="text-align: center;">{{ $loop->iteration }}</td>
-                                <td>{{ $mahasiswa->dosen->nama_dosen }}</td>
+                                <td>{{ $mahasiswa->dosen->nama_dosen ?? '-' }}</td>
                                 <td>{{ $mahasiswa->nama_industri }}</td>
                                 <td>{{ $mahasiswa->alamat_industri }}</td>
                                 <td style="text-align: center;">{{ \Carbon\Carbon::parse($mahasiswa->tgl_akhir)->format('d-m-Y') }}</td>

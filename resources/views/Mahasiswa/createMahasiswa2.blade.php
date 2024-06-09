@@ -59,22 +59,8 @@
                     <div class="card-body">
                         <!-- Small boxes (Stat box) -->
                         <!-- Form -->
-                        <form id="mahasiswaForm" action="{{ route('simpanMahasiswa') }}" method="post">
+                        <form id="mahasiswaForm" action="{{ route('simpanMahasiswa2') }}" method="post">
                             @csrf
-                            <div class="form-group row">
-                                <label for="email" class="col-sm-2 col-form-label">Email:</label>
-                                <div class="col-sm-10">
-                                    <input type="email" id="email" name="email" value="{{ old('email') }}"
-                                        class="form-control" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="password" class="col-sm-2 col-form-label">Password:</label>
-                                <div class="col-sm-10">
-                                    <input type="password" id="password" name="password" value="{{ old('password') }}"
-                                        class="form-control" placeholder="Password">
-                                </div>
-                            </div>
                             <div class="form-group row">
                                 <label for="nama_mhs" class="col-sm-2 col-form-label">Nama Mahasiswa:</label>
                                 <div class="col-sm-10">

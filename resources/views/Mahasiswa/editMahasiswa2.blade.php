@@ -53,7 +53,7 @@
 
 <div class="card-body">
     <!-- Small boxes (Stat box) -->
-    <form action="{{ route('updateMahasiswa',$mahasiswa->id) }}" method="post">
+    <form action="{{ route('updateMahasiswa2',$mahasiswa->id) }}" method="post">
     @csrf
     <div class="form-group row">
         <label for="nama_mhs" class="col-sm-2 col-form-label">Nama Mahasiswa 1:</label>

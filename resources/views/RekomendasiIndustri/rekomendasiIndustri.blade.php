@@ -22,6 +22,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
+@include('Template.alert')
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -68,7 +69,7 @@
             <tr>
                 <td style="text-align: center;">{{ $loop->iteration }}</td>
                 <td>{{ $mhs->nama_industri }}</td>
-                <td>{{ $mhs->dosen->nama_dosen }}</td>
+                <td>{{ $mhs->dosen->nama_dosen ?? '-' }}</td>
                 <td>{{ $mhs->kota }}</td>
                 <td style="text-align: center;">
                     @if ($mhs->rekomendasi)
@@ -81,7 +82,7 @@
                     @if ($mhs->rekomendasi)
                         @php
                             $nilai_rekomendasi = $mhs->rekomendasi->total_score;
-                            $status = ($nilai_rekomendasi >= 9) ? 'Direkomendasikan' : 'Tdk Direkomendasikan';
+                            $status = ($nilai_rekomendasi >= 10) ? 'Direkomendasikan' : 'Tdk Direkomendasikan';
                         @endphp
                         <!-- Tampilkan status dengan warna sesuai kondisi -->
                         <span style="display: inline-block; width: 100%; text-align: center;" class="badge {{ $status === 'Direkomendasikan' ? 'bg-warning' : 'bg-secondary' }}">{{ $status }}</span>
@@ -139,7 +140,7 @@
                     @csrf
                     <input type="hidden" name="mahasiswa_id" value="{{ $mhs->id }}">
                     <div class="form-group">
-                        <label for="kota">Jarak dari Polinema :</label>
+                        <label for="kota">Jarak dari Kampus Polinema Pusat :</label>
                         <select class="form-control" name="kota">
                         <option value=""> - </option>
                             <option value="3">Dekat</option>
@@ -148,27 +149,35 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="dosen">Dosen:</label>
+                        <label for="dana">Dana Kunjungan:</label>
+                        <select class="form-control" name="dana">
+                        <option value=""> - </option>
+                            <option value="3">Termasuk ke dalam Dana Kunjungan</option>
+                            <option value="0">Tidak Termasuk ke dalam Dana Kunjungan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dosen">Dosen Pembimbing:</label>
                         <select class="form-control" name="dosen">
                         <option value=""> - </option>
                             <option value="3">Ada</option>
                             <option value="0">Tidak Ada</option>
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="dana">Dana Kunjungan:</label>
-                        <select class="form-control" name="dana">
-                        <option value=""> - </option>
-                            <option value="3">Termasuk ke dalam Dana Kunjungan</option>
-                            <option value="2">Tidak Termasuk ke dalam Dana Kunjungan</option>
-                        </select>
-                    </div>
+                    </div>  
                     <div class="form-group">
                         <label for="kunjungan">Kunjungan:</label>
                         <select class="form-control" name="kunjungan">
                             <option value=""> - </option>
                             <option value="3">Belum Pernah dikunjungi</option>
                             <option value="0">Sudah Pernah dikunjungi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mou">MoU dengan Polinema:</label>
+                        <select class="form-control" name="mou">
+                            <option value=""> - </option>
+                            <option value="3">BerMou</option>
+                            <option value="0">Tidak BerMou</option>
                         </select>
                     </div>
                     <!-- Tombol Submit -->

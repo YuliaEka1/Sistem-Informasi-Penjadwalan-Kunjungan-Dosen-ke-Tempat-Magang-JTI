@@ -52,7 +52,7 @@
 
 <div class="card-body">
     <!-- Form -->
-    <form id="editDosenForm" action="{{ url('updateDosen',$dosen->id) }}" method="post">
+    <form id="editDosenForm" action="{{ url('updateDosen2',$dosen->id) }}" method="post">
     {{ csrf_field() }}
     <div class="form-group">
         <input type="text" id="nama_dosen" name="nama_dosen" class="form-control" placeholder="Nama Dosen" value="{{ $dosen->nama_dosen }}">
@@ -112,7 +112,7 @@
                         timeOut: 1000, // Waktu tampil (1 detik)
                         extendedTimeOut: 1000, // Waktu tambahan jika diarahkan kursor (1 detik)
                         onHidden: function() {
-                            window.location.href = "{{ route('dataDosen') }}"; // Redirect ke halaman dataDosen
+                            window.location.href = "{{ route('dataDosen2') }}"; // Redirect ke halaman dataDosen
                         }
                     });
                 },
@@ -128,7 +128,6 @@
         });
     });
 </script>
-
 @include('Template.scripts')
 </body>
 </html>
