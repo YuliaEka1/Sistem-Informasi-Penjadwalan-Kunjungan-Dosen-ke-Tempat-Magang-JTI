@@ -15,25 +15,29 @@ class KonfirmasiDosenController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $user = auth()->user();
+{
+    $user = auth()->user();
 
-        if ($user->role != 'admin') {
-            $query = KonfirmasiIndustri::where('status', 'diterima')
-                ->join('penjadwalan', 'penjadwalan.id', 'konfirmasi_industri.penjadwalan_id')
-                ->join('mahasiswa', 'penjadwalan.mahasiswa_id', 'mahasiswa.id')
-                ->join('dosen', 'dosen.id', 'mahasiswa.dosen_id')
-                ->where('dosen.user_id', $user->id)->select('konfirmasi_industri.id');
+    if ($user->role != 'admin') {
+        $query = KonfirmasiIndustri::where('status', 'diterima')
+            ->join('penjadwalan', 'penjadwalan.id', 'konfirmasi_industri.penjadwalan_id')
+            ->join('mahasiswa', 'penjadwalan.mahasiswa_id', 'mahasiswa.id')
+            ->join('dosen', 'dosen.id', 'mahasiswa.dosen_id')
+            ->where('dosen.user_id', $user->id)
+            ->pluck('konfirmasi_industri.id'); // Mengambil semua ID yang sesuai
 
-            $konfirmasiDosen = KonfirmasiIndustri::with('penjadwalan.mahasiswa.dosen')
-                ->where('id', $query)->get();
-        } else {
-            $konfirmasiDosen = KonfirmasiIndustri::with('penjadwalan.mahasiswa.dosen')->where('status', 'diterima')
-                ->get();
-        }
-
-        return view('Konfirmasi.konfirmasiDosen', compact('konfirmasiDosen'));
+        $konfirmasiDosen = KonfirmasiIndustri::with('penjadwalan.mahasiswa.dosen')
+            ->whereIn('id', $query)
+            ->get();
+    } else {
+        $konfirmasiDosen = KonfirmasiIndustri::with('penjadwalan.mahasiswa.dosen')
+            ->where('status', 'diterima')
+            ->get();
     }
+
+    return view('Konfirmasi.konfirmasiDosen', compact('konfirmasiDosen'));
+}
+
 
 
 
