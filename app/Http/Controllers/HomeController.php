@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dosen;
 use App\Models\Mahasiswa;
 use App\Models\Penjadwalan;
+use App\Models\RekomendasiIndustri;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +43,12 @@ class HomeController extends Controller
         $totalIndustri = Penjadwalan::whereHas('konfirmasi', function ($query) {
             $query->where('status', 'diterima');
         })->count();
-        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri'));
+
+        // Menghitung jumlah mahasiswa yang direkomendasikan dan tidak direkomendasikan
+        $direkomendasikan = RekomendasiIndustri::where('status', 'Direkomendasikan')->count();
+        $tidakDirekomendasikan = RekomendasiIndustri::where('status', 'Tidak Direkomendasikan')->count();
+
+        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri', 'direkomendasikan', 'tidakDirekomendasikan'));
     }
 
     function admin()
@@ -54,7 +60,12 @@ class HomeController extends Controller
         $totalIndustri = Penjadwalan::whereHas('konfirmasi', function ($query) {
             $query->where('status', 'diterima');
         })->count();
-        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri'));
+
+        // Menghitung jumlah mahasiswa yang direkomendasikan dan tidak direkomendasikan
+        $direkomendasikan = RekomendasiIndustri::where('status', 'Direkomendasikan')->count();
+        $tidakDirekomendasikan = RekomendasiIndustri::where('status', 'Tidak Direkomendasikan')->count();
+
+        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri', 'direkomendasikan', 'tidakDirekomendasikan'));
     }
 
     function dosen()
@@ -67,7 +78,11 @@ class HomeController extends Controller
         $totalIndustri = Penjadwalan::whereHas('konfirmasi', function ($query) {
             $query->where('status', 'diterima');
         })->count();
-        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri'));
+
+        // Menghitung jumlah mahasiswa yang direkomendasikan dan tidak direkomendasikan
+        $direkomendasikan = RekomendasiIndustri::where('status', 'Direkomendasikan')->count();
+        $tidakDirekomendasikan = RekomendasiIndustri::where('status', 'Tidak Direkomendasikan')->count();
+        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri', 'direkomendasikan', 'tidakDirekomendasikan'));
     }
     function mahasiswa()
     {
@@ -79,7 +94,11 @@ class HomeController extends Controller
         $totalIndustri = Penjadwalan::whereHas('konfirmasi', function ($query) {
             $query->where('status', 'diterima');
         })->count();
-        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri'));
+
+        // Menghitung jumlah mahasiswa yang direkomendasikan dan tidak direkomendasikan
+        $direkomendasikan = RekomendasiIndustri::where('status', 'Direkomendasikan')->count();
+        $tidakDirekomendasikan = RekomendasiIndustri::where('status', 'Tidak Direkomendasikan')->count();
+        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri', 'direkomendasikan', 'tidakDirekomendasikan'));
     }
     function industri()
     {
@@ -91,6 +110,10 @@ class HomeController extends Controller
         $totalIndustri = Penjadwalan::whereHas('konfirmasi', function ($query) {
             $query->where('status', 'diterima');
         })->count();
-        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri'));
+
+        // Menghitung jumlah mahasiswa yang direkomendasikan dan tidak direkomendasikan
+        $direkomendasikan = RekomendasiIndustri::where('status', 'Direkomendasikan')->count();
+        $tidakDirekomendasikan = RekomendasiIndustri::where('status', 'Tidak Direkomendasikan')->count();
+        return view('home', compact('user', 'totalMhs', 'totalDosen', 'totalIndustri', 'direkomendasikan', 'tidakDirekomendasikan'));
     }
 }
